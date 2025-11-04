@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<microprocessor name="MATH num switchbox (1X)" description="X comparison with preset N" width="2" length="1" id_counter="30" id_counter_node="7" sym0="288" sym1="416" sym2="352" sym3="288" sym5="2056" sym6="1040" sym7="544" sym8="1040" sym9="2056" sym11="4408" sym12="2576" sym13="1040" sym14="2584" sym15="4368">
+	<nodes>
+		<n id="6" component_id="14">
+			<node label="In (X)" mode="1" type="1"/>
+		</n>
+		<n id="7" component_id="27">
+			<node label="Out (Answer)" type="1">
+				<position x="1"/>
+			</node>
+		</n>
+	</nodes>
+	<group>
+		<data type="1049481524">
+			<inputs/>
+			<outputs/>
+		</data>
+		<components>
+			<c type="20">
+				<object id="16" name="Type of Reaction" i="1">
+					<pos x="-2.25" y="-1"/>
+					<items>
+						<i l="X equal N">
+							<v text="0"/>
+						</i>
+						<i l="X less N">
+							<v text="-1" value="-1"/>
+						</i>
+						<i l="X more N">
+							<v text="1" value="1"/>
+						</i>
+					</items>
+				</object>
+			</c>
+			<c type="56">
+				<object id="17" script="function onTick()
+	BaseNumber = input.getNumber(1)
+	ToR = input.getNumber(2)
+	N = input.getNumber(3)
+	answer = input.getNumber(5)
+	
+	if ToR==0 and BaseNumber==N then		answer = input.getNumber(4)		end
+	if ToR==1  and BaseNumber&gt;N then		answer = input.getNumber(4)		end
+	if ToR==-1 and BaseNumber&lt;N then		answer = input.getNumber(4)		end
+	
+	
+	output.setNumber(1, answer)
+end
+">
+					<pos x="1" y="-0.5"/>
+					<in1 component_id="20"/>
+				</object>
+			</c>
+			<c type="34">
+				<object id="19" n="N">
+					<pos x="-2.25" y="-1.5"/>
+					<v text="50" value="50"/>
+				</object>
+			</c>
+			<c type="40">
+				<object id="20" count="5">
+					<pos x="-0.5" y="-1.5"/>
+					<in1 component_id="14"/>
+					<in2 component_id="16"/>
+					<in3 component_id="19"/>
+					<in4 component_id="29"/>
+					<in5 component_id="30"/>
+				</object>
+			</c>
+			<c type="31">
+				<object id="28">
+					<pos x="2.5" y="-0.25"/>
+					<in1 component_id="17"/>
+				</object>
+			</c>
+			<c type="34">
+				<object id="29" n="if true">
+					<pos x="-2.25" y="-1.75"/>
+					<v text="0"/>
+				</object>
+			</c>
+			<c type="34">
+				<object id="30" n="if false">
+					<pos x="-2.25" y="-2"/>
+					<v text="0"/>
+				</object>
+			</c>
+		</components>
+		<components_bridge>
+			<c type="2">
+				<object id="14">
+					<pos x="-2.25" y="-0.5"/>
+				</object>
+			</c>
+			<c type="3">
+				<object id="27">
+					<pos x="4.25" y="-0.25"/>
+					<in1 component_id="28"/>
+				</object>
+			</c>
+		</components_bridge>
+		<groups/>
+		<component_states>
+			<c0 id="16" name="Type of Reaction" i="1">
+				<pos x="-2.25" y="-1"/>
+				<items>
+					<i l="X equal N">
+						<v text="0"/>
+					</i>
+					<i l="X less N">
+						<v text="-1" value="-1"/>
+					</i>
+					<i l="X more N">
+						<v text="1" value="1"/>
+					</i>
+				</items>
+			</c0>
+			<c1 id="17" script="function onTick()
+	BaseNumber = input.getNumber(1)
+	ToR = input.getNumber(2)
+	N = input.getNumber(3)
+	answer = input.getNumber(5)
+	
+	if ToR==0 and BaseNumber==N then		answer = input.getNumber(4)		end
+	if ToR==1  and BaseNumber&gt;N then		answer = input.getNumber(4)		end
+	if ToR==-1 and BaseNumber&lt;N then		answer = input.getNumber(4)		end
+	
+	
+	output.setNumber(1, answer)
+end
+">
+				<pos x="1" y="-0.5"/>
+				<in1 component_id="20"/>
+			</c1>
+			<c2 id="19" n="N">
+				<pos x="-2.25" y="-1.5"/>
+				<v text="50" value="50"/>
+			</c2>
+			<c3 id="20" count="5">
+				<pos x="-0.5" y="-1.5"/>
+				<in1 component_id="14"/>
+				<in2 component_id="16"/>
+				<in3 component_id="19"/>
+				<in4 component_id="29"/>
+				<in5 component_id="30"/>
+			</c3>
+			<c4 id="28">
+				<pos x="2.5" y="-0.25"/>
+				<in1 component_id="17"/>
+			</c4>
+			<c5 id="29" n="if true">
+				<pos x="-2.25" y="-1.75"/>
+				<v text="0"/>
+			</c5>
+			<c6 id="30" n="if false">
+				<pos x="-2.25" y="-2"/>
+				<v text="0"/>
+			</c6>
+		</component_states>
+		<component_bridge_states>
+			<c0 id="14">
+				<pos x="-2.25" y="-0.5"/>
+			</c0>
+			<c1 id="27">
+				<pos x="4.25" y="-0.25"/>
+				<in1 component_id="28"/>
+			</c1>
+		</component_bridge_states>
+		<group_states/>
+	</group>
+</microprocessor>
+

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<microprocessor name="MATH Alternate diapason" description="Translate number from first diapason to % in second diapason (1.5 in 1-2 = 55 in 10-100)" width="2" length="1" id_counter="10" id_counter_node="2" sym1="4100" sym2="16382" sym3="4228" sym5="128" sym6="448" sym7="672" sym8="128" sym9="128" sym10="128" sym12="130" sym13="511" sym14="146">
+	<nodes>
+		<n id="1" component_id="3">
+			<node label="In (Number in first diapason)" mode="1" type="1"/>
+		</n>
+		<n id="2" component_id="5">
+			<node label="Out (Number in second diapason)" type="1">
+				<position x="1"/>
+			</node>
+		</n>
+	</nodes>
+	<group>
+		<data>
+			<inputs/>
+			<outputs/>
+		</data>
+		<components>
+			<c type="34">
+				<object id="6" n="Target Range Min">
+					<pos x="0.25" y="-1.5"/>
+					<v text="-0.73" value="-0.73"/>
+				</object>
+			</c>
+			<c type="34">
+				<object id="7" n="Target Range Max">
+					<pos x="0.25" y="-1.75"/>
+					<v text="0.04" value="0.04"/>
+				</object>
+			</c>
+			<c type="34">
+				<object id="8" n="Input Range Min">
+					<pos x="0.25" y="-0.75"/>
+					<v text="-1" value="-1"/>
+				</object>
+			</c>
+			<c type="34">
+				<object id="9" n="Input Range Max">
+					<pos x="0.25" y="-1"/>
+					<v text="1" value="1"/>
+				</object>
+			</c>
+			<c type="36">
+				<object id="10" e="a+((x-y)/(z-y))*(b-a)">
+					<pos x="2" y="-2"/>
+					<in1 component_id="3"/>
+					<in2 component_id="8"/>
+					<in3 component_id="9"/>
+					<in5 component_id="6"/>
+					<in6 component_id="7"/>
+				</object>
+			</c>
+		</components>
+		<components_bridge>
+			<c type="2">
+				<object id="3">
+					<pos x="-1.25" y="-0.25"/>
+				</object>
+			</c>
+			<c type="3">
+				<object id="5">
+					<pos x="3.5" y="-0.25"/>
+					<in1 component_id="10"/>
+				</object>
+			</c>
+		</components_bridge>
+		<groups/>
+		<component_states>
+			<c0 id="6" n="Target Range Min">
+				<pos x="0.25" y="-1.5"/>
+				<v text="-0.73" value="-0.73"/>
+			</c0>
+			<c1 id="7" n="Target Range Max">
+				<pos x="0.25" y="-1.75"/>
+				<v text="0.04" value="0.04"/>
+			</c1>
+			<c2 id="8" n="Input Range Min">
+				<pos x="0.25" y="-0.75"/>
+				<v text="-1" value="-1"/>
+			</c2>
+			<c3 id="9" n="Input Range Max">
+				<pos x="0.25" y="-1"/>
+				<v text="1" value="1"/>
+			</c3>
+			<c4 id="10" e="a+((x-y)/(z-y))*(b-a)">
+				<pos x="2" y="-2"/>
+				<in1 component_id="3"/>
+				<in2 component_id="8"/>
+				<in3 component_id="9"/>
+				<in5 component_id="6"/>
+				<in6 component_id="7"/>
+			</c4>
+		</component_states>
+		<component_bridge_states>
+			<c0 id="3">
+				<pos x="-1.25" y="-0.25"/>
+			</c0>
+			<c1 id="5">
+				<pos x="3.5" y="-0.25"/>
+				<in1 component_id="10"/>
+			</c1>
+		</component_bridge_states>
+		<group_states/>
+	</group>
+</microprocessor>
+

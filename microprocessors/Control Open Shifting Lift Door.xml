@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<microprocessor name="Control (Open Shifting Lift Door)" width="1" length="3" id_counter="24" id_counter_node="3" sym2="512" sym3="1792" sym4="2688" sym5="512" sym6="512" sym7="560" sym8="40" sym9="552" sym10="560" sym11="544" sym12="2720" sym13="1824" sym14="512">
+	<nodes>
+		<n id="1" component_id="1">
+			<node label="In (Open Door)" mode="1"/>
+		</n>
+		<n id="2" component_id="3">
+			<node label="In (Door Distance)" mode="1" type="1">
+				<position z="1"/>
+			</node>
+		</n>
+		<n id="3" component_id="6">
+			<node label="Out (Door Speed)" type="1">
+				<position z="2"/>
+			</node>
+		</n>
+	</nodes>
+	<group>
+		<data>
+			<inputs/>
+			<outputs/>
+		</data>
+		<components>
+			<c type="1">
+				<object id="7">
+					<pos x="0.75" y="-1"/>
+					<in1 component_id="10"/>
+					<in2 component_id="1"/>
+				</object>
+			</c>
+			<c type="34">
+				<object id="9" n="Distance (To Open)">
+					<pos x="-1.25" y="-0.25"/>
+					<v text="0"/>
+				</object>
+			</c>
+			<c type="17">
+				<object id="10">
+					<pos x="-0.25" y="0.5"/>
+					<in1 component_id="3"/>
+					<in2 component_id="9"/>
+				</object>
+			</c>
+			<c type="18">
+				<object id="13">
+					<pos x="-0.75" y="2.25"/>
+					<in1 component_id="3"/>
+					<in2 component_id="14"/>
+				</object>
+			</c>
+			<c type="34">
+				<object id="14" n="Distance (To Open)">
+					<pos x="-2.25" y="2.25"/>
+					<v text="2.251" value="2.251"/>
+				</object>
+			</c>
+			<c type="34">
+				<object id="17" n="Lift Speed">
+					<pos x="1.25" y="0.75"/>
+					<v text="0.5" value="0.5"/>
+				</object>
+			</c>
+			<c type="22">
+				<object id="18">
+					<pos x="6" y="-0.75"/>
+					<in1 component_id="17"/>
+					<in2 component_id="19"/>
+					<in3 component_id="7"/>
+				</object>
+			</c>
+			<c type="22">
+				<object id="19">
+					<pos x="5" y="2.5"/>
+					<in1 component_id="21"/>
+					<in2 component_id="22"/>
+					<in3 component_id="13"/>
+				</object>
+			</c>
+			<c type="45">
+				<object id="21" e="-1*x">
+					<pos x="2.75" y="1.25"/>
+					<in1 component_id="17"/>
+				</object>
+			</c>
+			<c type="15">
+				<object id="22">
+					<pos x="2.75" y="0.75"/>
+					<n text="0"/>
+				</object>
+			</c>
+		</components>
+		<components_bridge>
+			<c>
+				<object id="1">
+					<pos x="-1.75" y="-1"/>
+				</object>
+			</c>
+			<c type="2">
+				<object id="3">
+					<pos x="-1.75" y="0.75"/>
+				</object>
+			</c>
+			<c type="3">
+				<object id="6">
+					<pos x="7.75" y="-0.25"/>
+					<in1 component_id="18"/>
+				</object>
+			</c>
+		</components_bridge>
+		<groups/>
+		<component_states>
+			<c0 id="7">
+				<pos x="0.75" y="-1"/>
+				<in1 component_id="10"/>
+				<in2 component_id="1"/>
+			</c0>
+			<c1 id="9" n="Distance (To Open)">
+				<pos x="-1.25" y="-0.25"/>
+				<v text="0"/>
+			</c1>
+			<c2 id="10">
+				<pos x="-0.25" y="0.5"/>
+				<in1 component_id="3"/>
+				<in2 component_id="9"/>
+			</c2>
+			<c3 id="13">
+				<pos x="-0.75" y="2.25"/>
+				<in1 component_id="3"/>
+				<in2 component_id="14"/>
+			</c3>
+			<c4 id="14" n="Distance (To Open)">
+				<pos x="-2.25" y="2.25"/>
+				<v text="2.251" value="2.251"/>
+			</c4>
+			<c5 id="17" n="Lift Speed">
+				<pos x="1.25" y="0.75"/>
+				<v text="0.5" value="0.5"/>
+			</c5>
+			<c6 id="18">
+				<pos x="6" y="-0.75"/>
+				<in1 component_id="17"/>
+				<in2 component_id="19"/>
+				<in3 component_id="7"/>
+			</c6>
+			<c7 id="19">
+				<pos x="5" y="2.5"/>
+				<in1 component_id="21"/>
+				<in2 component_id="22"/>
+				<in3 component_id="13"/>
+			</c7>
+			<c8 id="21" e="-1*x">
+				<pos x="2.75" y="1.25"/>
+				<in1 component_id="17"/>
+			</c8>
+			<c9 id="22">
+				<pos x="2.75" y="0.75"/>
+				<n text="0"/>
+			</c9>
+		</component_states>
+		<component_bridge_states>
+			<c0 id="1">
+				<pos x="-1.75" y="-1"/>
+			</c0>
+			<c1 id="3">
+				<pos x="-1.75" y="0.75"/>
+			</c1>
+			<c2 id="6">
+				<pos x="7.75" y="-0.25"/>
+				<in1 component_id="18"/>
+			</c2>
+		</component_bridge_states>
+		<group_states/>
+	</group>
+</microprocessor>
+

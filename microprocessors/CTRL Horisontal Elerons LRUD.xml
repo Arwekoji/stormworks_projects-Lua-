@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<microprocessor name="CTRL (Horisontal Elerons - LRUD)" description="Roll or up/down" width="1" length="3" id_counter="15" id_counter_node="3" sym0="49603" sym1="33313" sym2="5140" sym3="6156" sym4="7196" sym5="128" sym6="448" sym7="128" sym8="128" sym9="128" sym10="4088" sym11="2032" sym12="128" sym14="32769" sym15="49155">
+	<nodes>
+		<n id="1" component_id="2">
+			<node label="In (LRUD from seat)" mode="1" type="5"/>
+		</n>
+		<n id="2" component_id="8">
+			<node label="Out (Eleron, left)" type="1">
+				<position z="1"/>
+			</node>
+		</n>
+		<n id="3" component_id="7">
+			<node label="Out (Eleron, right)" type="1">
+				<position z="2"/>
+			</node>
+		</n>
+	</nodes>
+	<group>
+		<data type="-1082646071">
+			<inputs/>
+			<outputs/>
+		</data>
+		<components>
+			<c type="31">
+				<object id="9" i="3">
+					<pos x="-2" y="0.75"/>
+					<in1 component_id="2"/>
+				</object>
+			</c>
+			<c type="31">
+				<object id="10" i="2">
+					<pos x="-2.5" y="-0.25"/>
+					<in1 component_id="2"/>
+				</object>
+			</c>
+			<c type="42">
+				<object id="11">
+					<pos x="-0.5" y="0.5"/>
+					<in1 component_id="9"/>
+					<in2 component_id="12"/>
+					<e text="0.0001" value="0.0001"/>
+				</object>
+			</c>
+			<c type="15">
+				<object id="12">
+					<pos x="-2" y="0.25"/>
+					<n text="0"/>
+				</object>
+			</c>
+			<c type="22">
+				<object id="13">
+					<pos x="1.25" y="0.75"/>
+					<in1 component_id="15"/>
+					<in2 component_id="9"/>
+					<in3 component_id="11"/>
+				</object>
+			</c>
+			<c type="22">
+				<object id="14">
+					<pos x="1.25" y="-0.75"/>
+					<in1 component_id="10"/>
+					<in2 component_id="9"/>
+					<in3 component_id="11"/>
+				</object>
+			</c>
+			<c type="45">
+				<object id="15" e="-1*x">
+					<pos x="-1.5" y="1.25"/>
+					<in1 component_id="10"/>
+				</object>
+			</c>
+		</components>
+		<components_bridge>
+			<c type="4">
+				<object id="2">
+					<pos x="-3.5" y="0.75"/>
+				</object>
+			</c>
+			<c type="3">
+				<object id="7">
+					<pos x="3.5" y="1.25"/>
+					<in1 component_id="13"/>
+				</object>
+			</c>
+			<c type="3">
+				<object id="8">
+					<pos x="3.5" y="-0.25"/>
+					<in1 component_id="14"/>
+				</object>
+			</c>
+		</components_bridge>
+		<groups/>
+		<component_states>
+			<c0 id="9" i="3">
+				<pos x="-2" y="0.75"/>
+				<in1 component_id="2"/>
+			</c0>
+			<c1 id="10" i="2">
+				<pos x="-2.5" y="-0.25"/>
+				<in1 component_id="2"/>
+			</c1>
+			<c2 id="11">
+				<pos x="-0.5" y="0.5"/>
+				<in1 component_id="9"/>
+				<in2 component_id="12"/>
+				<e text="0.0001" value="0.0001"/>
+			</c2>
+			<c3 id="12">
+				<pos x="-2" y="0.25"/>
+				<n text="0"/>
+			</c3>
+			<c4 id="13">
+				<pos x="1.25" y="0.75"/>
+				<in1 component_id="15"/>
+				<in2 component_id="9"/>
+				<in3 component_id="11"/>
+			</c4>
+			<c5 id="14">
+				<pos x="1.25" y="-0.75"/>
+				<in1 component_id="10"/>
+				<in2 component_id="9"/>
+				<in3 component_id="11"/>
+			</c5>
+			<c6 id="15" e="-1*x">
+				<pos x="-1.5" y="1.25"/>
+				<in1 component_id="10"/>
+			</c6>
+		</component_states>
+		<component_bridge_states>
+			<c0 id="2">
+				<pos x="-3.5" y="0.75"/>
+			</c0>
+			<c1 id="7">
+				<pos x="3.5" y="1.25"/>
+				<in1 component_id="13"/>
+			</c1>
+			<c2 id="8">
+				<pos x="3.5" y="-0.25"/>
+				<in1 component_id="14"/>
+			</c2>
+		</component_bridge_states>
+		<group_states/>
+	</group>
+</microprocessor>
+

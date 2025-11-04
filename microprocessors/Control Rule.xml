@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<microprocessor name="Control (Rule)" width="1" length="4" id_counter="36" id_counter_node="4" sym0="4100" sym1="8194" sym2="31775" sym3="8194" sym4="4548" sym6="448" sym8="448" sym10="448" sym11="4100" sym12="2504" sym13="1040" sym14="544" sym15="448">
+	<nodes>
+		<n id="1" component_id="2">
+			<node label="In (AD)" mode="1" type="1"/>
+		</n>
+		<n id="2" component_id="4">
+			<node label="In (Compas)" mode="1" type="1">
+				<position z="1"/>
+			</node>
+		</n>
+		<n id="3" component_id="7">
+			<node label="Out (Rule)" type="1">
+				<position z="3"/>
+			</node>
+		</n>
+		<n id="4" component_id="31">
+			<node label="In (Tilt)" mode="1" type="1">
+				<position z="2"/>
+			</node>
+		</n>
+	</nodes>
+	<group>
+		<data type="1049481524">
+			<inputs/>
+			<outputs/>
+		</data>
+		<components>
+			<c type="34">
+				<object id="8" n="AD Epsilon">
+					<pos x="-1.5" y="-1.5"/>
+					<v text="0.1" value="0.1"/>
+				</object>
+			</c>
+			<c type="34">
+				<object id="9" n="Auto Rule">
+					<pos x="2.25" y="2.25"/>
+					<v text="0.05" value="0.05"/>
+				</object>
+			</c>
+			<c type="34">
+				<object id="10" n="Compas Epsilon">
+					<pos x="-1.5" y="0.5"/>
+					<v text="0.01" value="0.01"/>
+				</object>
+			</c>
+			<c type="45">
+				<object id="11" e="abs(x)">
+					<pos y="-0.75"/>
+					<in1 component_id="2"/>
+				</object>
+			</c>
+			<c type="18">
+				<object id="12">
+					<pos x="1" y="-1.5"/>
+					<in1 component_id="11"/>
+					<in2 component_id="8"/>
+				</object>
+			</c>
+			<c type="22">
+				<object id="13">
+					<pos x="5.25" y="-1.25"/>
+					<in1 component_id="20"/>
+					<in2 component_id="2"/>
+					<in3 component_id="12"/>
+				</object>
+			</c>
+			<c type="10">
+				<object id="15" e="x*z">
+					<pos x="3.25" y="3.25"/>
+					<in1 component_id="23"/>
+					<in3 component_id="9"/>
+				</object>
+			</c>
+			<c type="13">
+				<object id="16">
+					<pos x="0.75" y="2.25"/>
+					<in1 component_id="17"/>
+					<in3 component_id="4"/>
+					<r text="0"/>
+				</object>
+			</c>
+			<c type="48">
+				<object id="17">
+					<pos x="-0.25" y="1.75"/>
+					<in1 component_id="12"/>
+				</object>
+			</c>
+			<c type="10">
+				<object id="18" e="abs(x-y)">
+					<pos x="1.75" y="1"/>
+					<in1 component_id="16"/>
+					<in2 component_id="4"/>
+				</object>
+			</c>
+			<c type="18">
+				<object id="19">
+					<pos x="2.75" y="0.5"/>
+					<in1 component_id="18"/>
+					<in2 component_id="10"/>
+				</object>
+			</c>
+			<c type="22">
+				<object id="20">
+					<pos x="4.25" y="0.75"/>
+					<in1 component_id="21"/>
+					<in2 component_id="15"/>
+					<in3 component_id="19"/>
+				</object>
+			</c>
+			<c type="15">
+				<object id="21">
+					<pos x="2.75" y="1.25"/>
+					<n text="0"/>
+				</object>
+			</c>
+			<c type="56">
+				<object id="22" script="function onTick()
+	pi2 = math.pi*2
+	fixedCompass = 180+math.fmod((input.getNumber(1)+1.5)*pi2, pi2)*(180/math.pi)
+	currentCompass = 180+math.fmod((input.getNumber(2)+1.5)*pi2, pi2)*(180/math.pi)
+	
+	autodir = -1
+			 
+	
+	dif = currentCompass-fixedCompass
+	
+	if dif&gt;0 and dif&lt;180  then autodir = 1 end
+	if dif&lt;0 and dif&lt;-180 then autodir = 1 end
+	
+			
+	output.setNumber(1, autodir)		
+	output.setNumber(2, currentCompass)	
+end
+
+">
+					<pos x="0.75" y="3.5"/>
+					<in1 component_id="24"/>
+				</object>
+			</c>
+			<c type="31">
+				<object id="23">
+					<pos x="2" y="3.75"/>
+					<in1 component_id="22"/>
+				</object>
+			</c>
+			<c type="40">
+				<object id="24" count="2">
+					<pos x="-0.5" y="3.25"/>
+					<in1 component_id="16"/>
+					<in2 component_id="4"/>
+				</object>
+			</c>
+			<c type="43">
+				<object id="25" l="Current Compass Direction">
+					<pos x="3.25" y="4.5"/>
+					<in1 component_id="26"/>
+				</object>
+			</c>
+			<c type="31">
+				<object id="26" i="1">
+					<pos x="1.75" y="4.75"/>
+					<in1 component_id="22"/>
+				</object>
+			</c>
+			<c type="43">
+				<object id="27" l="Current Comp">
+					<pos x="-1.75" y="3"/>
+					<in1 component_id="4"/>
+				</object>
+			</c>
+			<c type="43">
+				<object id="29" l="Rule">
+					<pos x="6.5" y="-0.25"/>
+					<in1 component_id="13"/>
+				</object>
+			</c>
+			<c type="43">
+				<object id="28" l="Fixed Comp">
+					<pos x="2" y="2.75"/>
+					<in1 component_id="16"/>
+				</object>
+			</c>
+			<c type="56">
+				<object id="32" script="function onTick()
+	rule = input.getNumber(1)
+	tilt = input.getNumber(2)
+	
+	if	(rule&lt;0 and tilt&lt;-0.2) or (rule&gt;0 and tilt&gt;0.2)	then
+		rule = rule/2
+	end
+	
+	output.setNumber(1, rule)
+end
+">
+					<pos x="8.25" y="-2.25"/>
+					<in1 component_id="35"/>
+				</object>
+			</c>
+			<c type="40">
+				<object id="35" count="2">
+					<pos x="7" y="-2.5"/>
+					<in1 component_id="13"/>
+					<in2 component_id="31"/>
+				</object>
+			</c>
+			<c type="31">
+				<object id="36">
+					<pos x="9.5" y="-2"/>
+					<in1 component_id="32"/>
+				</object>
+			</c>
+		</components>
+		<components_bridge>
+			<c type="2">
+				<object id="2">
+					<pos x="-1.5" y="-0.75"/>
+				</object>
+			</c>
+			<c type="2">
+				<object id="4">
+					<pos x="-1.5" y="2.25"/>
+				</object>
+			</c>
+			<c type="3">
+				<object id="7">
+					<pos x="10.75" y="-2"/>
+					<in1 component_id="36"/>
+				</object>
+			</c>
+			<c type="2">
+				<object id="31">
+					<pos x="-1.5" y="-2.5"/>
+				</object>
+			</c>
+		</components_bridge>
+		<groups/>
+		<component_states>
+			<c0 id="8" n="AD Epsilon">
+				<pos x="-1.5" y="-1.5"/>
+				<v text="0.1" value="0.1"/>
+			</c0>
+			<c1 id="9" n="Auto Rule">
+				<pos x="2.25" y="2.25"/>
+				<v text="0.05" value="0.05"/>
+			</c1>
+			<c2 id="10" n="Compas Epsilon">
+				<pos x="-1.5" y="0.5"/>
+				<v text="0.01" value="0.01"/>
+			</c2>
+			<c3 id="11" e="abs(x)">
+				<pos y="-0.75"/>
+				<in1 component_id="2"/>
+			</c3>
+			<c4 id="12">
+				<pos x="1" y="-1.5"/>
+				<in1 component_id="11"/>
+				<in2 component_id="8"/>
+			</c4>
+			<c5 id="13">
+				<pos x="5.25" y="-1.25"/>
+				<in1 component_id="20"/>
+				<in2 component_id="2"/>
+				<in3 component_id="12"/>
+			</c5>
+			<c6 id="15" e="x*z">
+				<pos x="3.25" y="3.25"/>
+				<in1 component_id="23"/>
+				<in3 component_id="9"/>
+			</c6>
+			<c7 id="16">
+				<pos x="0.75" y="2.25"/>
+				<in1 component_id="17"/>
+				<in3 component_id="4"/>
+				<r text="0"/>
+			</c7>
+			<c8 id="17">
+				<pos x="-0.25" y="1.75"/>
+				<in1 component_id="12"/>
+			</c8>
+			<c9 id="18" e="abs(x-y)">
+				<pos x="1.75" y="1"/>
+				<in1 component_id="16"/>
+				<in2 component_id="4"/>
+			</c9>
+			<c10 id="19">
+				<pos x="2.75" y="0.5"/>
+				<in1 component_id="18"/>
+				<in2 component_id="10"/>
+			</c10>
+			<c11 id="20">
+				<pos x="4.25" y="0.75"/>
+				<in1 component_id="21"/>
+				<in2 component_id="15"/>
+				<in3 component_id="19"/>
+			</c11>
+			<c12 id="21">
+				<pos x="2.75" y="1.25"/>
+				<n text="0"/>
+			</c12>
+			<c13 id="22" script="function onTick()
+	pi2 = math.pi*2
+	fixedCompass = 180+math.fmod((input.getNumber(1)+1.5)*pi2, pi2)*(180/math.pi)
+	currentCompass = 180+math.fmod((input.getNumber(2)+1.5)*pi2, pi2)*(180/math.pi)
+	
+	autodir = -1
+			 
+	
+	dif = currentCompass-fixedCompass
+	
+	if dif&gt;0 and dif&lt;180  then autodir = 1 end
+	if dif&lt;0 and dif&lt;-180 then autodir = 1 end
+	
+			
+	output.setNumber(1, autodir)		
+	output.setNumber(2, currentCompass)	
+end
+
+">
+				<pos x="0.75" y="3.5"/>
+				<in1 component_id="24"/>
+			</c13>
+			<c14 id="23">
+				<pos x="2" y="3.75"/>
+				<in1 component_id="22"/>
+			</c14>
+			<c15 id="24" count="2">
+				<pos x="-0.5" y="3.25"/>
+				<in1 component_id="16"/>
+				<in2 component_id="4"/>
+			</c15>
+			<c16 id="25" l="Current Compass Direction">
+				<pos x="3.25" y="4.5"/>
+				<in1 component_id="26"/>
+			</c16>
+			<c17 id="26" i="1">
+				<pos x="1.75" y="4.75"/>
+				<in1 component_id="22"/>
+			</c17>
+			<c18 id="27" l="Current Comp">
+				<pos x="-1.75" y="3"/>
+				<in1 component_id="4"/>
+			</c18>
+			<c19 id="29" l="Rule">
+				<pos x="6.5" y="-0.25"/>
+				<in1 component_id="13"/>
+			</c19>
+			<c20 id="28" l="Fixed Comp">
+				<pos x="2" y="2.75"/>
+				<in1 component_id="16"/>
+			</c20>
+			<c21 id="32" script="function onTick()
+	rule = input.getNumber(1)
+	tilt = input.getNumber(2)
+	
+	if	(rule&lt;0 and tilt&lt;-0.2) or (rule&gt;0 and tilt&gt;0.2)	then
+		rule = rule/2
+	end
+	
+	output.setNumber(1, rule)
+end
+">
+				<pos x="8.25" y="-2.25"/>
+				<in1 component_id="35"/>
+			</c21>
+			<c22 id="35" count="2">
+				<pos x="7" y="-2.5"/>
+				<in1 component_id="13"/>
+				<in2 component_id="31"/>
+			</c22>
+			<c23 id="36">
+				<pos x="9.5" y="-2"/>
+				<in1 component_id="32"/>
+			</c23>
+		</component_states>
+		<component_bridge_states>
+			<c0 id="2">
+				<pos x="-1.5" y="-0.75"/>
+			</c0>
+			<c1 id="4">
+				<pos x="-1.5" y="2.25"/>
+			</c1>
+			<c2 id="7">
+				<pos x="10.75" y="-2"/>
+				<in1 component_id="36"/>
+			</c2>
+			<c3 id="31">
+				<pos x="-1.5" y="-2.5"/>
+			</c3>
+		</component_bridge_states>
+		<group_states/>
+	</group>
+</microprocessor>
+

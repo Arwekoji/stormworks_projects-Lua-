@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<microprocessor name="Display (Fish, Depth and Locator signal)" width="1" length="5" id_counter="27" id_counter_node="5" sym0="61455" sym1="32769" sym2="32769" sym3="32769" sym4="496" sym5="18428" sym6="28670" sym7="32568" sym8="32766" sym9="28660" sym10="18424" sym11="480" sym12="32769" sym13="32769" sym14="32769" sym15="61455">
+	<nodes>
+		<n id="1" component_id="2">
+			<node label="In (FishFinder)" mode="1" type="5"/>
+		</n>
+		<n id="2" component_id="5">
+			<node label="In (Laser 0-2000+N)" mode="1" type="1" description="N = altimeter">
+				<position z="2"/>
+			</node>
+		</n>
+		<n id="3" component_id="6">
+			<node label="In (Altimeter)" mode="1" type="1">
+				<position z="1"/>
+			</node>
+		</n>
+		<n id="4" component_id="7">
+			<node label="In (Locator Signal)" mode="1">
+				<position z="3"/>
+			</node>
+		</n>
+		<n id="5" component_id="10">
+			<node label="Out (Panel)" type="5">
+				<position z="4"/>
+			</node>
+		</n>
+	</nodes>
+	<group>
+		<data>
+			<inputs/>
+			<outputs/>
+		</data>
+		<components>
+			<c type="10">
+				<object id="11" e="x-z">
+					<pos x="-0.5" y="-0.25"/>
+					<in1 component_id="5"/>
+					<in3 component_id="6"/>
+				</object>
+			</c>
+			<c type="40">
+				<object id="14" count="1">
+					<pos x="10.5" y="0.25"/>
+					<inc component_id="27"/>
+					<in1 component_id="11"/>
+				</object>
+			</c>
+			<c type="56">
+				<object id="15" script="function onTick()
+	fishIsHere = input.getBool(1)
+	fishDistance = math.sqrt((input.getNumber(2)*input.getNumber(2))+(input.getNumber(3)*input.getNumber(3)))
+	
+	d1 = -1
+	d2 = -1
+	
+	if fishIsHere == true then
+		fishDistance = math.min(fishDistance, 99)
+		d1 = math.floor(fishDistance/10)
+		d2 = math.floor(fishDistance-(d1*10))
+	end
+	
+	output.setNumber(2, d1)
+	output.setNumber(3, d2)
+	output.setNumber(10, fishDistance)
+	output.setBool(11, fishIsHere)
+end
+	">
+					<pos x="8.5" y="4.25"/>
+					<in1 component_id="2"/>
+				</object>
+			</c>
+			<c type="43">
+				<object id="16" l="FishDistance">
+					<pos x="11.25" y="5"/>
+					<in1 component_id="19"/>
+				</object>
+			</c>
+			<c type="44">
+				<object id="17" l="Fish is" on="Here" off="not here">
+					<pos x="11.25" y="4.5"/>
+					<in1 component_id="18"/>
+				</object>
+			</c>
+			<c type="29">
+				<object id="18" i="10">
+					<pos x="10" y="4.5"/>
+					<in1 component_id="15"/>
+				</object>
+			</c>
+			<c type="31">
+				<object id="19" i="9">
+					<pos x="10" y="5.25"/>
+					<in1 component_id="15"/>
+				</object>
+			</c>
+			<c type="13">
+				<object id="20">
+					<pos x="3.25" y="1"/>
+					<in1 component_id="24"/>
+					<in2 component_id="25"/>
+					<in3 component_id="22"/>
+					<r text="0"/>
+				</object>
+			</c>
+			<c type="45">
+				<object id="21" e="min(100,100*(9/x))">
+					<pos x="4.5" y="1.5"/>
+					<in1 component_id="20"/>
+				</object>
+			</c>
+			<c type="37">
+				<object id="22">
+					<pos x="2.25" y="2.25"/>
+					<in1 component_id="23"/>
+					<in3 component_id="24"/>
+					<r text="0"/>
+					<i text="1" value="1"/>
+					<min text="0"/>
+					<max text="0"/>
+				</object>
+			</c>
+			<c>
+				<object id="23">
+					<pos x="0.75" y="2.75"/>
+					<in1 component_id="7"/>
+				</object>
+			</c>
+			<c type="48">
+				<object id="24">
+					<pos x="0.75" y="2.25"/>
+					<in1 component_id="7"/>
+				</object>
+			</c>
+			<c type="17">
+				<object id="25">
+					<pos x="4.25" y="2.5"/>
+					<in1 component_id="22"/>
+					<in2 component_id="26"/>
+				</object>
+			</c>
+			<c type="15">
+				<object id="26">
+					<pos x="3.25" y="2"/>
+					<n text="3600" value="3600"/>
+				</object>
+			</c>
+			<c type="40">
+				<object id="27" count="1" offset="3">
+					<pos x="9.5" y="1.5"/>
+					<inc component_id="15"/>
+					<in1 component_id="21"/>
+				</object>
+			</c>
+		</components>
+		<components_bridge>
+			<c type="4">
+				<object id="2">
+					<pos x="-1.75" y="4.5"/>
+				</object>
+			</c>
+			<c type="2">
+				<object id="5">
+					<pos x="-1.75" y="0.25"/>
+				</object>
+			</c>
+			<c type="2">
+				<object id="6">
+					<pos x="-1.75" y="-0.25"/>
+				</object>
+			</c>
+			<c>
+				<object id="7">
+					<pos x="-1.75" y="2.5"/>
+				</object>
+			</c>
+			<c type="5">
+				<object id="10">
+					<pos x="11.75" y="0.5"/>
+					<in1 component_id="14"/>
+				</object>
+			</c>
+		</components_bridge>
+		<groups/>
+		<component_states>
+			<c0 id="11" e="x-z">
+				<pos x="-0.5" y="-0.25"/>
+				<in1 component_id="5"/>
+				<in3 component_id="6"/>
+			</c0>
+			<c1 id="14" count="1">
+				<pos x="10.5" y="0.25"/>
+				<inc component_id="27"/>
+				<in1 component_id="11"/>
+			</c1>
+			<c2 id="15" script="function onTick()
+	fishIsHere = input.getBool(1)
+	fishDistance = math.sqrt((input.getNumber(2)*input.getNumber(2))+(input.getNumber(3)*input.getNumber(3)))
+	
+	d1 = -1
+	d2 = -1
+	
+	if fishIsHere == true then
+		fishDistance = math.min(fishDistance, 99)
+		d1 = math.floor(fishDistance/10)
+		d2 = math.floor(fishDistance-(d1*10))
+	end
+	
+	output.setNumber(2, d1)
+	output.setNumber(3, d2)
+	output.setNumber(10, fishDistance)
+	output.setBool(11, fishIsHere)
+end
+	">
+				<pos x="8.5" y="4.25"/>
+				<in1 component_id="2"/>
+			</c2>
+			<c3 id="16" l="FishDistance">
+				<pos x="11.25" y="5"/>
+				<in1 component_id="19"/>
+			</c3>
+			<c4 id="17" l="Fish is" on="Here" off="not here">
+				<pos x="11.25" y="4.5"/>
+				<in1 component_id="18"/>
+			</c4>
+			<c5 id="18" i="10">
+				<pos x="10" y="4.5"/>
+				<in1 component_id="15"/>
+			</c5>
+			<c6 id="19" i="9">
+				<pos x="10" y="5.25"/>
+				<in1 component_id="15"/>
+			</c6>
+			<c7 id="20">
+				<pos x="3.25" y="1"/>
+				<in1 component_id="24"/>
+				<in2 component_id="25"/>
+				<in3 component_id="22"/>
+				<r text="0"/>
+			</c7>
+			<c8 id="21" e="min(100,100*(9/x))">
+				<pos x="4.5" y="1.5"/>
+				<in1 component_id="20"/>
+			</c8>
+			<c9 id="22">
+				<pos x="2.25" y="2.25"/>
+				<in1 component_id="23"/>
+				<in3 component_id="24"/>
+				<r text="0"/>
+				<i text="1" value="1"/>
+				<min text="0"/>
+				<max text="0"/>
+			</c9>
+			<c10 id="23">
+				<pos x="0.75" y="2.75"/>
+				<in1 component_id="7"/>
+			</c10>
+			<c11 id="24">
+				<pos x="0.75" y="2.25"/>
+				<in1 component_id="7"/>
+			</c11>
+			<c12 id="25">
+				<pos x="4.25" y="2.5"/>
+				<in1 component_id="22"/>
+				<in2 component_id="26"/>
+			</c12>
+			<c13 id="26">
+				<pos x="3.25" y="2"/>
+				<n text="3600" value="3600"/>
+			</c13>
+			<c14 id="27" count="1" offset="3">
+				<pos x="9.5" y="1.5"/>
+				<inc component_id="15"/>
+				<in1 component_id="21"/>
+			</c14>
+		</component_states>
+		<component_bridge_states>
+			<c0 id="2">
+				<pos x="-1.75" y="4.5"/>
+			</c0>
+			<c1 id="5">
+				<pos x="-1.75" y="0.25"/>
+			</c1>
+			<c2 id="6">
+				<pos x="-1.75" y="-0.25"/>
+			</c2>
+			<c3 id="7">
+				<pos x="-1.75" y="2.5"/>
+			</c3>
+			<c4 id="10">
+				<pos x="11.75" y="0.5"/>
+				<in1 component_id="14"/>
+			</c4>
+		</component_bridge_states>
+		<group_states/>
+	</group>
+</microprocessor>
+

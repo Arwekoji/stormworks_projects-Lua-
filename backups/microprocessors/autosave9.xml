@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<microprocessor name="CTRL (MCC Head Control)" width="4" length="6" id_counter="38" id_counter_node="8" sym0="50195" sym1="34825" sym2="8060" sym3="2056" sym4="1040" sym5="448" sym6="128" sym7="4088" sym8="2032" sym9="992" sym10="448" sym11="448" sym12="448" sym13="448" sym14="32897" sym15="49155">
+	<nodes>
+		<n id="1" component_id="16">
+			<node label="Out (Control Panel)" type="5">
+				<position x="3"/>
+			</node>
+		</n>
+		<n id="2" component_id="17">
+			<node label="Out (RX Transmit Chain)" type="5">
+				<position x="3" z="1"/>
+			</node>
+		</n>
+		<n id="3" component_id="23">
+			<node label="In (RX Transmit Chain)" mode="1" type="5">
+				<position x="2" z="1"/>
+			</node>
+		</n>
+		<n id="4" component_id="24">
+			<node label="In (RX Received Data)" mode="1" type="5">
+				<position x="2" z="2"/>
+			</node>
+		</n>
+		<n id="5" component_id="38">
+			<node label="In (Control Panel)" mode="1" type="5">
+				<position x="2"/>
+			</node>
+		</n>
+		<n id="6" component_id="37">
+			<node label="In (Display Switch)" mode="1">
+				<position x="1"/>
+			</node>
+		</n>
+		<n id="7" component_id="27">
+			<node label="Out (Fuel Levels)" type="6">
+				<position z="2"/>
+			</node>
+		</n>
+		<n id="8" component_id="34">
+			<node label="Out (Operation Controls)" type="6">
+				<position z="1"/>
+			</node>
+		</n>
+	</nodes>
+	<group>
+		<data>
+			<inputs/>
+			<outputs/>
+		</data>
+		<components/>
+		<components_bridge>
+			<c type="5">
+				<object id="16"/>
+			</c>
+			<c type="5">
+				<object id="17"/>
+			</c>
+			<c type="4">
+				<object id="23"/>
+			</c>
+			<c type="4">
+				<object id="24"/>
+			</c>
+			<c type="7">
+				<object id="27"/>
+			</c>
+			<c type="7">
+				<object id="34"/>
+			</c>
+			<c>
+				<object id="37"/>
+			</c>
+			<c type="4">
+				<object id="38"/>
+			</c>
+		</components_bridge>
+		<groups/>
+		<component_states/>
+		<component_bridge_states>
+			<c0 id="16"/>
+			<c1 id="17"/>
+			<c2 id="23"/>
+			<c3 id="24"/>
+			<c4 id="27"/>
+			<c5 id="34"/>
+			<c6 id="37"/>
+			<c7 id="38"/>
+		</component_bridge_states>
+		<group_states/>
+	</group>
+</microprocessor>
+

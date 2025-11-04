@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<microprocessor name="BOOL Capacitor signal (Delay if true)" description="Return delayed signal" width="1" length="2" id_counter="8" id_counter_node="2" sym4="864" sym5="864" sym6="29543" sym7="32639" sym8="32639" sym9="29543" sym10="864" sym11="864">
+	<nodes>
+		<n id="1" component_id="2">
+			<node label="In (Signal)" mode="1"/>
+		</n>
+		<n id="2" component_id="4">
+			<node label="In (Delayed Signal)">
+				<position z="1"/>
+			</node>
+		</n>
+	</nodes>
+	<group>
+		<data>
+			<inputs/>
+			<outputs/>
+		</data>
+		<components>
+			<c type="26">
+				<object id="1" ct="0" dt="0.2">
+					<pos x="0.25"/>
+					<in1 component_id="5"/>
+				</object>
+			</c>
+			<c type="48">
+				<object id="5">
+					<pos x="-1"/>
+					<in1 component_id="7"/>
+				</object>
+			</c>
+			<c type="37">
+				<object id="6">
+					<pos x="-3" y="-0.5"/>
+					<in1 component_id="2"/>
+					<in3 component_id="7"/>
+					<r text="0"/>
+					<i text="1" value="1"/>
+					<min text="0"/>
+					<max text="0"/>
+				</object>
+			</c>
+			<c type="42">
+				<object id="7">
+					<pos x="-2" y="-0.75"/>
+					<in1 component_id="6"/>
+					<in2 component_id="8"/>
+					<e text="0.0001" value="0.0001"/>
+				</object>
+			</c>
+			<c type="15">
+				<object id="8">
+					<pos x="-3" y="-1.25"/>
+					<n text="3" value="3"/>
+				</object>
+			</c>
+		</components>
+		<components_bridge>
+			<c>
+				<object id="2">
+					<pos x="-4.5"/>
+				</object>
+			</c>
+			<c type="1">
+				<object id="4">
+					<pos x="1.5"/>
+					<in1 component_id="1"/>
+				</object>
+			</c>
+		</components_bridge>
+		<groups/>
+		<component_states>
+			<c0 id="1" ct="0" dt="0.2">
+				<pos x="0.25"/>
+				<in1 component_id="5"/>
+			</c0>
+			<c1 id="5">
+				<pos x="-1"/>
+				<in1 component_id="7"/>
+			</c1>
+			<c2 id="6">
+				<pos x="-3" y="-0.5"/>
+				<in1 component_id="2"/>
+				<in3 component_id="7"/>
+				<r text="0"/>
+				<i text="1" value="1"/>
+				<min text="0"/>
+				<max text="0"/>
+			</c2>
+			<c3 id="7">
+				<pos x="-2" y="-0.75"/>
+				<in1 component_id="6"/>
+				<in2 component_id="8"/>
+				<e text="0.0001" value="0.0001"/>
+			</c3>
+			<c4 id="8">
+				<pos x="-3" y="-1.25"/>
+				<n text="3" value="3"/>
+			</c4>
+		</component_states>
+		<component_bridge_states>
+			<c0 id="2">
+				<pos x="-4.5"/>
+			</c0>
+			<c1 id="4">
+				<pos x="1.5"/>
+				<in1 component_id="1"/>
+			</c1>
+		</component_bridge_states>
+		<group_states/>
+	</group>
+</microprocessor>
+

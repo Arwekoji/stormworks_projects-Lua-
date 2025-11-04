@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<microprocessor name="Control (MCC Info Import)" width="6" length="6" id_counter="4" id_counter_node="1" sym3="760" sym4="760" sym5="744" sym6="1016" sym7="64" sym8="832" sym9="384" sym10="192" sym11="3648" sym12="1536" sym13="2560" sym14="4096" sym15="8192">
+	<nodes>
+		<n id="1" component_id="4">
+			<node label="Out (Rocket2MCC throught Radio)" mode="1" type="5">
+				<position x="5" z="5"/>
+			</node>
+		</n>
+	</nodes>
+	<group>
+		<data type="1049481524">
+			<inputs/>
+			<outputs/>
+		</data>
+		<components/>
+		<components_bridge>
+			<c type="4">
+				<object id="4"/>
+			</c>
+		</components_bridge>
+		<groups/>
+		<component_states/>
+		<component_bridge_states>
+			<c0 id="4"/>
+		</component_bridge_states>
+		<group_states/>
+	</group>
+</microprocessor>
+

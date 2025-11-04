@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<microprocessor name="CTRL (MCC Total Control)" description="256x160" width="5" length="6" id_counter="30" id_counter_node="12" sym0="54699" sym1="32769" sym3="33729" sym4="2016" sym5="36849" sym6="8184" sym7="40953" sym8="40953" sym9="8184" sym10="36849" sym11="2016" sym12="33729" sym14="32769" sym15="54699">
+	<nodes>
+		<n id="1" component_id="3">
+			<node label="Out (Big map)" type="6" description="50x50 km"/>
+		</n>
+		<n id="2" component_id="13">
+			<node label="Out (Small map)" type="6" description="2x2 km">
+				<position x="1"/>
+			</node>
+		</n>
+		<n id="5" component_id="15">
+			<node label="In (Locator)" mode="1">
+				<position z="1"/>
+			</node>
+		</n>
+		<n id="6" component_id="17">
+			<node label="In (RX Locators)" mode="1" type="5" description="Transponder data from RX (13 ch)">
+				<position z="4"/>
+			</node>
+		</n>
+		<n id="7" component_id="19">
+			<node label="In (RX Spaceship)" mode="1" type="5">
+				<position z="5"/>
+			</node>
+		</n>
+		<n id="8" component_id="22">
+			<node label="Out (RX Spaceship)" type="5">
+				<position x="1" z="4"/>
+			</node>
+		</n>
+		<n id="9" component_id="24">
+			<node label="In (Spaceship Channel)" mode="1" type="1">
+				<position x="1" z="1"/>
+			</node>
+		</n>
+		<n id="10" component_id="27">
+			<node label="Out (Transmit Mod)" description="Always ON">
+				<position x="3" z="2"/>
+			</node>
+		</n>
+		<n id="11" component_id="28">
+			<node label="In (" mode="1" type="5">
+				<position x="3" z="3"/>
+			</node>
+		</n>
+		<n id="12" component_id="30">
+			<node label="Input" mode="1" type="5" description="The input signal to be processed.">
+				<position x="1" z="3"/>
+			</node>
+		</n>
+	</nodes>
+	<group>
+		<data>
+			<inputs/>
+			<outputs/>
+		</data>
+		<components>
+			<c type="56">
+				<object id="4" script="function onTick()
+	x = input.getNumber(1)
+	y = input.getNumber(2)
+end
+
+function drawTarget(sX, sY)
+	screen.drawLine(sX, sY, sX+1, sY)
+	screen.drawLine(sX-3, sY, sX+1, sY-4)
+	screen.drawLine(sX-3, sY, sX+1, sY+4)
+	screen.drawLine(sX+3, sY, sX-1, sY+4)
+	screen.drawLine(sX+3, sY, sX-1, sY-4)
+end
+
+
+function onDraw()
+	screen.drawMap(x, y, 50)
+	screen.setColor(255, 0, 255)
+	drawTarget(143, 80)
+end">
+					<pos x="-1.25"/>
+					<in1 component_id="9"/>
+				</object>
+			</c>
+			<c type="40">
+				<object id="9" count="2">
+					<pos x="-2.5" y="-0.25"/>
+					<in1/>
+					<in2/>
+				</object>
+			</c>
+			<c type="56">
+				<object id="14" script="function onTick()
+	x = input.getNumber(1)
+	y = input.getNumber(2)
+end
+
+function drawTarget(sX, sY)
+	screen.drawLine(sX, sY, sX+1, sY)
+	screen.drawLine(sX-3, sY, sX+1, sY-4)
+	screen.drawLine(sX-3, sY, sX+1, sY+4)
+	screen.drawLine(sX+3, sY, sX-1, sY+4)
+	screen.drawLine(sX+3, sY, sX-1, sY-4)
+end
+
+
+function onDraw()
+	screen.drawMap(x, y, 2)
+	screen.setColor(255, 0, 255)
+	drawTarget(31, 31)
+end">
+					<pos x="-1.25" y="-0.75"/>
+					<in1 component_id="9"/>
+				</object>
+			</c>
+		</components>
+		<components_bridge>
+			<c type="7">
+				<object id="3">
+					<pos x="0.25"/>
+					<in1 component_id="4" node_index="1"/>
+				</object>
+			</c>
+			<c type="7">
+				<object id="13">
+					<pos x="0.25" y="-0.75"/>
+					<in1 component_id="14" node_index="1"/>
+				</object>
+			</c>
+			<c>
+				<object id="15"/>
+			</c>
+			<c type="4">
+				<object id="17"/>
+			</c>
+			<c type="4">
+				<object id="19"/>
+			</c>
+			<c type="5">
+				<object id="22"/>
+			</c>
+			<c type="2">
+				<object id="24"/>
+			</c>
+			<c type="1">
+				<object id="27"/>
+			</c>
+			<c type="4">
+				<object id="28"/>
+			</c>
+			<c type="4">
+				<object id="30"/>
+			</c>
+		</components_bridge>
+		<groups/>
+		<component_states>
+			<c0 id="4" script="function onTick()
+	x = input.getNumber(1)
+	y = input.getNumber(2)
+end
+
+function drawTarget(sX, sY)
+	screen.drawLine(sX, sY, sX+1, sY)
+	screen.drawLine(sX-3, sY, sX+1, sY-4)
+	screen.drawLine(sX-3, sY, sX+1, sY+4)
+	screen.drawLine(sX+3, sY, sX-1, sY+4)
+	screen.drawLine(sX+3, sY, sX-1, sY-4)
+end
+
+
+function onDraw()
+	screen.drawMap(x, y, 50)
+	screen.setColor(255, 0, 255)
+	drawTarget(143, 80)
+end">
+				<pos x="-1.25"/>
+				<in1 component_id="9"/>
+			</c0>
+			<c1 id="9" count="2">
+				<pos x="-2.5" y="-0.25"/>
+				<in1/>
+				<in2/>
+			</c1>
+			<c2 id="14" script="function onTick()
+	x = input.getNumber(1)
+	y = input.getNumber(2)
+end
+
+function drawTarget(sX, sY)
+	screen.drawLine(sX, sY, sX+1, sY)
+	screen.drawLine(sX-3, sY, sX+1, sY-4)
+	screen.drawLine(sX-3, sY, sX+1, sY+4)
+	screen.drawLine(sX+3, sY, sX-1, sY+4)
+	screen.drawLine(sX+3, sY, sX-1, sY-4)
+end
+
+
+function onDraw()
+	screen.drawMap(x, y, 2)
+	screen.setColor(255, 0, 255)
+	drawTarget(31, 31)
+end">
+				<pos x="-1.25" y="-0.75"/>
+				<in1 component_id="9"/>
+			</c2>
+		</component_states>
+		<component_bridge_states>
+			<c0 id="3">
+				<pos x="0.25"/>
+				<in1 component_id="4" node_index="1"/>
+			</c0>
+			<c1 id="13">
+				<pos x="0.25" y="-0.75"/>
+				<in1 component_id="14" node_index="1"/>
+			</c1>
+			<c2 id="15"/>
+			<c3 id="17"/>
+			<c4 id="19"/>
+			<c5 id="22"/>
+			<c6 id="24"/>
+			<c7 id="27"/>
+			<c8 id="28"/>
+			<c9 id="30"/>
+		</component_bridge_states>
+		<group_states/>
+	</group>
+</microprocessor>
+

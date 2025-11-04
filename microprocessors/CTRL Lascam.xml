@@ -1,0 +1,653 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<microprocessor name="CTRL (Ladar-Lascam)" width="5" length="3" id_counter="68" id_counter_node="15" sym0="57351" sym1="32769" sym2="32769" sym5="3264" sym6="1120" sym7="1072" sym8="48" sym9="65456" sym10="48" sym11="48" sym12="96" sym13="32961" sym14="32769" sym15="57351">
+	<nodes>
+		<n id="2" component_id="5">
+			<node label="Out (Lascam)" type="6">
+				<position x="3" z="2"/>
+			</node>
+		</n>
+		<n id="3" component_id="10">
+			<node label="In (Compass)" mode="1" type="1">
+				<position x="1"/>
+			</node>
+		</n>
+		<n id="4" component_id="9">
+			<node label="In (Laser Distance)" mode="1" type="1"/>
+		</n>
+		<n id="5" component_id="11">
+			<node label="In (Ladar-Lascam Switch)" mode="1">
+				<position x="2" z="2"/>
+			</node>
+		</n>
+		<n id="6" component_id="14">
+			<node label="Out (Ladar Angle Speed)" type="1">
+				<position z="2"/>
+			</node>
+		</n>
+		<n id="8" component_id="20">
+			<node label="Out (Lascam Level)" type="1">
+				<position x="1" z="2"/>
+			</node>
+		</n>
+		<n id="9" component_id="21">
+			<node label="In (Set Lascam Level)" mode="1" type="1">
+				<position x="1" z="1"/>
+			</node>
+		</n>
+		<n id="10" component_id="22">
+			<node label="In (Set Lascam Angle Speed)" mode="1" type="1">
+				<position z="1"/>
+			</node>
+		</n>
+		<n id="11" component_id="34">
+			<node label="Out (Laser Pivot)" type="5">
+				<position x="4" z="1"/>
+			</node>
+		</n>
+		<n id="12" component_id="37">
+			<node label="In (Screen Resolution)" mode="1" type="1" description="For square row">
+				<position x="2" z="1"/>
+			</node>
+		</n>
+		<n id="13" component_id="39">
+			<node label="In (Zoom)" mode="1" type="1">
+				<position x="2"/>
+			</node>
+		</n>
+		<n id="14" component_id="67">
+			<node label="In (GPS X)" mode="1" type="1">
+				<position x="3"/>
+			</node>
+		</n>
+		<n id="15" component_id="68">
+			<node label="In (GPS Y)" mode="1" type="1">
+				<position x="3" z="1"/>
+			</node>
+		</n>
+	</nodes>
+	<group>
+		<data>
+			<inputs/>
+			<outputs/>
+		</data>
+		<components>
+			<c type="22">
+				<object id="23">
+					<pos x="1.25"/>
+					<in1 component_id="21"/>
+					<in2 component_id="24"/>
+					<in3 component_id="11"/>
+				</object>
+			</c>
+			<c type="15">
+				<object id="24">
+					<pos y="0.25"/>
+					<n text="1" value="1"/>
+				</object>
+			</c>
+			<c type="22">
+				<object id="25">
+					<pos x="1.25" y="-1.5"/>
+					<in1 component_id="28"/>
+					<in2 component_id="27"/>
+					<in3 component_id="11"/>
+				</object>
+			</c>
+			<c type="34">
+				<object id="27" n="Ladar Speed">
+					<pos y="-1.25"/>
+					<v text="0.1" value="0.1"/>
+				</object>
+			</c>
+			<c type="11">
+				<object id="28">
+					<pos x="-1.25" y="-1"/>
+					<in1 component_id="22"/>
+					<min text="-0.1" value="-0.1"/>
+					<max text="0.1" value="0.1"/>
+				</object>
+			</c>
+			<c type="40">
+				<object id="30" count="6">
+					<pos x="-1.25" y="-3.75"/>
+					<inc component_id="31"/>
+					<in1 component_id="10"/>
+					<in2 component_id="9"/>
+					<in3 component_id="51"/>
+					<in4 component_id="52"/>
+					<in5 component_id="67"/>
+					<in6 component_id="68"/>
+				</object>
+			</c>
+			<c type="41">
+				<object id="31" count="1">
+					<pos x="-2.5" y="-2.5"/>
+					<in1 component_id="11"/>
+				</object>
+			</c>
+			<c type="56">
+				<object id="35" script='compass = 0
+lasX = 0
+lasY = 0
+lascammod = true
+distance = 0
+true_distance = 0
+initialized = 0	
+pixels = {}
+resolution = 33
+ladar_objects = {}
+last_angle = 0 --North, 0 in compass, 0.25 - west, -0.25 - east, -0.5 or 0.5 is south
+gps_x = 0
+gps_y = 0
+
+function deg2rad(deg)
+    return deg * math.pi / 180
+end
+
+function to_degrees(value)
+  return math.floor((value * -360) % 360)
+end
+
+function clear_ladobj_between(first_angle, current_angle)
+  if first_angle == current_angle then return end  
+  local angle = (first_angle + 1) % 360
+  while angle ~= current_angle do
+    ladar_objects[angle] = 0
+    angle = (angle + 1) % 360
+  end
+end
+
+--data is not saved, but there are a bit fewer lags
+
+function onTick()
+	
+	lascammod = input.getBool(1)
+	compass = input.getNumber(1)
+	distance = input.getNumber(2)	
+	resolution = input.getNumber(3)	
+	maxcoord = resolution//2 -- = math.floor(resolution/2)
+	resolution = 1+(maxcoord*2)
+	zoom = input.getNumber(4)
+	gps_x = input.getNumber(5)
+	gps_y = input.getNumber(6)
+	
+	if initialized&lt;3 then 
+		for y = 1, resolution do
+			row = {}
+        	for x = 1, resolution do
+        	    row[x] = 4000
+        	end
+       	 pixels[y] = row
+   	 end
+		initialized = initialized+1
+	end
+	
+		
+	if lascammod == false then
+		output.setNumber(1, 0) --laser x
+		output.setNumber(2, 0) --laser y
+		true_distance = distance
+	else
+		if lasX==0 and lasY==0 then	true_distance = distance	end
+		distance_mod = (2000-math.max(true_distance))/(zoom*2000)
+		
+		output.setNumber(1, distance_mod*lasX/maxcoord) --laser x from -45 to 45 in -1 to +1
+		output.setNumber(2, distance_mod*lasY/maxcoord) --laser y
+	end
+	
+	if lascammod == true then
+		lasX = lasX+1
+		if lasX&gt;maxcoord then
+			lasX = -1*maxcoord
+			lasY = lasY+1
+		end
+		if lasY&gt;maxcoord then
+			lasY = -1*maxcoord
+		end
+		pixel_x = lasX+1+maxcoord
+		pixel_y = lasY+1+maxcoord
+		row = pixels[pixel_y]
+		row[pixel_x] = distance
+		pixels[pixel_y] = row
+	else
+		ladar_objects[to_degrees(compass)] = distance
+		clear_ladobj_between(last_angle, to_degrees(compass))
+		last_angle = to_degrees(compass)
+	end
+	
+end
+
+
+----------------------------------------
+
+function draw_ladar(current_angle)
+    --   
+    cx, cy = screen.getWidth() // 2, screen.getHeight() // 2
+    R = math.min(cx, cy) - 2 --circle radius   
+   
+	screen.setColor(5, 30, 5, 255)
+    screen.drawCircle(cx, cy, R)
+
+	
+	--draw current angle in line
+    local angle_rad = deg2rad(current_angle)
+    local x_end = cx + math.sin(angle_rad) * R
+    local y_end = cy - math.cos(angle_rad) * R
+	screen.setColor(10, 55, 10, 255)
+    screen.drawLine(cx, cy, x_end, y_end)
+
+    -- 3.   
+	screen.setColor(40, 10, 5, 255)
+    for angle = 0, 359 do
+        dist = ladar_objects[angle]
+        if dist then
+            if dist&lt;2000 then
+				local scaled = math.min(dist, 2000) / 2000 * R
+            	local a_rad = deg2rad(angle)
+            	local x = cx + math.sin(a_rad) * scaled
+            	local y = cy - math.cos(a_rad) * scaled
+            	screen.drawLine(x, y, x + 1, y) 
+			end
+        end
+    end
+	screen.drawTextBox(1,1, 50,10, "Angle: "..tostring(current_angle), 0, 0)
+end
+----------------------------------------------------
+
+
+function onDraw()
+	screen.setColor(0, 3, 0, 255)
+	screen.drawClear()
+	
+	
+	
+	if lascammod == true then
+		for y=1, resolution do	for x=1, resolution do
+			R = 0
+			G = 3
+			B = 0
+			if pixels[x][y]&lt;=2000 then
+				R = 200-math.max(math.floor(pixels[x][y]/10))
+				G = 200-math.max(math.floor(pixels[x][y]/10))
+				B = 200-math.max(math.floor(pixels[x][y]/10))
+			end
+			screen.setColor(R, G, B, 255)
+			screen.drawLine(x, y, x+1, y)
+		end end
+	else
+		screen.drawMap(gps_x, gps_y, 2000/screen.getWidth())
+		draw_ladar(to_degrees(compass))
+	end
+end'>
+					<pos x="0.25" y="-2.5"/>
+					<in1 component_id="30"/>
+				</object>
+			</c>
+			<c type="11">
+				<object id="51">
+					<pos x="-5.25" y="-3"/>
+					<in1 component_id="37"/>
+					<min text="32" value="32"/>
+					<max text="160" value="160"/>
+				</object>
+			</c>
+			<c type="11">
+				<object id="52">
+					<pos x="-5.25" y="-3.25"/>
+					<in1 component_id="39"/>
+					<min text="0.01" value="0.01"/>
+					<max text="100" value="100"/>
+				</object>
+			</c>
+			<c type="31">
+				<object id="62" i="5">
+					<pos x="1.25" y="-3.25"/>
+					<in1 component_id="35"/>
+				</object>
+			</c>
+			<c type="43">
+				<object id="63" l="array element">
+					<pos x="2.5" y="-3.5"/>
+					<in1 component_id="62"/>
+				</object>
+			</c>
+		</components>
+		<components_bridge>
+			<c type="7">
+				<object id="5">
+					<pos x="4" y="-2.5"/>
+					<in1 component_id="35" node_index="1"/>
+				</object>
+			</c>
+			<c type="2">
+				<object id="9">
+					<pos x="-3.75" y="-2.75"/>
+				</object>
+			</c>
+			<c type="2">
+				<object id="10">
+					<pos x="-3.75" y="-2.5"/>
+				</object>
+			</c>
+			<c>
+				<object id="11">
+					<pos x="-3.75"/>
+				</object>
+			</c>
+			<c type="3">
+				<object id="14">
+					<pos x="2.75" y="-1"/>
+					<in1 component_id="25"/>
+				</object>
+			</c>
+			<c type="3">
+				<object id="20">
+					<pos x="2.75" y="0.5"/>
+					<in1 component_id="23"/>
+				</object>
+			</c>
+			<c type="2">
+				<object id="21">
+					<pos x="-3.75" y="0.5"/>
+				</object>
+			</c>
+			<c type="2">
+				<object id="22">
+					<pos x="-3.75" y="-1"/>
+				</object>
+			</c>
+			<c type="5">
+				<object id="34">
+					<pos x="2.75" y="-2.25"/>
+					<in1 component_id="35"/>
+				</object>
+			</c>
+			<c type="2">
+				<object id="37">
+					<pos x="-6.5" y="-3"/>
+				</object>
+			</c>
+			<c type="2">
+				<object id="39">
+					<pos x="-6.5" y="-3.25"/>
+				</object>
+			</c>
+			<c type="2">
+				<object id="67">
+					<pos x="-3.75" y="-3.5"/>
+				</object>
+			</c>
+			<c type="2">
+				<object id="68">
+					<pos x="-3.75" y="-3.75"/>
+				</object>
+			</c>
+		</components_bridge>
+		<groups/>
+		<component_states>
+			<c0 id="23">
+				<pos x="1.25"/>
+				<in1 component_id="21"/>
+				<in2 component_id="24"/>
+				<in3 component_id="11"/>
+			</c0>
+			<c1 id="24">
+				<pos y="0.25"/>
+				<n text="1" value="1"/>
+			</c1>
+			<c2 id="25">
+				<pos x="1.25" y="-1.5"/>
+				<in1 component_id="28"/>
+				<in2 component_id="27"/>
+				<in3 component_id="11"/>
+			</c2>
+			<c3 id="27" n="Ladar Speed">
+				<pos y="-1.25"/>
+				<v text="0.1" value="0.1"/>
+			</c3>
+			<c4 id="28">
+				<pos x="-1.25" y="-1"/>
+				<in1 component_id="22"/>
+				<min text="-0.1" value="-0.1"/>
+				<max text="0.1" value="0.1"/>
+			</c4>
+			<c5 id="30" count="6">
+				<pos x="-1.25" y="-3.75"/>
+				<inc component_id="31"/>
+				<in1 component_id="10"/>
+				<in2 component_id="9"/>
+				<in3 component_id="51"/>
+				<in4 component_id="52"/>
+				<in5 component_id="67"/>
+				<in6 component_id="68"/>
+			</c5>
+			<c6 id="31" count="1">
+				<pos x="-2.5" y="-2.5"/>
+				<in1 component_id="11"/>
+			</c6>
+			<c7 id="35" script='compass = 0
+lasX = 0
+lasY = 0
+lascammod = true
+distance = 0
+true_distance = 0
+initialized = 0	
+pixels = {}
+resolution = 33
+ladar_objects = {}
+last_angle = 0 --North, 0 in compass, 0.25 - west, -0.25 - east, -0.5 or 0.5 is south
+gps_x = 0
+gps_y = 0
+
+function deg2rad(deg)
+    return deg * math.pi / 180
+end
+
+function to_degrees(value)
+  return math.floor((value * -360) % 360)
+end
+
+function clear_ladobj_between(first_angle, current_angle)
+  if first_angle == current_angle then return end  
+  local angle = (first_angle + 1) % 360
+  while angle ~= current_angle do
+    ladar_objects[angle] = 0
+    angle = (angle + 1) % 360
+  end
+end
+
+--data is not saved, but there are a bit fewer lags
+
+function onTick()
+	
+	lascammod = input.getBool(1)
+	compass = input.getNumber(1)
+	distance = input.getNumber(2)	
+	resolution = input.getNumber(3)	
+	maxcoord = resolution//2 -- = math.floor(resolution/2)
+	resolution = 1+(maxcoord*2)
+	zoom = input.getNumber(4)
+	gps_x = input.getNumber(5)
+	gps_y = input.getNumber(6)
+	
+	if initialized&lt;3 then 
+		for y = 1, resolution do
+			row = {}
+        	for x = 1, resolution do
+        	    row[x] = 4000
+        	end
+       	 pixels[y] = row
+   	 end
+		initialized = initialized+1
+	end
+	
+		
+	if lascammod == false then
+		output.setNumber(1, 0) --laser x
+		output.setNumber(2, 0) --laser y
+		true_distance = distance
+	else
+		if lasX==0 and lasY==0 then	true_distance = distance	end
+		distance_mod = (2000-math.max(true_distance))/(zoom*2000)
+		
+		output.setNumber(1, distance_mod*lasX/maxcoord) --laser x from -45 to 45 in -1 to +1
+		output.setNumber(2, distance_mod*lasY/maxcoord) --laser y
+	end
+	
+	if lascammod == true then
+		lasX = lasX+1
+		if lasX&gt;maxcoord then
+			lasX = -1*maxcoord
+			lasY = lasY+1
+		end
+		if lasY&gt;maxcoord then
+			lasY = -1*maxcoord
+		end
+		pixel_x = lasX+1+maxcoord
+		pixel_y = lasY+1+maxcoord
+		row = pixels[pixel_y]
+		row[pixel_x] = distance
+		pixels[pixel_y] = row
+	else
+		ladar_objects[to_degrees(compass)] = distance
+		clear_ladobj_between(last_angle, to_degrees(compass))
+		last_angle = to_degrees(compass)
+	end
+	
+end
+
+
+----------------------------------------
+
+function draw_ladar(current_angle)
+    --   
+    cx, cy = screen.getWidth() // 2, screen.getHeight() // 2
+    R = math.min(cx, cy) - 2 --circle radius   
+   
+	screen.setColor(5, 30, 5, 255)
+    screen.drawCircle(cx, cy, R)
+
+	
+	--draw current angle in line
+    local angle_rad = deg2rad(current_angle)
+    local x_end = cx + math.sin(angle_rad) * R
+    local y_end = cy - math.cos(angle_rad) * R
+	screen.setColor(10, 55, 10, 255)
+    screen.drawLine(cx, cy, x_end, y_end)
+
+    -- 3.   
+	screen.setColor(40, 10, 5, 255)
+    for angle = 0, 359 do
+        dist = ladar_objects[angle]
+        if dist then
+            if dist&lt;2000 then
+				local scaled = math.min(dist, 2000) / 2000 * R
+            	local a_rad = deg2rad(angle)
+            	local x = cx + math.sin(a_rad) * scaled
+            	local y = cy - math.cos(a_rad) * scaled
+            	screen.drawLine(x, y, x + 1, y) 
+			end
+        end
+    end
+	screen.drawTextBox(1,1, 50,10, "Angle: "..tostring(current_angle), 0, 0)
+end
+----------------------------------------------------
+
+
+function onDraw()
+	screen.setColor(0, 3, 0, 255)
+	screen.drawClear()
+	
+	
+	
+	if lascammod == true then
+		for y=1, resolution do	for x=1, resolution do
+			R = 0
+			G = 3
+			B = 0
+			if pixels[x][y]&lt;=2000 then
+				R = 200-math.max(math.floor(pixels[x][y]/10))
+				G = 200-math.max(math.floor(pixels[x][y]/10))
+				B = 200-math.max(math.floor(pixels[x][y]/10))
+			end
+			screen.setColor(R, G, B, 255)
+			screen.drawLine(x, y, x+1, y)
+		end end
+	else
+		screen.drawMap(gps_x, gps_y, 2000/screen.getWidth())
+		draw_ladar(to_degrees(compass))
+	end
+end'>
+				<pos x="0.25" y="-2.5"/>
+				<in1 component_id="30"/>
+			</c7>
+			<c8 id="51">
+				<pos x="-5.25" y="-3"/>
+				<in1 component_id="37"/>
+				<min text="32" value="32"/>
+				<max text="160" value="160"/>
+			</c8>
+			<c9 id="52">
+				<pos x="-5.25" y="-3.25"/>
+				<in1 component_id="39"/>
+				<min text="0.01" value="0.01"/>
+				<max text="100" value="100"/>
+			</c9>
+			<c10 id="62" i="5">
+				<pos x="1.25" y="-3.25"/>
+				<in1 component_id="35"/>
+			</c10>
+			<c11 id="63" l="array element">
+				<pos x="2.5" y="-3.5"/>
+				<in1 component_id="62"/>
+			</c11>
+		</component_states>
+		<component_bridge_states>
+			<c0 id="5">
+				<pos x="4" y="-2.5"/>
+				<in1 component_id="35" node_index="1"/>
+			</c0>
+			<c1 id="9">
+				<pos x="-3.75" y="-2.75"/>
+			</c1>
+			<c2 id="10">
+				<pos x="-3.75" y="-2.5"/>
+			</c2>
+			<c3 id="11">
+				<pos x="-3.75"/>
+			</c3>
+			<c4 id="14">
+				<pos x="2.75" y="-1"/>
+				<in1 component_id="25"/>
+			</c4>
+			<c5 id="20">
+				<pos x="2.75" y="0.5"/>
+				<in1 component_id="23"/>
+			</c5>
+			<c6 id="21">
+				<pos x="-3.75" y="0.5"/>
+			</c6>
+			<c7 id="22">
+				<pos x="-3.75" y="-1"/>
+			</c7>
+			<c8 id="34">
+				<pos x="2.75" y="-2.25"/>
+				<in1 component_id="35"/>
+			</c8>
+			<c9 id="37">
+				<pos x="-6.5" y="-3"/>
+			</c9>
+			<c10 id="39">
+				<pos x="-6.5" y="-3.25"/>
+			</c10>
+			<c11 id="67">
+				<pos x="-3.75" y="-3.5"/>
+			</c11>
+			<c12 id="68">
+				<pos x="-3.75" y="-3.75"/>
+			</c12>
+		</component_bridge_states>
+		<group_states/>
+	</group>
+</microprocessor>
+

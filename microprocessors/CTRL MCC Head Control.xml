@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<microprocessor name="CTRL (MCC Head Control)" width="4" length="6" id_counter="67" id_counter_node="12" sym0="50195" sym1="34825" sym2="8060" sym3="2056" sym4="1040" sym5="448" sym6="128" sym7="4088" sym8="2032" sym9="992" sym10="448" sym11="448" sym12="448" sym13="448" sym14="32897" sym15="49155">
+	<nodes>
+		<n id="1" component_id="65">
+			<node label="Out (Zoomer)" description="for timer">
+				<position x="3" z="1"/>
+			</node>
+		</n>
+		<n id="2" component_id="63">
+			<node label="Out (Timer)" type="1">
+				<position x="3" z="2"/>
+			</node>
+		</n>
+		<n id="3" component_id="62">
+			<node label="Out (Fuel Levels)" type="6">
+				<position x="2" z="3"/>
+			</node>
+		</n>
+		<n id="4" component_id="61">
+			<node label="Out (Operation Controls)" type="6">
+				<position x="1" z="3"/>
+			</node>
+		</n>
+		<n id="5" component_id="56">
+			<node label="Out (Control Panel)" type="5">
+				<position z="1"/>
+			</node>
+		</n>
+		<n id="6" component_id="60">
+			<node label="Out (RX Transmit Chain)" type="5"/>
+		</n>
+		<n id="7" component_id="48">
+			<node label="In (RX Transmit Chain)" mode="1" type="5">
+				<position x="1"/>
+			</node>
+		</n>
+		<n id="8" component_id="55">
+			<node label="In (RX Received Data)" mode="1" type="5">
+				<position x="1" z="2"/>
+			</node>
+		</n>
+		<n id="9" component_id="59">
+			<node label="In (Control Panel)" mode="1" type="5">
+				<position x="1" z="1"/>
+			</node>
+		</n>
+		<n id="10" component_id="54">
+			<node label="In (Control Permission)" mode="1">
+				<position x="2" z="1"/>
+			</node>
+		</n>
+		<n id="11" component_id="58">
+			<node label="In (Contact Status)" mode="1">
+				<position x="2"/>
+			</node>
+		</n>
+		<n id="12" component_id="64">
+			<node label="In (Display Switch)" mode="1">
+				<position x="2" z="2"/>
+			</node>
+		</n>
+	</nodes>
+	<group>
+		<data>
+			<inputs/>
+			<outputs/>
+		</data>
+		<components>
+			<c type="40">
+				<object id="66" count="1">
+					<pos x="2.25" y="-0.75"/>
+					<in1/>
+				</object>
+			</c>
+			<c type="41">
+				<object id="67" count="1">
+					<pos x="3.25"/>
+					<inc component_id="66"/>
+					<in1/>
+				</object>
+			</c>
+		</components>
+		<components_bridge>
+			<c type="4">
+				<object id="48">
+					<pos x="-1" y="0.75"/>
+				</object>
+			</c>
+			<c>
+				<object id="54">
+					<pos x="-1" y="-4"/>
+				</object>
+			</c>
+			<c type="4">
+				<object id="55">
+					<pos x="-1" y="0.25"/>
+				</object>
+			</c>
+			<c type="5">
+				<object id="56">
+					<pos x="4.5" y="0.25"/>
+					<in1 component_id="67"/>
+				</object>
+			</c>
+			<c>
+				<object id="58">
+					<pos x="-1" y="-3"/>
+				</object>
+			</c>
+			<c type="4">
+				<object id="59">
+					<pos x="-1" y="-0.75"/>
+				</object>
+			</c>
+			<c type="5">
+				<object id="60">
+					<pos x="4.5" y="1.5"/>
+				</object>
+			</c>
+			<c type="7">
+				<object id="61">
+					<pos x="4.5" y="-2.25"/>
+				</object>
+			</c>
+			<c type="7">
+				<object id="62">
+					<pos x="4.5" y="-2.75"/>
+				</object>
+			</c>
+			<c type="3">
+				<object id="63">
+					<pos x="4.5" y="-3.5"/>
+				</object>
+			</c>
+			<c>
+				<object id="64">
+					<pos x="-1" y="-3.5"/>
+				</object>
+			</c>
+			<c type="1">
+				<object id="65">
+					<pos x="4.5" y="-4"/>
+				</object>
+			</c>
+		</components_bridge>
+		<groups/>
+		<component_states>
+			<c0 id="66" count="1">
+				<pos x="2.25" y="-0.75"/>
+				<in1/>
+			</c0>
+			<c1 id="67" count="1">
+				<pos x="3.25"/>
+				<inc component_id="66"/>
+				<in1/>
+			</c1>
+		</component_states>
+		<component_bridge_states>
+			<c0 id="48">
+				<pos x="-1" y="0.75"/>
+			</c0>
+			<c1 id="54">
+				<pos x="-1" y="-4"/>
+			</c1>
+			<c2 id="55">
+				<pos x="-1" y="0.25"/>
+			</c2>
+			<c3 id="56">
+				<pos x="4.5" y="0.25"/>
+				<in1 component_id="67"/>
+			</c3>
+			<c4 id="58">
+				<pos x="-1" y="-3"/>
+			</c4>
+			<c5 id="59">
+				<pos x="-1" y="-0.75"/>
+			</c5>
+			<c6 id="60">
+				<pos x="4.5" y="1.5"/>
+			</c6>
+			<c7 id="61">
+				<pos x="4.5" y="-2.25"/>
+			</c7>
+			<c8 id="62">
+				<pos x="4.5" y="-2.75"/>
+			</c8>
+			<c9 id="63">
+				<pos x="4.5" y="-3.5"/>
+			</c9>
+			<c10 id="64">
+				<pos x="-1" y="-3.5"/>
+			</c10>
+			<c11 id="65">
+				<pos x="4.5" y="-4"/>
+			</c11>
+		</component_bridge_states>
+		<group_states/>
+	</group>
+</microprocessor>
+

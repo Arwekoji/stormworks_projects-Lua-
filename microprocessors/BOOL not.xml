@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<microprocessor name="BOOL not" description="Signal Conversion (False - True)" width="2" length="1" id_counter="4" id_counter_node="2" sym3="4" sym4="12" sym5="28" sym6="60" sym7="1148" sym8="3836" sym9="1148" sym10="60" sym11="28" sym12="12" sym13="4">
+	<nodes>
+		<n id="1" component_id="1">
+			<node label="In (X)" mode="1"/>
+		</n>
+		<n id="2" component_id="3">
+			<node label="Out (Not X)">
+				<position x="1"/>
+			</node>
+		</n>
+	</nodes>
+	<group>
+		<data type="1049481524">
+			<inputs/>
+			<outputs/>
+		</data>
+		<components>
+			<c>
+				<object id="4">
+					<pos x="-0.5"/>
+					<in1 component_id="1"/>
+				</object>
+			</c>
+		</components>
+		<components_bridge>
+			<c>
+				<object id="1">
+					<pos x="-1.75"/>
+				</object>
+			</c>
+			<c type="1">
+				<object id="3">
+					<pos x="0.75"/>
+					<in1 component_id="4"/>
+				</object>
+			</c>
+		</components_bridge>
+		<groups/>
+		<component_states>
+			<c0 id="4">
+				<pos x="-0.5"/>
+				<in1 component_id="1"/>
+			</c0>
+		</component_states>
+		<component_bridge_states>
+			<c0 id="1">
+				<pos x="-1.75"/>
+			</c0>
+			<c1 id="3">
+				<pos x="0.75"/>
+				<in1 component_id="4"/>
+			</c1>
+		</component_bridge_states>
+		<group_states/>
+	</group>
+</microprocessor>
+

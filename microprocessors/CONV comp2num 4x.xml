@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<microprocessor name="CONV comp2num (4x)" width="1" length="5" id_counter="50" id_counter_node="5" sym2="28684" sym3="8466" sym4="8706" sym5="10178" sym6="12818" sym7="8460" sym11="4384" sym12="2592" sym13="1080" sym14="2600" sym15="4392">
+	<nodes>
+		<n id="1" component_id="42">
+			<node label="In (Ch 1)" type="1"/>
+		</n>
+		<n id="2" component_id="43">
+			<node label="In (Ch 2)" type="1">
+				<position z="1"/>
+			</node>
+		</n>
+		<n id="3" component_id="44">
+			<node label="Out (Ch 3)" type="1">
+				<position z="2"/>
+			</node>
+		</n>
+		<n id="4" component_id="45">
+			<node label="Out (Ch 4)" type="1">
+				<position z="3"/>
+			</node>
+		</n>
+		<n id="5" component_id="21">
+			<node label="In (Composite 4x)" mode="1" type="5">
+				<position z="4"/>
+			</node>
+		</n>
+	</nodes>
+	<group>
+		<data>
+			<inputs/>
+			<outputs/>
+		</data>
+		<components>
+			<c type="19">
+				<object id="38" name="1 channel">
+					<pos x="-6" y="4"/>
+					<min text="1" value="1"/>
+					<max text="32" value="32"/>
+					<int text="1" value="1"/>
+					<v text="1" value="1"/>
+				</object>
+			</c>
+			<c type="19">
+				<object id="39" name="2 channel">
+					<pos x="-6" y="3.5"/>
+					<min text="1" value="1"/>
+					<max text="32" value="32"/>
+					<int text="1" value="1"/>
+					<v text="2" value="2"/>
+				</object>
+			</c>
+			<c type="19">
+				<object id="40" name="3 channel">
+					<pos x="-6" y="3"/>
+					<min text="1" value="1"/>
+					<max text="32" value="32"/>
+					<int text="1" value="1"/>
+					<v text="3" value="3"/>
+				</object>
+			</c>
+			<c type="19">
+				<object id="41" name="4 channel">
+					<pos x="-6" y="2.5"/>
+					<min text="1" value="1"/>
+					<max text="32" value="32"/>
+					<int text="1" value="1"/>
+					<v text="4" value="4"/>
+				</object>
+			</c>
+			<c type="31">
+				<object id="47" i="-1">
+					<pos x="-4.75" y="4"/>
+					<in1 component_id="21"/>
+					<in2 component_id="38"/>
+				</object>
+			</c>
+			<c type="31">
+				<object id="48" i="-1">
+					<pos x="-4.75" y="3.5"/>
+					<in1 component_id="21"/>
+					<in2 component_id="39"/>
+				</object>
+			</c>
+			<c type="31">
+				<object id="49" i="-1">
+					<pos x="-4.75" y="3"/>
+					<in1 component_id="21"/>
+					<in2 component_id="40"/>
+				</object>
+			</c>
+			<c type="31">
+				<object id="50" i="-1">
+					<pos x="-4.75" y="2.5"/>
+					<in1 component_id="21"/>
+					<in2 component_id="41"/>
+				</object>
+			</c>
+		</components>
+		<components_bridge>
+			<c type="4">
+				<object id="21">
+					<pos x="-7.5" y="3.75"/>
+				</object>
+			</c>
+			<c type="3">
+				<object id="42">
+					<pos x="-3.5" y="4.25"/>
+					<in1 component_id="47"/>
+				</object>
+			</c>
+			<c type="3">
+				<object id="43">
+					<pos x="-3.5" y="3.75"/>
+					<in1 component_id="48"/>
+				</object>
+			</c>
+			<c type="3">
+				<object id="44">
+					<pos x="-3.5" y="3.25"/>
+					<in1 component_id="49"/>
+				</object>
+			</c>
+			<c type="3">
+				<object id="45">
+					<pos x="-3.5" y="2.75"/>
+					<in1 component_id="50"/>
+				</object>
+			</c>
+		</components_bridge>
+		<groups/>
+		<component_states>
+			<c0 id="38" name="1 channel">
+				<pos x="-6" y="4"/>
+				<min text="1" value="1"/>
+				<max text="32" value="32"/>
+				<int text="1" value="1"/>
+				<v text="1" value="1"/>
+			</c0>
+			<c1 id="39" name="2 channel">
+				<pos x="-6" y="3.5"/>
+				<min text="1" value="1"/>
+				<max text="32" value="32"/>
+				<int text="1" value="1"/>
+				<v text="2" value="2"/>
+			</c1>
+			<c2 id="40" name="3 channel">
+				<pos x="-6" y="3"/>
+				<min text="1" value="1"/>
+				<max text="32" value="32"/>
+				<int text="1" value="1"/>
+				<v text="3" value="3"/>
+			</c2>
+			<c3 id="41" name="4 channel">
+				<pos x="-6" y="2.5"/>
+				<min text="1" value="1"/>
+				<max text="32" value="32"/>
+				<int text="1" value="1"/>
+				<v text="4" value="4"/>
+			</c3>
+			<c4 id="47" i="-1">
+				<pos x="-4.75" y="4"/>
+				<in1 component_id="21"/>
+				<in2 component_id="38"/>
+			</c4>
+			<c5 id="48" i="-1">
+				<pos x="-4.75" y="3.5"/>
+				<in1 component_id="21"/>
+				<in2 component_id="39"/>
+			</c5>
+			<c6 id="49" i="-1">
+				<pos x="-4.75" y="3"/>
+				<in1 component_id="21"/>
+				<in2 component_id="40"/>
+			</c6>
+			<c7 id="50" i="-1">
+				<pos x="-4.75" y="2.5"/>
+				<in1 component_id="21"/>
+				<in2 component_id="41"/>
+			</c7>
+		</component_states>
+		<component_bridge_states>
+			<c0 id="21">
+				<pos x="-7.5" y="3.75"/>
+			</c0>
+			<c1 id="42">
+				<pos x="-3.5" y="4.25"/>
+				<in1 component_id="47"/>
+			</c1>
+			<c2 id="43">
+				<pos x="-3.5" y="3.75"/>
+				<in1 component_id="48"/>
+			</c2>
+			<c3 id="44">
+				<pos x="-3.5" y="3.25"/>
+				<in1 component_id="49"/>
+			</c3>
+			<c4 id="45">
+				<pos x="-3.5" y="2.75"/>
+				<in1 component_id="50"/>
+			</c4>
+		</component_bridge_states>
+		<group_states/>
+	</group>
+</microprocessor>
+

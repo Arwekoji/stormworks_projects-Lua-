@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<microprocessor name="CTRL ballast pump (By Status)" description="-1=pumpout, 0=rest, 1=pumpin" width="1" length="4" id_counter="16" id_counter_node="4" sym0="49155" sym1="1" sym2="32708" sym3="16462" sym4="16469" sym5="20036" sym6="24388" sym7="24384" sym8="20032" sym9="20036" sym10="17476" sym11="16469" sym12="16462" sym13="32708" sym14="32769" sym15="49155">
+	<nodes>
+		<n id="1" component_id="3">
+			<node label="In (Status)" mode="1" type="1" description="-1=pumpout, 0=rest, 1=pumpin"/>
+		</n>
+		<n id="2" component_id="7">
+			<node label="Out (Pump Switch)">
+				<position z="2"/>
+			</node>
+		</n>
+		<n id="3" component_id="8">
+			<node label="Out (Valves In)" description="2pumpout water">
+				<position z="1"/>
+			</node>
+		</n>
+		<n id="4" component_id="10">
+			<node label="Out (Valves Out)" description="2pumpin water">
+				<position z="3"/>
+			</node>
+		</n>
+	</nodes>
+	<group>
+		<data type="1059332096">
+			<inputs/>
+			<outputs/>
+		</data>
+		<components>
+			<c type="42">
+				<object id="11">
+					<pos x="-1.25" y="-0.5"/>
+					<in1 component_id="3"/>
+					<in2 component_id="12"/>
+					<e text="0.0001" value="0.0001"/>
+				</object>
+			</c>
+			<c type="15">
+				<object id="12">
+					<pos x="-2.25" y="-1"/>
+					<n text="0"/>
+				</object>
+			</c>
+			<c>
+				<object id="13">
+					<pos y="-0.25"/>
+					<in1 component_id="11"/>
+				</object>
+			</c>
+			<c type="42">
+				<object id="14">
+					<pos x="-1.25" y="0.75"/>
+					<in1 component_id="16"/>
+					<in2 component_id="3"/>
+					<e text="0.0001" value="0.0001"/>
+				</object>
+			</c>
+			<c>
+				<object id="15">
+					<pos x="0.5" y="1.75"/>
+					<in1 component_id="14"/>
+				</object>
+			</c>
+			<c type="15">
+				<object id="16">
+					<pos x="-2.25" y="1.5"/>
+					<n text="1" value="1"/>
+				</object>
+			</c>
+		</components>
+		<components_bridge>
+			<c type="2">
+				<object id="3">
+					<pos x="-4.5" y="-0.25"/>
+				</object>
+			</c>
+			<c type="1">
+				<object id="7">
+					<pos x="1.25" y="-0.25"/>
+					<in1 component_id="13"/>
+				</object>
+			</c>
+			<c type="1">
+				<object id="8">
+					<pos x="1.75" y="1"/>
+					<in1 component_id="14"/>
+				</object>
+			</c>
+			<c type="1">
+				<object id="10">
+					<pos x="1.75" y="1.75"/>
+					<in1 component_id="15"/>
+				</object>
+			</c>
+		</components_bridge>
+		<groups/>
+		<component_states>
+			<c0 id="11">
+				<pos x="-1.25" y="-0.5"/>
+				<in1 component_id="3"/>
+				<in2 component_id="12"/>
+				<e text="0.0001" value="0.0001"/>
+			</c0>
+			<c1 id="12">
+				<pos x="-2.25" y="-1"/>
+				<n text="0"/>
+			</c1>
+			<c2 id="13">
+				<pos y="-0.25"/>
+				<in1 component_id="11"/>
+			</c2>
+			<c3 id="14">
+				<pos x="-1.25" y="0.75"/>
+				<in1 component_id="16"/>
+				<in2 component_id="3"/>
+				<e text="0.0001" value="0.0001"/>
+			</c3>
+			<c4 id="15">
+				<pos x="0.5" y="1.75"/>
+				<in1 component_id="14"/>
+			</c4>
+			<c5 id="16">
+				<pos x="-2.25" y="1.5"/>
+				<n text="1" value="1"/>
+			</c5>
+		</component_states>
+		<component_bridge_states>
+			<c0 id="3">
+				<pos x="-4.5" y="-0.25"/>
+			</c0>
+			<c1 id="7">
+				<pos x="1.25" y="-0.25"/>
+				<in1 component_id="13"/>
+			</c1>
+			<c2 id="8">
+				<pos x="1.75" y="1"/>
+				<in1 component_id="14"/>
+			</c2>
+			<c3 id="10">
+				<pos x="1.75" y="1.75"/>
+				<in1 component_id="15"/>
+			</c3>
+		</component_bridge_states>
+		<group_states/>
+	</group>
+</microprocessor>
+

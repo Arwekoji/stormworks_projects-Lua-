@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<microprocessor name="MATH const" description="Constant number. Its all" width="1" length="1" id_counter="4" id_counter_node="1" sym3="960" sym4="1056" sym5="2064" sym6="16" sym7="16" sym8="16" sym9="16" sym10="16" sym11="2064" sym12="1056" sym13="960">
+	<nodes>
+		<n id="1" component_id="3">
+			<node label="Out" type="1"/>
+		</n>
+	</nodes>
+	<group>
+		<data>
+			<inputs/>
+			<outputs/>
+		</data>
+		<components>
+			<c type="34">
+				<object id="4">
+					<v text="0"/>
+				</object>
+			</c>
+		</components>
+		<components_bridge>
+			<c type="3">
+				<object id="3">
+					<pos x="1.25"/>
+					<in1 component_id="4"/>
+				</object>
+			</c>
+		</components_bridge>
+		<groups/>
+		<component_states>
+			<c0 id="4">
+				<v text="0"/>
+			</c0>
+		</component_states>
+		<component_bridge_states>
+			<c0 id="3">
+				<pos x="1.25"/>
+				<in1 component_id="4"/>
+			</c0>
+		</component_bridge_states>
+		<group_states/>
+	</group>
+</microprocessor>
+

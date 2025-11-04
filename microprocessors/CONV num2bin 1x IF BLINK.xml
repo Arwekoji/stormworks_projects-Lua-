@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<microprocessor name="CONV num2bin (1x IF BLINK)" description="Blinks if TRUE with one preset and one X" width="2" length="1" id_counter="26" id_counter_node="7" sym0="28" sym1="20" sym2="21844" sym3="28" sym5="4104" sym6="2064" sym7="1056" sym8="2064" sym9="4104" sym11="4464" sym12="2592" sym13="1056" sym14="2608" sym15="4384">
+	<nodes>
+		<n id="6" component_id="14">
+			<node label="In (Number)" mode="1" type="1"/>
+		</n>
+		<n id="7" component_id="15">
+			<node label="Out (Blink Signal if True)">
+				<position x="1"/>
+			</node>
+		</n>
+	</nodes>
+	<group>
+		<data type="1049481524">
+			<inputs/>
+			<outputs/>
+		</data>
+		<components>
+			<c type="20">
+				<object id="16" name="Type of Reaction" i="1">
+					<pos x="-2" y="-1"/>
+					<items>
+						<i l="X equal N">
+							<v text="0"/>
+						</i>
+						<i l="X less N">
+							<v text="-1" value="-1"/>
+						</i>
+						<i l="X more N">
+							<v text="1" value="1"/>
+						</i>
+					</items>
+				</object>
+			</c>
+			<c type="56">
+				<object id="17" script="function onTick()
+	BaseNumber = input.getNumber(1)
+	ToR = input.getNumber(2)
+	N = input.getNumber(3)
+	answer = false
+	
+	if ToR==0 and BaseNumber==N then		answer = true		end
+	if ToR==1  and BaseNumber&gt;N then		answer = true		end
+	if ToR==-1 and BaseNumber&lt;N then		answer = true		end
+	
+	output.setBool(1, answer)		
+end
+">
+					<pos x="0.75" y="-0.5"/>
+					<in1 component_id="20"/>
+				</object>
+			</c>
+			<c type="29">
+				<object id="18">
+					<pos x="2" y="-0.25"/>
+					<in1 component_id="17"/>
+				</object>
+			</c>
+			<c type="34">
+				<object id="19" n="N">
+					<pos x="-2" y="-1.5"/>
+					<v text="2" value="2"/>
+				</object>
+			</c>
+			<c type="40">
+				<object id="20" count="3">
+					<pos x="-0.5" y="-1"/>
+					<in1 component_id="14"/>
+					<in2 component_id="16"/>
+					<in3 component_id="19"/>
+				</object>
+			</c>
+			<c type="27">
+				<object id="26" on="0.3" off="0.5">
+					<pos x="3.25" y="-0.25"/>
+					<in1 component_id="18"/>
+				</object>
+			</c>
+		</components>
+		<components_bridge>
+			<c type="2">
+				<object id="14">
+					<pos x="-2" y="-0.5"/>
+				</object>
+			</c>
+			<c type="1">
+				<object id="15">
+					<pos x="4.5" y="-0.25"/>
+					<in1 component_id="26"/>
+				</object>
+			</c>
+		</components_bridge>
+		<groups/>
+		<component_states>
+			<c0 id="16" name="Type of Reaction" i="1">
+				<pos x="-2" y="-1"/>
+				<items>
+					<i l="X equal N">
+						<v text="0"/>
+					</i>
+					<i l="X less N">
+						<v text="-1" value="-1"/>
+					</i>
+					<i l="X more N">
+						<v text="1" value="1"/>
+					</i>
+				</items>
+			</c0>
+			<c1 id="17" script="function onTick()
+	BaseNumber = input.getNumber(1)
+	ToR = input.getNumber(2)
+	N = input.getNumber(3)
+	answer = false
+	
+	if ToR==0 and BaseNumber==N then		answer = true		end
+	if ToR==1  and BaseNumber&gt;N then		answer = true		end
+	if ToR==-1 and BaseNumber&lt;N then		answer = true		end
+	
+	output.setBool(1, answer)		
+end
+">
+				<pos x="0.75" y="-0.5"/>
+				<in1 component_id="20"/>
+			</c1>
+			<c2 id="18">
+				<pos x="2" y="-0.25"/>
+				<in1 component_id="17"/>
+			</c2>
+			<c3 id="19" n="N">
+				<pos x="-2" y="-1.5"/>
+				<v text="2" value="2"/>
+			</c3>
+			<c4 id="20" count="3">
+				<pos x="-0.5" y="-1"/>
+				<in1 component_id="14"/>
+				<in2 component_id="16"/>
+				<in3 component_id="19"/>
+			</c4>
+			<c5 id="26" on="0.3" off="0.5">
+				<pos x="3.25" y="-0.25"/>
+				<in1 component_id="18"/>
+			</c5>
+		</component_states>
+		<component_bridge_states>
+			<c0 id="14">
+				<pos x="-2" y="-0.5"/>
+			</c0>
+			<c1 id="15">
+				<pos x="4.5" y="-0.25"/>
+				<in1 component_id="26"/>
+			</c1>
+		</component_bridge_states>
+		<group_states/>
+	</group>
+</microprocessor>
+

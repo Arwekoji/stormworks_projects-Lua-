@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<microprocessor name="CTRL (Button Safecheck x1num)" width="3" length="1" id_counter="28" id_counter_node="3" sym5="4100" sym6="2504" sym7="1360" sym8="2504" sym9="4100" sym11="2232" sym12="1296" sym13="528" sym14="1304" sym15="2192">
+	<nodes>
+		<n id="1" component_id="1">
+			<node label="In (Button)" mode="1">
+				<position x="1"/>
+			</node>
+		</n>
+		<n id="2" component_id="4">
+			<node label="In (Control Number)" mode="1" type="1"/>
+		</n>
+		<n id="3" component_id="5">
+			<node label="Out (Checked Button)">
+				<position x="2"/>
+			</node>
+		</n>
+	</nodes>
+	<group>
+		<data>
+			<inputs/>
+			<outputs/>
+		</data>
+		<components>
+			<c type="20">
+				<object id="7" name="Type of Reaction" i="1">
+					<pos x="-1" y="-2.5"/>
+					<items>
+						<i l="X equal N">
+							<v text="0"/>
+						</i>
+						<i l="X less N">
+							<v text="-1" value="-1"/>
+						</i>
+						<i l="X more N">
+							<v text="1" value="1"/>
+						</i>
+					</items>
+				</object>
+			</c>
+			<c type="56">
+				<object id="8" script="function onTick()
+	BaseNumber = input.getNumber(1)
+	ToR = input.getNumber(2)
+	N = input.getNumber(3)
+	answer = false
+	
+	if ToR==0 and BaseNumber==N then		answer = true		end
+	if ToR==1  and BaseNumber&gt;N then		answer = true		end
+	if ToR==-1 and BaseNumber&lt;N then		answer = true		end
+	
+	output.setBool(1, answer)		
+end
+">
+					<pos x="1.75" y="-2"/>
+					<in1 component_id="11"/>
+				</object>
+			</c>
+			<c type="29">
+				<object id="9">
+					<pos x="3" y="-1.75"/>
+					<in1 component_id="8"/>
+				</object>
+			</c>
+			<c type="34">
+				<object id="10" n="N">
+					<pos x="-1" y="-3"/>
+					<v text="50" value="50"/>
+				</object>
+			</c>
+			<c type="40">
+				<object id="11" count="3">
+					<pos x="0.5" y="-2.5"/>
+					<in1 component_id="4"/>
+					<in2 component_id="7"/>
+					<in3 component_id="10"/>
+				</object>
+			</c>
+			<c type="20">
+				<object id="13" name="When not safe">
+					<pos x="-1" y="-1.25"/>
+					<items>
+						<i l="True">
+							<v text="1" value="1"/>
+						</i>
+						<i l="False">
+							<v text="0"/>
+						</i>
+					</items>
+				</object>
+			</c>
+			<c type="22">
+				<object id="17">
+					<pos x="4.5" y="-1.75"/>
+					<in1 component_id="13"/>
+					<in2 component_id="24"/>
+					<in3 component_id="9"/>
+				</object>
+			</c>
+			<c type="22">
+				<object id="24">
+					<pos x="0.5" y="-4.75"/>
+					<in1 component_id="25"/>
+					<in2 component_id="26"/>
+					<in3 component_id="1"/>
+				</object>
+			</c>
+			<c type="15">
+				<object id="25">
+					<pos x="-1" y="-4.25"/>
+					<n text="1" value="1"/>
+				</object>
+			</c>
+			<c type="15">
+				<object id="26">
+					<pos x="-1" y="-4.5"/>
+					<n text="0"/>
+				</object>
+			</c>
+			<c type="42">
+				<object id="27">
+					<pos x="6" y="-1.5"/>
+					<in1 component_id="17"/>
+					<in2 component_id="28"/>
+					<e text="0.0001" value="0.0001"/>
+				</object>
+			</c>
+			<c type="15">
+				<object id="28">
+					<pos x="5" y="-2.5"/>
+					<n text="1" value="1"/>
+				</object>
+			</c>
+		</components>
+		<components_bridge>
+			<c>
+				<object id="1">
+					<pos x="-1" y="-4.75"/>
+				</object>
+			</c>
+			<c type="2">
+				<object id="4">
+					<pos x="-1" y="-2"/>
+				</object>
+			</c>
+			<c type="1">
+				<object id="5">
+					<pos x="7.75" y="-1.25"/>
+					<in1 component_id="27"/>
+				</object>
+			</c>
+		</components_bridge>
+		<groups/>
+		<component_states>
+			<c0 id="7" name="Type of Reaction" i="1">
+				<pos x="-1" y="-2.5"/>
+				<items>
+					<i l="X equal N">
+						<v text="0"/>
+					</i>
+					<i l="X less N">
+						<v text="-1" value="-1"/>
+					</i>
+					<i l="X more N">
+						<v text="1" value="1"/>
+					</i>
+				</items>
+			</c0>
+			<c1 id="8" script="function onTick()
+	BaseNumber = input.getNumber(1)
+	ToR = input.getNumber(2)
+	N = input.getNumber(3)
+	answer = false
+	
+	if ToR==0 and BaseNumber==N then		answer = true		end
+	if ToR==1  and BaseNumber&gt;N then		answer = true		end
+	if ToR==-1 and BaseNumber&lt;N then		answer = true		end
+	
+	output.setBool(1, answer)		
+end
+">
+				<pos x="1.75" y="-2"/>
+				<in1 component_id="11"/>
+			</c1>
+			<c2 id="9">
+				<pos x="3" y="-1.75"/>
+				<in1 component_id="8"/>
+			</c2>
+			<c3 id="10" n="N">
+				<pos x="-1" y="-3"/>
+				<v text="50" value="50"/>
+			</c3>
+			<c4 id="11" count="3">
+				<pos x="0.5" y="-2.5"/>
+				<in1 component_id="4"/>
+				<in2 component_id="7"/>
+				<in3 component_id="10"/>
+			</c4>
+			<c5 id="13" name="When not safe">
+				<pos x="-1" y="-1.25"/>
+				<items>
+					<i l="True">
+						<v text="1" value="1"/>
+					</i>
+					<i l="False">
+						<v text="0"/>
+					</i>
+				</items>
+			</c5>
+			<c6 id="17">
+				<pos x="4.5" y="-1.75"/>
+				<in1 component_id="13"/>
+				<in2 component_id="24"/>
+				<in3 component_id="9"/>
+			</c6>
+			<c7 id="24">
+				<pos x="0.5" y="-4.75"/>
+				<in1 component_id="25"/>
+				<in2 component_id="26"/>
+				<in3 component_id="1"/>
+			</c7>
+			<c8 id="25">
+				<pos x="-1" y="-4.25"/>
+				<n text="1" value="1"/>
+			</c8>
+			<c9 id="26">
+				<pos x="-1" y="-4.5"/>
+				<n text="0"/>
+			</c9>
+			<c10 id="27">
+				<pos x="6" y="-1.5"/>
+				<in1 component_id="17"/>
+				<in2 component_id="28"/>
+				<e text="0.0001" value="0.0001"/>
+			</c10>
+			<c11 id="28">
+				<pos x="5" y="-2.5"/>
+				<n text="1" value="1"/>
+			</c11>
+		</component_states>
+		<component_bridge_states>
+			<c0 id="1">
+				<pos x="-1" y="-4.75"/>
+			</c0>
+			<c1 id="4">
+				<pos x="-1" y="-2"/>
+			</c1>
+			<c2 id="5">
+				<pos x="7.75" y="-1.25"/>
+				<in1 component_id="27"/>
+			</c2>
+		</component_bridge_states>
+		<group_states/>
+	</group>
+</microprocessor>
+

@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<microprocessor name="DISP" width="1" length="5" id_counter="35" id_counter_node="8">
+	<nodes>
+		<n id="1" component_id="3">
+			<node label="Out (GPS display 2x1)" type="6">
+				<position z="4"/>
+			</node>
+		</n>
+		<n id="2" component_id="5">
+			<node label="In (Display sensor)" mode="1" type="5" description="boop">
+				<position z="3"/>
+			</node>
+		</n>
+		<n id="3" component_id="7">
+			<node label="In (GPS controller)" mode="1" type="5" description="all data for 2d navigation">
+				<position z="2"/>
+			</node>
+		</n>
+		<n id="6" component_id="15">
+			<node label="In (Targets of Sonar/Radar)" mode="1" type="5" description="16 targets must be converted to 2d  coords before">
+				<position z="1"/>
+			</node>
+		</n>
+		<n id="8" component_id="31">
+			<node label="In (Locator)" mode="1" description="freq2distance"/>
+		</n>
+	</nodes>
+	<group>
+		<data type="1049481524">
+			<inputs/>
+			<outputs/>
+		</data>
+		<components>
+			<c type="56">
+				<object id="8" script="function onTick()
+	value = input.getNumber(1)			 -- Read the first number from the script's composite input
+	output.setNumber(1, value * 10)		-- Write a number to the script's composite output
+end
+
+
+
+
+function onDraw()
+	w = screen.getWidth()				  -- Get the screen's width and height
+	h = screen.getHeight()					
+	screen.setColor(0, 255, 0)			 -- Set draw color to green
+	screen.drawCircleF(w / 2, h / 2, 30)   -- Draw a 30px radius circle in the center of the screen
+end">
+					<pos x="-1" y="1"/>
+					<in1 component_id="32"/>
+				</object>
+			</c>
+			<c type="56">
+				<object id="29">
+					<pos y="-0.5"/>
+					<in2 component_id="8" node_index="1"/>
+				</object>
+			</c>
+			<c type="40">
+				<object id="32" count="2" offset="7">
+					<pos x="-2.25" y="0.75"/>
+					<inc component_id="7"/>
+					<in1 component_id="33"/>
+					<in2 component_id="34"/>
+				</object>
+			</c>
+			<c type="31">
+				<object id="33">
+					<pos x="-3.5" y="-0.5"/>
+					<in1 component_id="5"/>
+				</object>
+			</c>
+			<c type="31">
+				<object id="34" i="1">
+					<pos x="-3.25" y="-1"/>
+					<in1 component_id="5"/>
+				</object>
+			</c>
+		</components>
+		<components_bridge>
+			<c type="7">
+				<object id="3">
+					<pos x="4.5" y="1"/>
+				</object>
+			</c>
+			<c type="4">
+				<object id="5">
+					<pos x="-4.5" y="-1"/>
+				</object>
+			</c>
+			<c type="4">
+				<object id="7">
+					<pos x="-4.5" y="1.25"/>
+				</object>
+			</c>
+			<c type="4">
+				<object id="15">
+					<pos x="-1.25" y="-1.25"/>
+				</object>
+			</c>
+			<c>
+				<object id="31">
+					<pos x="-1.25" y="-0.75"/>
+				</object>
+			</c>
+		</components_bridge>
+		<groups/>
+		<component_states>
+			<c0 id="8" script="function onTick()
+	value = input.getNumber(1)			 -- Read the first number from the script's composite input
+	output.setNumber(1, value * 10)		-- Write a number to the script's composite output
+end
+
+
+
+
+function onDraw()
+	w = screen.getWidth()				  -- Get the screen's width and height
+	h = screen.getHeight()					
+	screen.setColor(0, 255, 0)			 -- Set draw color to green
+	screen.drawCircleF(w / 2, h / 2, 30)   -- Draw a 30px radius circle in the center of the screen
+end">
+				<pos x="-1" y="1"/>
+				<in1 component_id="32"/>
+			</c0>
+			<c1 id="29">
+				<pos y="-0.5"/>
+				<in2 component_id="8" node_index="1"/>
+			</c1>
+			<c2 id="32" count="2" offset="7">
+				<pos x="-2.25" y="0.75"/>
+				<inc component_id="7"/>
+				<in1 component_id="33"/>
+				<in2 component_id="34"/>
+			</c2>
+			<c3 id="33">
+				<pos x="-3.5" y="-0.5"/>
+				<in1 component_id="5"/>
+			</c3>
+			<c4 id="34" i="1">
+				<pos x="-3.25" y="-1"/>
+				<in1 component_id="5"/>
+			</c4>
+		</component_states>
+		<component_bridge_states>
+			<c0 id="3">
+				<pos x="4.5" y="1"/>
+			</c0>
+			<c1 id="5">
+				<pos x="-4.5" y="-1"/>
+			</c1>
+			<c2 id="7">
+				<pos x="-4.5" y="1.25"/>
+			</c2>
+			<c3 id="15">
+				<pos x="-1.25" y="-1.25"/>
+			</c3>
+			<c4 id="31">
+				<pos x="-1.25" y="-0.75"/>
+			</c4>
+		</component_bridge_states>
+		<group_states/>
+	</group>
+</microprocessor>
+

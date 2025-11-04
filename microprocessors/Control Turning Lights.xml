@@ -1,0 +1,1711 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<microprocessor name="Control (Turning Lights)" width="4" length="3" id_counter="64" id_counter_node="11" transform_index="4" sym0="128" sym1="320" sym2="672" sym3="320" sym4="128" sym6="320" sym8="544" sym10="1168" sym12="2056" sym13="128" sym14="4100">
+	<nodes>
+		<n id="1" component_id="14">
+			<node label="Out (Left Forward)">
+				<position z="2"/>
+			</node>
+		</n>
+		<n id="2" component_id="13">
+			<node label="Out (Right Forward)">
+				<position x="1" z="2"/>
+			</node>
+		</n>
+		<n id="3" component_id="11">
+			<node label="Out (Left Rear)"/>
+		</n>
+		<n id="4" component_id="10">
+			<node label="Out (Right Rear)">
+				<position x="1"/>
+			</node>
+		</n>
+		<n id="5" component_id="12">
+			<node label="Out (Left Side)" type="5">
+				<position z="1"/>
+			</node>
+		</n>
+		<n id="6" component_id="8">
+			<node label="Out (Right Side)" type="5">
+				<position x="1" z="1"/>
+			</node>
+		</n>
+		<n id="7" component_id="15">
+			<node label="In (ELights Mod)" mode="1">
+				<position x="2"/>
+			</node>
+		</n>
+		<n id="8" component_id="17">
+			<node label="In (LeftRight)" mode="1" type="1">
+				<position x="2" z="1"/>
+			</node>
+		</n>
+		<n id="9" component_id="23">
+			<node label="In (WS)" mode="1" type="1">
+				<position x="2" z="2"/>
+			</node>
+		</n>
+		<n id="10" component_id="36">
+			<node label="Out (Turning Sound)">
+				<position x="3" z="1"/>
+			</node>
+		</n>
+		<n id="11" component_id="37">
+			<node label="Out (BackMove Sound)">
+				<position x="3"/>
+			</node>
+		</n>
+	</nodes>
+	<group>
+		<data type="1049481524">
+			<inputs/>
+			<outputs/>
+		</data>
+		<components>
+			<c type="56">
+				<object id="19" script="-- Tick function that will be executed every logic tick
+function onTick()
+	EmergencyMod = input.getBool(1)		
+	WS = input.getNumber(1)			
+	AD = input.getNumber(2)
+	
+	LF = false
+	LS = false
+	LR = false
+	RF = false
+	RS = false
+	RR = false
+	soundTurning = false
+	soundBack = false
+	
+	
+	if AD&lt;-0.1 or EmergencyMod==true then
+		LF = true
+		soundTurning = true
+	end
+	if AD&gt;0.1 or EmergencyMod==true then
+		RF = true
+		soundTurning = true
+	end
+	
+	if AD&lt;-0.1 then
+		LS = true
+		LR = true
+		soundTurning = true
+	end
+	if AD&gt;0.1 then
+		RS = true
+		RR = true
+		soundTurning = true
+	end
+	
+	if WS&lt;-0.1 or EmergencyMod==true then
+		LR = true
+		RR = true
+		soundTurning = true
+	end
+
+	if WS&lt;-0.1 then
+		soundTurning = false
+		soundBack = true
+	end
+	
+	output.setBool(1, LF)
+	output.setBool(5, LS)
+	output.setBool(3, LR)
+	output.setBool(2, RF)
+	output.setBool(6, RS)
+	output.setBool(4, RR)
+	output.setBool(7, soundTurning)
+	output.setBool(8, soundBack)
+end
+
+">
+					<pos x="-1" y="2.25"/>
+					<in1 component_id="22"/>
+				</object>
+			</c>
+			<c type="40">
+				<object id="21" count="2">
+					<pos x="-3.25" y="1.25"/>
+					<in1 component_id="23"/>
+					<in2 component_id="17"/>
+				</object>
+			</c>
+			<c type="41">
+				<object id="22" count="1">
+					<pos x="-2.25" y="2.25"/>
+					<inc component_id="21"/>
+					<in1 component_id="15"/>
+				</object>
+			</c>
+			<c type="29">
+				<object id="24">
+					<pos x="0.75" y="3.25"/>
+					<in1 component_id="19"/>
+				</object>
+			</c>
+			<c type="29">
+				<object id="25" i="2">
+					<pos x="0.75" y="3.75"/>
+					<in1 component_id="19"/>
+				</object>
+			</c>
+			<c type="29">
+				<object id="26" i="4">
+					<pos x="0.75" y="4.25"/>
+					<in1 component_id="19"/>
+				</object>
+			</c>
+			<c type="29">
+				<object id="27" i="1">
+					<pos x="0.75" y="1.5"/>
+					<in1 component_id="19"/>
+				</object>
+			</c>
+			<c type="29">
+				<object id="28" i="3">
+					<pos x="0.75" y="1"/>
+					<in1 component_id="19"/>
+				</object>
+			</c>
+			<c type="29">
+				<object id="29" i="5">
+					<pos x="0.75" y="0.5"/>
+					<in1 component_id="19"/>
+				</object>
+			</c>
+			<c type="27">
+				<object id="30" on="0.7" off="0.7">
+					<pos x="2" y="3.75"/>
+					<in1 component_id="25"/>
+				</object>
+			</c>
+			<c type="27">
+				<object id="31" on="0.7" off="0.7">
+					<pos x="2" y="3.25"/>
+					<in1 component_id="24"/>
+				</object>
+			</c>
+			<c type="27">
+				<object id="32" on="0.7" off="0.7">
+					<pos x="2" y="1.5"/>
+					<in1 component_id="27"/>
+				</object>
+			</c>
+			<c type="27">
+				<object id="33" on="0.7" off="0.7">
+					<pos x="2" y="1"/>
+					<in1 component_id="28"/>
+				</object>
+			</c>
+			<c type="29">
+				<object id="38" i="6">
+					<pos x="0.75" y="2.75"/>
+					<in1 component_id="19"/>
+				</object>
+			</c>
+			<c type="29">
+				<object id="39" i="7">
+					<pos x="0.75" y="2"/>
+					<in1 component_id="19"/>
+				</object>
+			</c>
+			<c type="27">
+				<object id="40" on="0.6" off="0.1">
+					<pos x="2" y="2.75"/>
+					<in1 component_id="38"/>
+				</object>
+			</c>
+			<c type="27">
+				<object id="41" on="0.7" off="0.7">
+					<pos x="2" y="2"/>
+					<in1 component_id="39"/>
+				</object>
+			</c>
+			<c type="13">
+				<object id="46">
+					<pos x="3.75" y="-2.25"/>
+					<in1 component_id="29"/>
+					<in2 component_id="60"/>
+					<in3 component_id="56"/>
+					<r text="0"/>
+				</object>
+			</c>
+			<c type="13">
+				<object id="48">
+					<pos x="3.75" y="5.75"/>
+					<in1 component_id="26"/>
+					<in2 component_id="61"/>
+					<in3 component_id="59"/>
+					<r text="0"/>
+				</object>
+			</c>
+			<c type="56">
+				<object id="54" script="function onTick()
+	Lights = input.getBool(1)
+	TT = input.getNumber(1)
+	l1 = 0
+	l2 = 0
+	l3 = 0
+	l4 = 0
+	l5 = 0
+	l6 = 0
+	
+if Lights == true then
+	if TT==0  then
+		l5=255
+		l6=255
+	end
+	if TT==1  then
+		l5=255-1
+		l6=255
+		l1=1
+	end
+	if TT==2  then
+		l5=255-1-2
+		l6=255
+		l1=1+2
+	end
+	if TT==3  then
+		l5=255-1-2-4
+		l6=255
+		l1=1+2+4
+	end
+	if TT==4  then
+		l5=255-1-2-4-8
+		l6=255
+		l1=1+2+4+8
+	end
+	if TT==5  then
+		l5=255-1-2-4-8-16
+		l6=255
+		l1=1+2+4+8+16
+	end
+	if TT==6  then
+		l5=255-1-2-4-8-16-32
+		l6=255
+		l1=1+2+4+8+16+32
+	end
+	if TT==7  then
+		l5=255-1-2-4-8-16-32-64
+		l6=255
+		l1=1+2+4+8+16+32+64
+	end
+	
+---------------------------------------
+	
+	if TT==8  then
+		l6=255
+		l1=255
+	end
+	if TT==9  then
+		l6=255-1
+		l1=255
+		l2=1
+	end
+	if TT==10  then
+		l6=255-1-2
+		l1=255
+		l2=1+2
+	end
+	if TT==11  then
+		l6=255-1-2-4
+		l1=255
+		l2=1+2+4
+	end
+	if TT==12  then
+		l6=255-1-2-4-8
+		l1=255
+		l2=1+2+4+8
+	end
+	if TT==13  then
+		l6=255-1-2-4-8-16
+		l1=255
+		l2=1+2+4+8+16
+	end
+	if TT==14  then
+		l6=255-1-2-4-8-16-32
+		l1=255
+		l2=1+2+4+8+16+32
+	end
+	if TT==15  then
+		l6=255-1-2-4-8-16-32-64
+		l1=255
+		l2=1+2+4+8+16+32+6
+	end
+	
+---------------------------------------
+	
+	if TT==16  then
+		l1=255
+		l2=255
+	end
+	if TT==17  then
+		l1=255-1
+		l2=255
+		l3=1
+	end
+	if TT==18  then
+		l1=255-1-2
+		l2=255
+		l3=1+2
+	end
+	if TT==19  then
+		l1=255-1-2-4
+		l2=255
+		l3=1+2+4
+	end
+	if TT==20  then
+		l1=255-1-2-4-8
+		l2=255
+		l3=1+2+4+8
+	end
+	if TT==21  then
+		l1=255-1-2-4-8-16
+		l2=255
+		l3=1+2+4+8+16
+	end
+	if TT==22  then
+		l1=255-1-2-4-8-16-32
+		l2=255
+		l3=1+2+4+8+16+32
+	end
+	if TT==23  then
+		l1=255-1-2-4-8-16-32-64
+		l2=255
+		l3=1+2+4+8+16+32+6
+	end
+	
+---------------------------------------
+	
+	if TT==24  then
+		l2=255
+		l3=255
+	end
+	if TT==25  then
+		l2=255-1
+		l3=255
+		l4=1
+	end
+	if TT==26  then
+		l2=255-1-2
+		l3=255
+		l4=1+2
+	end
+	if TT==27  then
+		l2=255-1-2-4
+		l3=255
+		l4=1+2+4
+	end
+	if TT==28  then
+		l2=255-1-2-4-8
+		l3=255
+		l4=1+2+4+8
+	end
+	if TT==29  then
+		l2=255-1-2-4-8-16
+		l3=255
+		l4=1+2+4+8+16
+	end
+	if TT==30  then
+		l2=255-1-2-4-8-16-32
+		l3=255
+		l4=1+2+4+8+16+32
+	end
+	if TT==31  then
+		l2=255-1-2-4-8-16-32-64
+		l3=255
+		l4=1+2+4+8+16+32+6
+	end
+	
+---------------------------------------
+	
+	if TT==32  then
+		l3=255
+		l4=255
+	end
+	if TT==33  then
+		l3=255-1
+		l4=255
+		l5=1
+	end
+	if TT==34  then
+		l3=255-1-2
+		l4=255
+		l5=1+2
+	end
+	if TT==35  then
+		l3=255-1-2-4
+		l4=255
+		l5=1+2+4
+	end
+	if TT==36  then
+		l3=255-1-2-4-8
+		l4=255
+		l5=1+2+4+8
+	end
+	if TT==37  then
+		l3=255-1-2-4-8-16
+		l4=255
+		l5=1+2+4+8+16
+	end
+	if TT==38  then
+		l3=255-1-2-4-8-16-32
+		l4=255
+		l5=1+2+4+8+16+32
+	end
+	if TT==39  then
+		l3=255-1-2-4-8-16-32-64
+		l4=255
+		l5=1+2+4+8+16+32+6
+	end
+	
+---------------------------------------
+	
+	if TT==40  then
+		l4=255
+		l5=255
+	end
+	if TT==41  then
+		l4=255-1
+		l5=255
+		l6=1
+	end
+	if TT==42  then
+		l4=255-1-2
+		l5=255
+		l6=1+2
+	end
+	if TT==43  then
+		l4=255-1-2-4
+		l5=255
+		l6=1+2+4
+	end
+	if TT==44  then
+		l4=255-1-2-4-8
+		l5=255
+		l6=1+2+4+8
+	end
+	if TT==45  then
+		l4=255-1-2-4-8-16
+		l5=255
+		l6=1+2+4+8+16
+	end
+	if TT==46  then
+		l4=255-1-2-4-8-16-32
+		l5=255
+		l6=1+2+4+8+16+32
+	end
+	if TT==47  then
+		l4=255-1-2-4-8-16-32-64
+		l5=255
+		l6=1+2+4+8+16+32+6
+	end
+	
+
+--NADO SOKRATIT OBRATNIM SCHETOM ILI SSYLKAMY
+
+	
+	TT = TT+1
+	if TT&gt;47 then TT = 0 end
+end
+	output.setNumber(1, l1)
+	output.setNumber(2, l2)
+	output.setNumber(3, l3)
+	output.setNumber(4, l4)
+	output.setNumber(5, l5)
+	output.setNumber(6, l6)
+	output.setNumber(7, TT)
+	
+end
+">
+					<pos x="6.25" y="-1.75"/>
+					<in1 component_id="55"/>
+				</object>
+			</c>
+			<c type="40">
+				<object id="55" count="1">
+					<pos x="5" y="-1.75"/>
+					<inc component_id="62"/>
+					<in1 component_id="46"/>
+				</object>
+			</c>
+			<c type="31">
+				<object id="56" i="6">
+					<pos x="7.25" y="-2.25"/>
+					<in1 component_id="54"/>
+				</object>
+			</c>
+			<c type="56">
+				<object id="57" script="function onTick()
+	Lights = input.getBool(1)
+	TT = input.getNumber(1)
+	l1 = 0
+	l2 = 0
+	l3 = 0
+	l4 = 0
+	l5 = 0
+	l6 = 0
+	
+if Lights == true then
+	if TT==0  then
+		l5=255
+		l6=255
+	end
+	if TT==1  then
+		l5=255-1
+		l6=255
+		l1=1
+	end
+	if TT==2  then
+		l5=255-1-2
+		l6=255
+		l1=1+2
+	end
+	if TT==3  then
+		l5=255-1-2-4
+		l6=255
+		l1=1+2+4
+	end
+	if TT==4  then
+		l5=255-1-2-4-8
+		l6=255
+		l1=1+2+4+8
+	end
+	if TT==5  then
+		l5=255-1-2-4-8-16
+		l6=255
+		l1=1+2+4+8+16
+	end
+	if TT==6  then
+		l5=255-1-2-4-8-16-32
+		l6=255
+		l1=1+2+4+8+16+32
+	end
+	if TT==7  then
+		l5=255-1-2-4-8-16-32-64
+		l6=255
+		l1=1+2+4+8+16+32+64
+	end
+	
+---------------------------------------
+	
+	if TT==8  then
+		l6=255
+		l1=255
+	end
+	if TT==9  then
+		l6=255-1
+		l1=255
+		l2=1
+	end
+	if TT==10  then
+		l6=255-1-2
+		l1=255
+		l2=1+2
+	end
+	if TT==11  then
+		l6=255-1-2-4
+		l1=255
+		l2=1+2+4
+	end
+	if TT==12  then
+		l6=255-1-2-4-8
+		l1=255
+		l2=1+2+4+8
+	end
+	if TT==13  then
+		l6=255-1-2-4-8-16
+		l1=255
+		l2=1+2+4+8+16
+	end
+	if TT==14  then
+		l6=255-1-2-4-8-16-32
+		l1=255
+		l2=1+2+4+8+16+32
+	end
+	if TT==15  then
+		l6=255-1-2-4-8-16-32-64
+		l1=255
+		l2=1+2+4+8+16+32+6
+	end
+	
+---------------------------------------
+	
+	if TT==16  then
+		l1=255
+		l2=255
+	end
+	if TT==17  then
+		l1=255-1
+		l2=255
+		l3=1
+	end
+	if TT==18  then
+		l1=255-1-2
+		l2=255
+		l3=1+2
+	end
+	if TT==19  then
+		l1=255-1-2-4
+		l2=255
+		l3=1+2+4
+	end
+	if TT==20  then
+		l1=255-1-2-4-8
+		l2=255
+		l3=1+2+4+8
+	end
+	if TT==21  then
+		l1=255-1-2-4-8-16
+		l2=255
+		l3=1+2+4+8+16
+	end
+	if TT==22  then
+		l1=255-1-2-4-8-16-32
+		l2=255
+		l3=1+2+4+8+16+32
+	end
+	if TT==23  then
+		l1=255-1-2-4-8-16-32-64
+		l2=255
+		l3=1+2+4+8+16+32+6
+	end
+	
+---------------------------------------
+	
+	if TT==24  then
+		l2=255
+		l3=255
+	end
+	if TT==25  then
+		l2=255-1
+		l3=255
+		l4=1
+	end
+	if TT==26  then
+		l2=255-1-2
+		l3=255
+		l4=1+2
+	end
+	if TT==27  then
+		l2=255-1-2-4
+		l3=255
+		l4=1+2+4
+	end
+	if TT==28  then
+		l2=255-1-2-4-8
+		l3=255
+		l4=1+2+4+8
+	end
+	if TT==29  then
+		l2=255-1-2-4-8-16
+		l3=255
+		l4=1+2+4+8+16
+	end
+	if TT==30  then
+		l2=255-1-2-4-8-16-32
+		l3=255
+		l4=1+2+4+8+16+32
+	end
+	if TT==31  then
+		l2=255-1-2-4-8-16-32-64
+		l3=255
+		l4=1+2+4+8+16+32+6
+	end
+	
+---------------------------------------
+	
+	if TT==32  then
+		l3=255
+		l4=255
+	end
+	if TT==33  then
+		l3=255-1
+		l4=255
+		l5=1
+	end
+	if TT==34  then
+		l3=255-1-2
+		l4=255
+		l5=1+2
+	end
+	if TT==35  then
+		l3=255-1-2-4
+		l4=255
+		l5=1+2+4
+	end
+	if TT==36  then
+		l3=255-1-2-4-8
+		l4=255
+		l5=1+2+4+8
+	end
+	if TT==37  then
+		l3=255-1-2-4-8-16
+		l4=255
+		l5=1+2+4+8+16
+	end
+	if TT==38  then
+		l3=255-1-2-4-8-16-32
+		l4=255
+		l5=1+2+4+8+16+32
+	end
+	if TT==39  then
+		l3=255-1-2-4-8-16-32-64
+		l4=255
+		l5=1+2+4+8+16+32+6
+	end
+	
+---------------------------------------
+	
+	if TT==40  then
+		l4=255
+		l5=255
+	end
+	if TT==41  then
+		l4=255-1
+		l5=255
+		l6=1
+	end
+	if TT==42  then
+		l4=255-1-2
+		l5=255
+		l6=1+2
+	end
+	if TT==43  then
+		l4=255-1-2-4
+		l5=255
+		l6=1+2+4
+	end
+	if TT==44  then
+		l4=255-1-2-4-8
+		l5=255
+		l6=1+2+4+8
+	end
+	if TT==45  then
+		l4=255-1-2-4-8-16
+		l5=255
+		l6=1+2+4+8+16
+	end
+	if TT==46  then
+		l4=255-1-2-4-8-16-32
+		l5=255
+		l6=1+2+4+8+16+32
+	end
+	if TT==47  then
+		l4=255-1-2-4-8-16-32-64
+		l5=255
+		l6=1+2+4+8+16+32+6
+	end
+	
+
+--NADO SOKRATIT OBRATNIM SCHETOM ILI SSYLKAMY
+
+	
+	TT = TT+1
+	if TT&gt;47 then TT = 0 end
+end
+	output.setNumber(1, l1)
+	output.setNumber(2, l2)
+	output.setNumber(3, l3)
+	output.setNumber(4, l4)
+	output.setNumber(5, l5)
+	output.setNumber(6, l6)
+	output.setNumber(7, TT)
+	
+end
+">
+					<pos x="6.25" y="6.25"/>
+					<in1 component_id="58"/>
+				</object>
+			</c>
+			<c type="40">
+				<object id="58" count="1">
+					<pos x="5" y="6.25"/>
+					<inc component_id="63"/>
+					<in1 component_id="48"/>
+				</object>
+			</c>
+			<c type="31">
+				<object id="59" i="6">
+					<pos x="7.25" y="5.75"/>
+					<in1 component_id="57"/>
+				</object>
+			</c>
+			<c>
+				<object id="60">
+					<pos x="1.75" y="-2"/>
+					<in1 component_id="29"/>
+				</object>
+			</c>
+			<c>
+				<object id="61">
+					<pos x="1.75" y="6"/>
+					<in1 component_id="26"/>
+				</object>
+			</c>
+			<c type="41">
+				<object id="62" count="1">
+					<pos x="4" y="0.5"/>
+					<in1 component_id="29"/>
+				</object>
+			</c>
+			<c type="41">
+				<object id="63" count="1">
+					<pos x="4" y="4.25"/>
+					<in1 component_id="26"/>
+				</object>
+			</c>
+		</components>
+		<components_bridge>
+			<c type="5">
+				<object id="8">
+					<pos x="7.75" y="-1.5"/>
+					<in1 component_id="54"/>
+				</object>
+			</c>
+			<c type="1">
+				<object id="10">
+					<pos x="7.75" y="1"/>
+					<in1 component_id="33"/>
+				</object>
+			</c>
+			<c type="1">
+				<object id="11">
+					<pos x="7.75" y="3.75"/>
+					<in1 component_id="30"/>
+				</object>
+			</c>
+			<c type="5">
+				<object id="12">
+					<pos x="7.75" y="6.5"/>
+					<in1 component_id="57"/>
+				</object>
+			</c>
+			<c type="1">
+				<object id="13">
+					<pos x="7.75" y="1.5"/>
+					<in1 component_id="32"/>
+				</object>
+			</c>
+			<c type="1">
+				<object id="14">
+					<pos x="7.75" y="3.25"/>
+					<in1 component_id="31"/>
+				</object>
+			</c>
+			<c>
+				<object id="15">
+					<pos x="-4.5" y="2.25"/>
+				</object>
+			</c>
+			<c type="2">
+				<object id="17">
+					<pos x="-4.5" y="1.25"/>
+				</object>
+			</c>
+			<c type="2">
+				<object id="23">
+					<pos x="-4.5" y="1.75"/>
+				</object>
+			</c>
+			<c type="1">
+				<object id="36">
+					<pos x="7.75" y="2.75"/>
+					<in1 component_id="40"/>
+				</object>
+			</c>
+			<c type="1">
+				<object id="37">
+					<pos x="7.75" y="2"/>
+					<in1 component_id="41"/>
+				</object>
+			</c>
+		</components_bridge>
+		<groups/>
+		<component_states>
+			<c0 id="19" script="-- Tick function that will be executed every logic tick
+function onTick()
+	EmergencyMod = input.getBool(1)		
+	WS = input.getNumber(1)			
+	AD = input.getNumber(2)
+	
+	LF = false
+	LS = false
+	LR = false
+	RF = false
+	RS = false
+	RR = false
+	soundTurning = false
+	soundBack = false
+	
+	
+	if AD&lt;-0.1 or EmergencyMod==true then
+		LF = true
+		soundTurning = true
+	end
+	if AD&gt;0.1 or EmergencyMod==true then
+		RF = true
+		soundTurning = true
+	end
+	
+	if AD&lt;-0.1 then
+		LS = true
+		LR = true
+		soundTurning = true
+	end
+	if AD&gt;0.1 then
+		RS = true
+		RR = true
+		soundTurning = true
+	end
+	
+	if WS&lt;-0.1 or EmergencyMod==true then
+		LR = true
+		RR = true
+		soundTurning = true
+	end
+
+	if WS&lt;-0.1 then
+		soundTurning = false
+		soundBack = true
+	end
+	
+	output.setBool(1, LF)
+	output.setBool(5, LS)
+	output.setBool(3, LR)
+	output.setBool(2, RF)
+	output.setBool(6, RS)
+	output.setBool(4, RR)
+	output.setBool(7, soundTurning)
+	output.setBool(8, soundBack)
+end
+
+">
+				<pos x="-1" y="2.25"/>
+				<in1 component_id="22"/>
+			</c0>
+			<c1 id="21" count="2">
+				<pos x="-3.25" y="1.25"/>
+				<in1 component_id="23"/>
+				<in2 component_id="17"/>
+			</c1>
+			<c2 id="22" count="1">
+				<pos x="-2.25" y="2.25"/>
+				<inc component_id="21"/>
+				<in1 component_id="15"/>
+			</c2>
+			<c3 id="24">
+				<pos x="0.75" y="3.25"/>
+				<in1 component_id="19"/>
+			</c3>
+			<c4 id="25" i="2">
+				<pos x="0.75" y="3.75"/>
+				<in1 component_id="19"/>
+			</c4>
+			<c5 id="26" i="4">
+				<pos x="0.75" y="4.25"/>
+				<in1 component_id="19"/>
+			</c5>
+			<c6 id="27" i="1">
+				<pos x="0.75" y="1.5"/>
+				<in1 component_id="19"/>
+			</c6>
+			<c7 id="28" i="3">
+				<pos x="0.75" y="1"/>
+				<in1 component_id="19"/>
+			</c7>
+			<c8 id="29" i="5">
+				<pos x="0.75" y="0.5"/>
+				<in1 component_id="19"/>
+			</c8>
+			<c9 id="30" on="0.7" off="0.7">
+				<pos x="2" y="3.75"/>
+				<in1 component_id="25"/>
+			</c9>
+			<c10 id="31" on="0.7" off="0.7">
+				<pos x="2" y="3.25"/>
+				<in1 component_id="24"/>
+			</c10>
+			<c11 id="32" on="0.7" off="0.7">
+				<pos x="2" y="1.5"/>
+				<in1 component_id="27"/>
+			</c11>
+			<c12 id="33" on="0.7" off="0.7">
+				<pos x="2" y="1"/>
+				<in1 component_id="28"/>
+			</c12>
+			<c13 id="38" i="6">
+				<pos x="0.75" y="2.75"/>
+				<in1 component_id="19"/>
+			</c13>
+			<c14 id="39" i="7">
+				<pos x="0.75" y="2"/>
+				<in1 component_id="19"/>
+			</c14>
+			<c15 id="40" on="0.6" off="0.1">
+				<pos x="2" y="2.75"/>
+				<in1 component_id="38"/>
+			</c15>
+			<c16 id="41" on="0.7" off="0.7">
+				<pos x="2" y="2"/>
+				<in1 component_id="39"/>
+			</c16>
+			<c17 id="46">
+				<pos x="3.75" y="-2.25"/>
+				<in1 component_id="29"/>
+				<in2 component_id="60"/>
+				<in3 component_id="56"/>
+				<r text="0"/>
+			</c17>
+			<c18 id="48">
+				<pos x="3.75" y="5.75"/>
+				<in1 component_id="26"/>
+				<in2 component_id="61"/>
+				<in3 component_id="59"/>
+				<r text="0"/>
+			</c18>
+			<c19 id="54" script="function onTick()
+	Lights = input.getBool(1)
+	TT = input.getNumber(1)
+	l1 = 0
+	l2 = 0
+	l3 = 0
+	l4 = 0
+	l5 = 0
+	l6 = 0
+	
+if Lights == true then
+	if TT==0  then
+		l5=255
+		l6=255
+	end
+	if TT==1  then
+		l5=255-1
+		l6=255
+		l1=1
+	end
+	if TT==2  then
+		l5=255-1-2
+		l6=255
+		l1=1+2
+	end
+	if TT==3  then
+		l5=255-1-2-4
+		l6=255
+		l1=1+2+4
+	end
+	if TT==4  then
+		l5=255-1-2-4-8
+		l6=255
+		l1=1+2+4+8
+	end
+	if TT==5  then
+		l5=255-1-2-4-8-16
+		l6=255
+		l1=1+2+4+8+16
+	end
+	if TT==6  then
+		l5=255-1-2-4-8-16-32
+		l6=255
+		l1=1+2+4+8+16+32
+	end
+	if TT==7  then
+		l5=255-1-2-4-8-16-32-64
+		l6=255
+		l1=1+2+4+8+16+32+64
+	end
+	
+---------------------------------------
+	
+	if TT==8  then
+		l6=255
+		l1=255
+	end
+	if TT==9  then
+		l6=255-1
+		l1=255
+		l2=1
+	end
+	if TT==10  then
+		l6=255-1-2
+		l1=255
+		l2=1+2
+	end
+	if TT==11  then
+		l6=255-1-2-4
+		l1=255
+		l2=1+2+4
+	end
+	if TT==12  then
+		l6=255-1-2-4-8
+		l1=255
+		l2=1+2+4+8
+	end
+	if TT==13  then
+		l6=255-1-2-4-8-16
+		l1=255
+		l2=1+2+4+8+16
+	end
+	if TT==14  then
+		l6=255-1-2-4-8-16-32
+		l1=255
+		l2=1+2+4+8+16+32
+	end
+	if TT==15  then
+		l6=255-1-2-4-8-16-32-64
+		l1=255
+		l2=1+2+4+8+16+32+6
+	end
+	
+---------------------------------------
+	
+	if TT==16  then
+		l1=255
+		l2=255
+	end
+	if TT==17  then
+		l1=255-1
+		l2=255
+		l3=1
+	end
+	if TT==18  then
+		l1=255-1-2
+		l2=255
+		l3=1+2
+	end
+	if TT==19  then
+		l1=255-1-2-4
+		l2=255
+		l3=1+2+4
+	end
+	if TT==20  then
+		l1=255-1-2-4-8
+		l2=255
+		l3=1+2+4+8
+	end
+	if TT==21  then
+		l1=255-1-2-4-8-16
+		l2=255
+		l3=1+2+4+8+16
+	end
+	if TT==22  then
+		l1=255-1-2-4-8-16-32
+		l2=255
+		l3=1+2+4+8+16+32
+	end
+	if TT==23  then
+		l1=255-1-2-4-8-16-32-64
+		l2=255
+		l3=1+2+4+8+16+32+6
+	end
+	
+---------------------------------------
+	
+	if TT==24  then
+		l2=255
+		l3=255
+	end
+	if TT==25  then
+		l2=255-1
+		l3=255
+		l4=1
+	end
+	if TT==26  then
+		l2=255-1-2
+		l3=255
+		l4=1+2
+	end
+	if TT==27  then
+		l2=255-1-2-4
+		l3=255
+		l4=1+2+4
+	end
+	if TT==28  then
+		l2=255-1-2-4-8
+		l3=255
+		l4=1+2+4+8
+	end
+	if TT==29  then
+		l2=255-1-2-4-8-16
+		l3=255
+		l4=1+2+4+8+16
+	end
+	if TT==30  then
+		l2=255-1-2-4-8-16-32
+		l3=255
+		l4=1+2+4+8+16+32
+	end
+	if TT==31  then
+		l2=255-1-2-4-8-16-32-64
+		l3=255
+		l4=1+2+4+8+16+32+6
+	end
+	
+---------------------------------------
+	
+	if TT==32  then
+		l3=255
+		l4=255
+	end
+	if TT==33  then
+		l3=255-1
+		l4=255
+		l5=1
+	end
+	if TT==34  then
+		l3=255-1-2
+		l4=255
+		l5=1+2
+	end
+	if TT==35  then
+		l3=255-1-2-4
+		l4=255
+		l5=1+2+4
+	end
+	if TT==36  then
+		l3=255-1-2-4-8
+		l4=255
+		l5=1+2+4+8
+	end
+	if TT==37  then
+		l3=255-1-2-4-8-16
+		l4=255
+		l5=1+2+4+8+16
+	end
+	if TT==38  then
+		l3=255-1-2-4-8-16-32
+		l4=255
+		l5=1+2+4+8+16+32
+	end
+	if TT==39  then
+		l3=255-1-2-4-8-16-32-64
+		l4=255
+		l5=1+2+4+8+16+32+6
+	end
+	
+---------------------------------------
+	
+	if TT==40  then
+		l4=255
+		l5=255
+	end
+	if TT==41  then
+		l4=255-1
+		l5=255
+		l6=1
+	end
+	if TT==42  then
+		l4=255-1-2
+		l5=255
+		l6=1+2
+	end
+	if TT==43  then
+		l4=255-1-2-4
+		l5=255
+		l6=1+2+4
+	end
+	if TT==44  then
+		l4=255-1-2-4-8
+		l5=255
+		l6=1+2+4+8
+	end
+	if TT==45  then
+		l4=255-1-2-4-8-16
+		l5=255
+		l6=1+2+4+8+16
+	end
+	if TT==46  then
+		l4=255-1-2-4-8-16-32
+		l5=255
+		l6=1+2+4+8+16+32
+	end
+	if TT==47  then
+		l4=255-1-2-4-8-16-32-64
+		l5=255
+		l6=1+2+4+8+16+32+6
+	end
+	
+
+--NADO SOKRATIT OBRATNIM SCHETOM ILI SSYLKAMY
+
+	
+	TT = TT+1
+	if TT&gt;47 then TT = 0 end
+end
+	output.setNumber(1, l1)
+	output.setNumber(2, l2)
+	output.setNumber(3, l3)
+	output.setNumber(4, l4)
+	output.setNumber(5, l5)
+	output.setNumber(6, l6)
+	output.setNumber(7, TT)
+	
+end
+">
+				<pos x="6.25" y="-1.75"/>
+				<in1 component_id="55"/>
+			</c19>
+			<c20 id="55" count="1">
+				<pos x="5" y="-1.75"/>
+				<inc component_id="62"/>
+				<in1 component_id="46"/>
+			</c20>
+			<c21 id="56" i="6">
+				<pos x="7.25" y="-2.25"/>
+				<in1 component_id="54"/>
+			</c21>
+			<c22 id="57" script="function onTick()
+	Lights = input.getBool(1)
+	TT = input.getNumber(1)
+	l1 = 0
+	l2 = 0
+	l3 = 0
+	l4 = 0
+	l5 = 0
+	l6 = 0
+	
+if Lights == true then
+	if TT==0  then
+		l5=255
+		l6=255
+	end
+	if TT==1  then
+		l5=255-1
+		l6=255
+		l1=1
+	end
+	if TT==2  then
+		l5=255-1-2
+		l6=255
+		l1=1+2
+	end
+	if TT==3  then
+		l5=255-1-2-4
+		l6=255
+		l1=1+2+4
+	end
+	if TT==4  then
+		l5=255-1-2-4-8
+		l6=255
+		l1=1+2+4+8
+	end
+	if TT==5  then
+		l5=255-1-2-4-8-16
+		l6=255
+		l1=1+2+4+8+16
+	end
+	if TT==6  then
+		l5=255-1-2-4-8-16-32
+		l6=255
+		l1=1+2+4+8+16+32
+	end
+	if TT==7  then
+		l5=255-1-2-4-8-16-32-64
+		l6=255
+		l1=1+2+4+8+16+32+64
+	end
+	
+---------------------------------------
+	
+	if TT==8  then
+		l6=255
+		l1=255
+	end
+	if TT==9  then
+		l6=255-1
+		l1=255
+		l2=1
+	end
+	if TT==10  then
+		l6=255-1-2
+		l1=255
+		l2=1+2
+	end
+	if TT==11  then
+		l6=255-1-2-4
+		l1=255
+		l2=1+2+4
+	end
+	if TT==12  then
+		l6=255-1-2-4-8
+		l1=255
+		l2=1+2+4+8
+	end
+	if TT==13  then
+		l6=255-1-2-4-8-16
+		l1=255
+		l2=1+2+4+8+16
+	end
+	if TT==14  then
+		l6=255-1-2-4-8-16-32
+		l1=255
+		l2=1+2+4+8+16+32
+	end
+	if TT==15  then
+		l6=255-1-2-4-8-16-32-64
+		l1=255
+		l2=1+2+4+8+16+32+6
+	end
+	
+---------------------------------------
+	
+	if TT==16  then
+		l1=255
+		l2=255
+	end
+	if TT==17  then
+		l1=255-1
+		l2=255
+		l3=1
+	end
+	if TT==18  then
+		l1=255-1-2
+		l2=255
+		l3=1+2
+	end
+	if TT==19  then
+		l1=255-1-2-4
+		l2=255
+		l3=1+2+4
+	end
+	if TT==20  then
+		l1=255-1-2-4-8
+		l2=255
+		l3=1+2+4+8
+	end
+	if TT==21  then
+		l1=255-1-2-4-8-16
+		l2=255
+		l3=1+2+4+8+16
+	end
+	if TT==22  then
+		l1=255-1-2-4-8-16-32
+		l2=255
+		l3=1+2+4+8+16+32
+	end
+	if TT==23  then
+		l1=255-1-2-4-8-16-32-64
+		l2=255
+		l3=1+2+4+8+16+32+6
+	end
+	
+---------------------------------------
+	
+	if TT==24  then
+		l2=255
+		l3=255
+	end
+	if TT==25  then
+		l2=255-1
+		l3=255
+		l4=1
+	end
+	if TT==26  then
+		l2=255-1-2
+		l3=255
+		l4=1+2
+	end
+	if TT==27  then
+		l2=255-1-2-4
+		l3=255
+		l4=1+2+4
+	end
+	if TT==28  then
+		l2=255-1-2-4-8
+		l3=255
+		l4=1+2+4+8
+	end
+	if TT==29  then
+		l2=255-1-2-4-8-16
+		l3=255
+		l4=1+2+4+8+16
+	end
+	if TT==30  then
+		l2=255-1-2-4-8-16-32
+		l3=255
+		l4=1+2+4+8+16+32
+	end
+	if TT==31  then
+		l2=255-1-2-4-8-16-32-64
+		l3=255
+		l4=1+2+4+8+16+32+6
+	end
+	
+---------------------------------------
+	
+	if TT==32  then
+		l3=255
+		l4=255
+	end
+	if TT==33  then
+		l3=255-1
+		l4=255
+		l5=1
+	end
+	if TT==34  then
+		l3=255-1-2
+		l4=255
+		l5=1+2
+	end
+	if TT==35  then
+		l3=255-1-2-4
+		l4=255
+		l5=1+2+4
+	end
+	if TT==36  then
+		l3=255-1-2-4-8
+		l4=255
+		l5=1+2+4+8
+	end
+	if TT==37  then
+		l3=255-1-2-4-8-16
+		l4=255
+		l5=1+2+4+8+16
+	end
+	if TT==38  then
+		l3=255-1-2-4-8-16-32
+		l4=255
+		l5=1+2+4+8+16+32
+	end
+	if TT==39  then
+		l3=255-1-2-4-8-16-32-64
+		l4=255
+		l5=1+2+4+8+16+32+6
+	end
+	
+---------------------------------------
+	
+	if TT==40  then
+		l4=255
+		l5=255
+	end
+	if TT==41  then
+		l4=255-1
+		l5=255
+		l6=1
+	end
+	if TT==42  then
+		l4=255-1-2
+		l5=255
+		l6=1+2
+	end
+	if TT==43  then
+		l4=255-1-2-4
+		l5=255
+		l6=1+2+4
+	end
+	if TT==44  then
+		l4=255-1-2-4-8
+		l5=255
+		l6=1+2+4+8
+	end
+	if TT==45  then
+		l4=255-1-2-4-8-16
+		l5=255
+		l6=1+2+4+8+16
+	end
+	if TT==46  then
+		l4=255-1-2-4-8-16-32
+		l5=255
+		l6=1+2+4+8+16+32
+	end
+	if TT==47  then
+		l4=255-1-2-4-8-16-32-64
+		l5=255
+		l6=1+2+4+8+16+32+6
+	end
+	
+
+--NADO SOKRATIT OBRATNIM SCHETOM ILI SSYLKAMY
+
+	
+	TT = TT+1
+	if TT&gt;47 then TT = 0 end
+end
+	output.setNumber(1, l1)
+	output.setNumber(2, l2)
+	output.setNumber(3, l3)
+	output.setNumber(4, l4)
+	output.setNumber(5, l5)
+	output.setNumber(6, l6)
+	output.setNumber(7, TT)
+	
+end
+">
+				<pos x="6.25" y="6.25"/>
+				<in1 component_id="58"/>
+			</c22>
+			<c23 id="58" count="1">
+				<pos x="5" y="6.25"/>
+				<inc component_id="63"/>
+				<in1 component_id="48"/>
+			</c23>
+			<c24 id="59" i="6">
+				<pos x="7.25" y="5.75"/>
+				<in1 component_id="57"/>
+			</c24>
+			<c25 id="60">
+				<pos x="1.75" y="-2"/>
+				<in1 component_id="29"/>
+			</c25>
+			<c26 id="61">
+				<pos x="1.75" y="6"/>
+				<in1 component_id="26"/>
+			</c26>
+			<c27 id="62" count="1">
+				<pos x="4" y="0.5"/>
+				<in1 component_id="29"/>
+			</c27>
+			<c28 id="63" count="1">
+				<pos x="4" y="4.25"/>
+				<in1 component_id="26"/>
+			</c28>
+		</component_states>
+		<component_bridge_states>
+			<c0 id="8">
+				<pos x="7.75" y="-1.5"/>
+				<in1 component_id="54"/>
+			</c0>
+			<c1 id="10">
+				<pos x="7.75" y="1"/>
+				<in1 component_id="33"/>
+			</c1>
+			<c2 id="11">
+				<pos x="7.75" y="3.75"/>
+				<in1 component_id="30"/>
+			</c2>
+			<c3 id="12">
+				<pos x="7.75" y="6.5"/>
+				<in1 component_id="57"/>
+			</c3>
+			<c4 id="13">
+				<pos x="7.75" y="1.5"/>
+				<in1 component_id="32"/>
+			</c4>
+			<c5 id="14">
+				<pos x="7.75" y="3.25"/>
+				<in1 component_id="31"/>
+			</c5>
+			<c6 id="15">
+				<pos x="-4.5" y="2.25"/>
+			</c6>
+			<c7 id="17">
+				<pos x="-4.5" y="1.25"/>
+			</c7>
+			<c8 id="23">
+				<pos x="-4.5" y="1.75"/>
+			</c8>
+			<c9 id="36">
+				<pos x="7.75" y="2.75"/>
+				<in1 component_id="40"/>
+			</c9>
+			<c10 id="37">
+				<pos x="7.75" y="2"/>
+				<in1 component_id="41"/>
+			</c10>
+		</component_bridge_states>
+		<group_states/>
+	</group>
+</microprocessor>
+

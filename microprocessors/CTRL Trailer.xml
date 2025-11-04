@@ -1,0 +1,468 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<microprocessor name="CTRL (Trailer)" description="Energy economy computer" width="3" length="4" id_counter="95" id_counter_node="33" sym0="49155" sym1="32769" sym4="68" sym5="238" sym6="68" sym8="2046" sym9="2046" sym10="32766" sym11="32766" sym12="32766" sym14="32769" sym15="49155">
+	<nodes>
+		<n id="14" component_id="48">
+			<node label="In (Mag and Saddle Data)" mode="1" type="5"/>
+		</n>
+		<n id="15" component_id="50">
+			<node label="In (Battery)" mode="1" type="1">
+				<position x="2"/>
+			</node>
+		</n>
+		<n id="16" component_id="54">
+			<node label="Out (Battery, %)" type="1">
+				<position x="2" z="1"/>
+			</node>
+		</n>
+		<n id="17" component_id="56">
+			<node label="Out (Battery, kWh)" type="1">
+				<position x="2" z="2"/>
+			</node>
+		</n>
+		<n id="18" component_id="59">
+			<node label="Out (Piston panel middle)" type="1" description="Const 4 piston panel">
+				<position x="2" z="3"/>
+			</node>
+		</n>
+		<n id="26" component_id="76">
+			<node label="Out (Mag Track Speed)" type="1">
+				<position x="1" z="3"/>
+			</node>
+		</n>
+		<n id="27" component_id="77">
+			<node label="In (Brake pushbutton)" mode="1">
+				<position x="1"/>
+			</node>
+		</n>
+		<n id="28" component_id="79">
+			<node label="Out (Brake)">
+				<position z="1"/>
+			</node>
+		</n>
+		<n id="29" component_id="81">
+			<node label="Out (Light left)">
+				<position z="3"/>
+			</node>
+		</n>
+		<n id="30" component_id="85">
+			<node label="Out (Light right)">
+				<position z="2"/>
+			</node>
+		</n>
+		<n id="31" component_id="84">
+			<node label="Out (Mag Switch)">
+				<position x="1" z="1"/>
+			</node>
+		</n>
+		<n id="33" component_id="95">
+			<node label="In (Saddle data)" mode="1" type="5">
+				<position x="1" z="2"/>
+			</node>
+		</n>
+	</nodes>
+	<group>
+		<data>
+			<inputs/>
+			<outputs/>
+		</data>
+		<components>
+			<c type="28">
+				<object id="14">
+					<pos x="-2" y="-2.75"/>
+					<in1 component_id="77"/>
+				</object>
+			</c>
+			<c type="45">
+				<object id="15" e="x*100">
+					<pos x="-2" y="-0.25"/>
+					<in1 component_id="50"/>
+				</object>
+			</c>
+			<c type="20">
+				<object id="17" name="Battery type" i="2">
+					<pos x="-3.5" y="-0.75"/>
+					<items>
+						<i l="Small">
+							<v text="0.444" value="0.444"/>
+						</i>
+						<i l="Medium">
+							<v text="3.556" value="3.556"/>
+						</i>
+						<i l="Large">
+							<v text="71.111" value="71.111"/>
+						</i>
+					</items>
+				</object>
+			</c>
+			<c type="8">
+				<object id="18">
+					<pos x="-2" y="-0.75"/>
+					<in1 component_id="50"/>
+					<in2 component_id="17"/>
+				</object>
+			</c>
+			<c type="19">
+				<object id="22" name="Ch: Mag Switch">
+					<pos x="-3.5" y="-4.25"/>
+					<min text="1" value="1"/>
+					<max text="32" value="32"/>
+					<int text="1" value="1"/>
+					<v text="1" value="1"/>
+				</object>
+			</c>
+			<c type="19">
+				<object id="23" name="Ch: Mag Up">
+					<pos x="-3.5" y="-4.75"/>
+					<min text="1" value="1"/>
+					<max text="32" value="32"/>
+					<int text="1" value="1"/>
+					<v text="2" value="2"/>
+				</object>
+			</c>
+			<c type="19">
+				<object id="24" name="Ch: Mag Down">
+					<pos x="-3.5" y="-5.25"/>
+					<min text="1" value="1"/>
+					<max text="32" value="32"/>
+					<int text="1" value="1"/>
+					<v text="3" value="3"/>
+				</object>
+			</c>
+			<c type="19">
+				<object id="25" name="Ch: Light left">
+					<pos x="-3.5" y="-5.75"/>
+					<min text="1" value="1"/>
+					<max text="32" value="32"/>
+					<int text="1" value="1"/>
+					<v text="1" value="1"/>
+				</object>
+			</c>
+			<c type="19">
+				<object id="26" name="Ch: Light right">
+					<pos x="-3.5" y="-6.25"/>
+					<min text="1" value="1"/>
+					<max text="32" value="32"/>
+					<int text="1" value="1"/>
+					<v text="2" value="2"/>
+				</object>
+			</c>
+			<c type="29">
+				<object id="27" i="-1">
+					<pos x="-2" y="-4.25"/>
+					<in1 component_id="48"/>
+					<in2 component_id="22"/>
+				</object>
+			</c>
+			<c type="29">
+				<object id="28" i="-1">
+					<pos x="-2" y="-4.75"/>
+					<in1 component_id="48"/>
+					<in2 component_id="23"/>
+				</object>
+			</c>
+			<c type="29">
+				<object id="29" i="-1">
+					<pos x="-2" y="-5.25"/>
+					<in1 component_id="48"/>
+					<in2 component_id="24"/>
+				</object>
+			</c>
+			<c type="29">
+				<object id="30" i="-1">
+					<pos x="-2" y="-5.75"/>
+					<in1 component_id="95"/>
+					<in2 component_id="25"/>
+				</object>
+			</c>
+			<c type="29">
+				<object id="31" i="-1">
+					<pos x="-2" y="-6.25"/>
+					<in1 component_id="95"/>
+					<in2 component_id="26"/>
+				</object>
+			</c>
+			<c type="34">
+				<object id="73" n="Piston panel middle">
+					<pos x="-3.5" y="-1.75"/>
+					<v text="0.2" value="0.2"/>
+				</object>
+			</c>
+			<c type="22">
+				<object id="88">
+					<pos x="0.5" y="-3.75"/>
+					<in1 component_id="91"/>
+					<in2 component_id="90"/>
+					<in3 component_id="28"/>
+				</object>
+			</c>
+			<c type="22">
+				<object id="89">
+					<pos x="1.5" y="-5"/>
+					<in1 component_id="92"/>
+					<in2 component_id="88"/>
+					<in3 component_id="29"/>
+				</object>
+			</c>
+			<c type="15">
+				<object id="90">
+					<pos x="-2.5" y="-3.5"/>
+					<n text="0"/>
+				</object>
+			</c>
+			<c type="19">
+				<object id="91" name="Mag Speed">
+					<pos x="-1.5" y="-3.25"/>
+					<min text="0.1" value="0.1"/>
+					<max text="1" value="1"/>
+					<int text="0.1" value="0.1"/>
+					<v text="1" value="1"/>
+				</object>
+			</c>
+			<c type="45">
+				<object id="92" e="-1*x">
+					<pos x="-0.5" y="-4.5"/>
+					<in1 component_id="91"/>
+				</object>
+			</c>
+		</components>
+		<components_bridge>
+			<c type="4">
+				<object id="48">
+					<pos x="-5" y="-4.5"/>
+				</object>
+			</c>
+			<c type="2">
+				<object id="50">
+					<pos x="-5" y="-0.25"/>
+				</object>
+			</c>
+			<c type="3">
+				<object id="54">
+					<pos x="2.75" y="-0.25"/>
+					<in1 component_id="15"/>
+				</object>
+			</c>
+			<c type="3">
+				<object id="56">
+					<pos x="2.75" y="-0.5"/>
+					<in1 component_id="18"/>
+				</object>
+			</c>
+			<c type="3">
+				<object id="59">
+					<pos x="2.75" y="-1.75"/>
+					<in1 component_id="73"/>
+				</object>
+			</c>
+			<c type="3">
+				<object id="76">
+					<pos x="2.75" y="-4.5"/>
+					<in1 component_id="89"/>
+				</object>
+			</c>
+			<c>
+				<object id="77">
+					<pos x="-5" y="-2.75"/>
+				</object>
+			</c>
+			<c type="1">
+				<object id="79">
+					<pos x="2.75" y="-2.75"/>
+					<in1 component_id="14"/>
+				</object>
+			</c>
+			<c type="1">
+				<object id="81">
+					<pos x="2.75" y="-5.5"/>
+					<in1 component_id="30"/>
+				</object>
+			</c>
+			<c type="1">
+				<object id="84">
+					<pos x="2.75" y="-4"/>
+					<in1 component_id="27"/>
+				</object>
+			</c>
+			<c type="1">
+				<object id="85">
+					<pos x="2.75" y="-6"/>
+					<in1 component_id="31"/>
+				</object>
+			</c>
+			<c type="4">
+				<object id="95">
+					<pos x="-5" y="-5.75"/>
+				</object>
+			</c>
+		</components_bridge>
+		<groups/>
+		<component_states>
+			<c0 id="14">
+				<pos x="-2" y="-2.75"/>
+				<in1 component_id="77"/>
+			</c0>
+			<c1 id="15" e="x*100">
+				<pos x="-2" y="-0.25"/>
+				<in1 component_id="50"/>
+			</c1>
+			<c2 id="17" name="Battery type" i="2">
+				<pos x="-3.5" y="-0.75"/>
+				<items>
+					<i l="Small">
+						<v text="0.444" value="0.444"/>
+					</i>
+					<i l="Medium">
+						<v text="3.556" value="3.556"/>
+					</i>
+					<i l="Large">
+						<v text="71.111" value="71.111"/>
+					</i>
+				</items>
+			</c2>
+			<c3 id="18">
+				<pos x="-2" y="-0.75"/>
+				<in1 component_id="50"/>
+				<in2 component_id="17"/>
+			</c3>
+			<c4 id="22" name="Ch: Mag Switch">
+				<pos x="-3.5" y="-4.25"/>
+				<min text="1" value="1"/>
+				<max text="32" value="32"/>
+				<int text="1" value="1"/>
+				<v text="1" value="1"/>
+			</c4>
+			<c5 id="23" name="Ch: Mag Up">
+				<pos x="-3.5" y="-4.75"/>
+				<min text="1" value="1"/>
+				<max text="32" value="32"/>
+				<int text="1" value="1"/>
+				<v text="2" value="2"/>
+			</c5>
+			<c6 id="24" name="Ch: Mag Down">
+				<pos x="-3.5" y="-5.25"/>
+				<min text="1" value="1"/>
+				<max text="32" value="32"/>
+				<int text="1" value="1"/>
+				<v text="3" value="3"/>
+			</c6>
+			<c7 id="25" name="Ch: Light left">
+				<pos x="-3.5" y="-5.75"/>
+				<min text="1" value="1"/>
+				<max text="32" value="32"/>
+				<int text="1" value="1"/>
+				<v text="1" value="1"/>
+			</c7>
+			<c8 id="26" name="Ch: Light right">
+				<pos x="-3.5" y="-6.25"/>
+				<min text="1" value="1"/>
+				<max text="32" value="32"/>
+				<int text="1" value="1"/>
+				<v text="2" value="2"/>
+			</c8>
+			<c9 id="27" i="-1">
+				<pos x="-2" y="-4.25"/>
+				<in1 component_id="48"/>
+				<in2 component_id="22"/>
+			</c9>
+			<c10 id="28" i="-1">
+				<pos x="-2" y="-4.75"/>
+				<in1 component_id="48"/>
+				<in2 component_id="23"/>
+			</c10>
+			<c11 id="29" i="-1">
+				<pos x="-2" y="-5.25"/>
+				<in1 component_id="48"/>
+				<in2 component_id="24"/>
+			</c11>
+			<c12 id="30" i="-1">
+				<pos x="-2" y="-5.75"/>
+				<in1 component_id="95"/>
+				<in2 component_id="25"/>
+			</c12>
+			<c13 id="31" i="-1">
+				<pos x="-2" y="-6.25"/>
+				<in1 component_id="95"/>
+				<in2 component_id="26"/>
+			</c13>
+			<c14 id="73" n="Piston panel middle">
+				<pos x="-3.5" y="-1.75"/>
+				<v text="0.2" value="0.2"/>
+			</c14>
+			<c15 id="88">
+				<pos x="0.5" y="-3.75"/>
+				<in1 component_id="91"/>
+				<in2 component_id="90"/>
+				<in3 component_id="28"/>
+			</c15>
+			<c16 id="89">
+				<pos x="1.5" y="-5"/>
+				<in1 component_id="92"/>
+				<in2 component_id="88"/>
+				<in3 component_id="29"/>
+			</c16>
+			<c17 id="90">
+				<pos x="-2.5" y="-3.5"/>
+				<n text="0"/>
+			</c17>
+			<c18 id="91" name="Mag Speed">
+				<pos x="-1.5" y="-3.25"/>
+				<min text="0.1" value="0.1"/>
+				<max text="1" value="1"/>
+				<int text="0.1" value="0.1"/>
+				<v text="1" value="1"/>
+			</c18>
+			<c19 id="92" e="-1*x">
+				<pos x="-0.5" y="-4.5"/>
+				<in1 component_id="91"/>
+			</c19>
+		</component_states>
+		<component_bridge_states>
+			<c0 id="48">
+				<pos x="-5" y="-4.5"/>
+			</c0>
+			<c1 id="50">
+				<pos x="-5" y="-0.25"/>
+			</c1>
+			<c2 id="54">
+				<pos x="2.75" y="-0.25"/>
+				<in1 component_id="15"/>
+			</c2>
+			<c3 id="56">
+				<pos x="2.75" y="-0.5"/>
+				<in1 component_id="18"/>
+			</c3>
+			<c4 id="59">
+				<pos x="2.75" y="-1.75"/>
+				<in1 component_id="73"/>
+			</c4>
+			<c5 id="76">
+				<pos x="2.75" y="-4.5"/>
+				<in1 component_id="89"/>
+			</c5>
+			<c6 id="77">
+				<pos x="-5" y="-2.75"/>
+			</c6>
+			<c7 id="79">
+				<pos x="2.75" y="-2.75"/>
+				<in1 component_id="14"/>
+			</c7>
+			<c8 id="81">
+				<pos x="2.75" y="-5.5"/>
+				<in1 component_id="30"/>
+			</c8>
+			<c9 id="84">
+				<pos x="2.75" y="-4"/>
+				<in1 component_id="27"/>
+			</c9>
+			<c10 id="85">
+				<pos x="2.75" y="-6"/>
+				<in1 component_id="31"/>
+			</c10>
+			<c11 id="95">
+				<pos x="-5" y="-5.75"/>
+			</c11>
+		</component_bridge_states>
+		<group_states/>
+	</group>
+</microprocessor>
+

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<microprocessor name="Control (Locator Signal Strength)" description="1/x where x is delay value" width="1" length="2" id_counter="20" id_counter_node="2" sym1="7" sym2="2" sym3="130" sym4="263" sym5="578" sym6="642" sym7="679" sym8="642" sym9="578" sym10="263" sym11="130" sym12="2" sym13="7">
+	<nodes>
+		<n id="1" component_id="1">
+			<node label="In (Locator)" mode="1"/>
+		</n>
+		<n id="2" component_id="4">
+			<node label="Out (Transponder Signal Strength)" type="1">
+				<position z="1"/>
+			</node>
+		</n>
+	</nodes>
+	<group>
+		<data>
+			<inputs/>
+			<outputs/>
+		</data>
+		<components>
+			<c type="13">
+				<object id="5">
+					<pos x="-3.25" y="-2"/>
+					<in1 component_id="11"/>
+					<in2 component_id="17"/>
+					<in3 component_id="7"/>
+					<r text="0"/>
+				</object>
+			</c>
+			<c type="45">
+				<object id="6" e="100*(1/x)">
+					<pos x="-2" y="-1.5"/>
+					<in1 component_id="5"/>
+				</object>
+			</c>
+			<c type="37">
+				<object id="7">
+					<pos x="-2.5" y="-0.5"/>
+					<in1 component_id="10"/>
+					<in3 component_id="11"/>
+					<r text="0"/>
+					<i text="1" value="1"/>
+					<min text="0"/>
+					<max text="0"/>
+				</object>
+			</c>
+			<c>
+				<object id="10">
+					<pos x="-4"/>
+					<in1 component_id="1"/>
+				</object>
+			</c>
+			<c type="48">
+				<object id="11">
+					<pos x="-5" y="-0.5"/>
+					<in1 component_id="1"/>
+				</object>
+			</c>
+			<c type="17">
+				<object id="17">
+					<pos x="-1.5" y="0.5"/>
+					<in1 component_id="7"/>
+					<in2 component_id="18"/>
+				</object>
+			</c>
+			<c type="15">
+				<object id="18">
+					<pos x="-2.75" y="0.5"/>
+					<n text="3600" value="3600"/>
+				</object>
+			</c>
+		</components>
+		<components_bridge>
+			<c>
+				<object id="1">
+					<pos x="-6"/>
+				</object>
+			</c>
+			<c type="3">
+				<object id="4">
+					<pos x="-0.75" y="-1.5"/>
+					<in1 component_id="6"/>
+				</object>
+			</c>
+		</components_bridge>
+		<groups/>
+		<component_states>
+			<c0 id="5">
+				<pos x="-3.25" y="-2"/>
+				<in1 component_id="11"/>
+				<in2 component_id="17"/>
+				<in3 component_id="7"/>
+				<r text="0"/>
+			</c0>
+			<c1 id="6" e="100*(1/x)">
+				<pos x="-2" y="-1.5"/>
+				<in1 component_id="5"/>
+			</c1>
+			<c2 id="7">
+				<pos x="-2.5" y="-0.5"/>
+				<in1 component_id="10"/>
+				<in3 component_id="11"/>
+				<r text="0"/>
+				<i text="1" value="1"/>
+				<min text="0"/>
+				<max text="0"/>
+			</c2>
+			<c3 id="10">
+				<pos x="-4"/>
+				<in1 component_id="1"/>
+			</c3>
+			<c4 id="11">
+				<pos x="-5" y="-0.5"/>
+				<in1 component_id="1"/>
+			</c4>
+			<c5 id="17">
+				<pos x="-1.5" y="0.5"/>
+				<in1 component_id="7"/>
+				<in2 component_id="18"/>
+			</c5>
+			<c6 id="18">
+				<pos x="-2.75" y="0.5"/>
+				<n text="3600" value="3600"/>
+			</c6>
+		</component_states>
+		<component_bridge_states>
+			<c0 id="1">
+				<pos x="-6"/>
+			</c0>
+			<c1 id="4">
+				<pos x="-0.75" y="-1.5"/>
+				<in1 component_id="6"/>
+			</c1>
+		</component_bridge_states>
+		<group_states/>
+	</group>
+</microprocessor>
+

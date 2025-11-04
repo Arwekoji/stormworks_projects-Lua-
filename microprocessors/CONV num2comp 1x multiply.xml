@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<microprocessor name="CONV num2comp (1x, multiply)" width="1" length="2" id_counter="21" id_counter_node="5" sym2="12302" sym3="18564" sym4="2308" sym5="3044" sym6="18694" sym7="12420" sym11="4408" sym12="2576" sym13="1040" sym14="2584" sym15="4368">
+	<nodes>
+		<n id="1" component_id="8">
+			<node label="In (Ch)" mode="1" type="1"/>
+		</n>
+		<n id="5" component_id="7">
+			<node label="Out (Composite 1x)" type="5">
+				<position z="1"/>
+			</node>
+		</n>
+	</nodes>
+	<group>
+		<data>
+			<inputs/>
+			<outputs/>
+		</data>
+		<components>
+			<c type="40">
+				<object id="12" count="1" offset="-1">
+					<pos y="2.75"/>
+					<in1 component_id="17"/>
+					<inoff component_id="21"/>
+				</object>
+			</c>
+			<c type="34">
+				<object id="13" n="X x N">
+					<pos x="-2.75" y="2.5"/>
+					<v text="1" value="1"/>
+				</object>
+			</c>
+			<c type="8">
+				<object id="17">
+					<pos x="-1.75" y="2.75"/>
+					<in1 component_id="8"/>
+					<in2 component_id="13"/>
+				</object>
+			</c>
+			<c type="19">
+				<object id="21" name="Channel">
+					<pos x="-1" y="2"/>
+					<min text="1" value="1"/>
+					<max text="32" value="32"/>
+					<int text="1" value="1"/>
+					<v text="1" value="1"/>
+				</object>
+			</c>
+		</components>
+		<components_bridge>
+			<c type="5">
+				<object id="7">
+					<pos x="1.5" y="3.25"/>
+					<in1 component_id="12"/>
+				</object>
+			</c>
+			<c type="2">
+				<object id="8">
+					<pos x="-3.75" y="3"/>
+				</object>
+			</c>
+		</components_bridge>
+		<groups/>
+		<component_states>
+			<c0 id="12" count="1" offset="-1">
+				<pos y="2.75"/>
+				<in1 component_id="17"/>
+				<inoff component_id="21"/>
+			</c0>
+			<c1 id="13" n="X x N">
+				<pos x="-2.75" y="2.5"/>
+				<v text="1" value="1"/>
+			</c1>
+			<c2 id="17">
+				<pos x="-1.75" y="2.75"/>
+				<in1 component_id="8"/>
+				<in2 component_id="13"/>
+			</c2>
+			<c3 id="21" name="Channel">
+				<pos x="-1" y="2"/>
+				<min text="1" value="1"/>
+				<max text="32" value="32"/>
+				<int text="1" value="1"/>
+				<v text="1" value="1"/>
+			</c3>
+		</component_states>
+		<component_bridge_states>
+			<c0 id="7">
+				<pos x="1.5" y="3.25"/>
+				<in1 component_id="12"/>
+			</c0>
+			<c1 id="8">
+				<pos x="-3.75" y="3"/>
+			</c1>
+		</component_bridge_states>
+		<group_states/>
+	</group>
+</microprocessor>
+

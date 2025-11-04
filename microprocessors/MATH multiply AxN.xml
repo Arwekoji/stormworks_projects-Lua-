@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<microprocessor name="MATH multiply (AxN)" description="A multiply A to preset number N" width="1" length="2" id_counter="8" id_counter_node="2" sym1="2056" sym2="1040" sym3="544" sym4="320" sym5="128" sym6="320" sym7="544" sym8="1040" sym9="2056" sym11="2232" sym12="1296" sym13="528" sym14="1304" sym15="2192">
+	<nodes>
+		<n id="1" component_id="2">
+			<node label="In (A)" mode="1" type="1"/>
+		</n>
+		<n id="2" component_id="5">
+			<node label="Out (AxN)" type="1">
+				<position z="1"/>
+			</node>
+		</n>
+	</nodes>
+	<group>
+		<data type="1049481524">
+			<inputs/>
+			<outputs/>
+		</data>
+		<components>
+			<c type="8">
+				<object id="7">
+					<pos x="0.25" y="-0.25"/>
+					<in1 component_id="2"/>
+					<in2 component_id="8"/>
+				</object>
+			</c>
+			<c type="34">
+				<object id="8" n="N">
+					<pos x="-1" y="-0.5"/>
+					<v text="1" value="1"/>
+				</object>
+			</c>
+		</components>
+		<components_bridge>
+			<c type="2">
+				<object id="2">
+					<pos x="-1"/>
+				</object>
+			</c>
+			<c type="3">
+				<object id="5">
+					<pos x="1.5"/>
+					<in1 component_id="7"/>
+				</object>
+			</c>
+		</components_bridge>
+		<groups/>
+		<component_states>
+			<c0 id="7">
+				<pos x="0.25" y="-0.25"/>
+				<in1 component_id="2"/>
+				<in2 component_id="8"/>
+			</c0>
+			<c1 id="8" n="N">
+				<pos x="-1" y="-0.5"/>
+				<v text="1" value="1"/>
+			</c1>
+		</component_states>
+		<component_bridge_states>
+			<c0 id="2">
+				<pos x="-1"/>
+			</c0>
+			<c1 id="5">
+				<pos x="1.5"/>
+				<in1 component_id="7"/>
+			</c1>
+		</component_bridge_states>
+		<group_states/>
+	</group>
+</microprocessor>
+

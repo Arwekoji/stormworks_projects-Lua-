@@ -1,0 +1,1150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<microprocessor name="CTRL (Engine Simple, 3 GB)" width="4" length="3" id_counter="317" id_counter_node="40" sym0="49155" sym1="32897" sym2="448" sym3="672" sym4="128" sym6="128" sym7="672" sym8="448" sym9="128" sym11="3072" sym12="4624" sym13="5116" sym14="35881" sym15="49155">
+	<nodes>
+		<n id="28" component_id="156">
+			<node label="In (Seat Control)" mode="1" type="5"/>
+		</n>
+		<n id="29" component_id="158">
+			<node label="In (Engine, RPS)" mode="1" type="1">
+				<position x="2"/>
+			</node>
+		</n>
+		<n id="30" component_id="160">
+			<node label="In (Engine, Temperature)" mode="1" type="1">
+				<position x="1"/>
+			</node>
+		</n>
+		<n id="31" component_id="161">
+			<node label="In (Any Starter)" mode="1" description="Works any button">
+				<position x="3"/>
+			</node>
+		</n>
+		<n id="32" component_id="164">
+			<node label="Out (Engine, Starter)" description="Works only if RPS less than X">
+				<position x="3" z="1"/>
+			</node>
+		</n>
+		<n id="33" component_id="166">
+			<node label="Out (Reverse)">
+				<position x="3" z="2"/>
+			</node>
+		</n>
+		<n id="34" component_id="171">
+			<node label="Out (1st gearbox)" description="Any K">
+				<position x="2" z="2"/>
+			</node>
+		</n>
+		<n id="35" component_id="170">
+			<node label="Out (2st gearbox)" description="Any K">
+				<position x="1" z="2"/>
+			</node>
+		</n>
+		<n id="36" component_id="172">
+			<node label="Out (3st gearbox)" description="Any K">
+				<position z="2"/>
+			</node>
+		</n>
+		<n id="37" component_id="176">
+			<node label="Out (Throttle)" type="1" description="(Engine can shut off if too low)">
+				<position x="1" z="1"/>
+			</node>
+		</n>
+		<n id="38" component_id="179">
+			<node label="Out (Clutch)" type="1" description="Works only for propellers">
+				<position x="2" z="1"/>
+			</node>
+		</n>
+		<n id="39" component_id="182">
+			<node label="Out (Transmission Mod)" type="1">
+				<position z="1"/>
+			</node>
+		</n>
+	</nodes>
+	<group>
+		<data type="1049481524">
+			<inputs/>
+			<outputs/>
+		</data>
+		<components>
+			<c type="18">
+				<object id="39">
+					<pos x="-3.25" y="-1.75"/>
+					<in1 component_id="158"/>
+					<in2 component_id="162"/>
+				</object>
+			</c>
+			<c type="1">
+				<object id="40">
+					<pos x="1" y="-1.75"/>
+					<in1 component_id="39"/>
+					<in2 component_id="161"/>
+				</object>
+			</c>
+			<c type="18">
+				<object id="43">
+					<pos x="9" y="-0.75"/>
+					<in1 component_id="249"/>
+					<in2 component_id="58"/>
+				</object>
+			</c>
+			<c type="15">
+				<object id="58">
+					<pos x="8" y="-1.25"/>
+					<n text="0"/>
+				</object>
+			</c>
+			<c type="19">
+				<object id="162" name="RPS limit for Starter">
+					<pos x="-4.25" y="-1"/>
+					<min text="1" value="1"/>
+					<max text="10" value="10"/>
+					<int text="1" value="1"/>
+					<v text="3" value="3"/>
+				</object>
+			</c>
+			<c type="19">
+				<object id="173" name="Minimum Throttle">
+					<pos x="8.25" y="1.75"/>
+					<min text="0"/>
+					<max text="1" value="1"/>
+					<int text="0.01" value="0.01"/>
+					<v text="0.41" value="0.41"/>
+				</object>
+			</c>
+			<c type="15">
+				<object id="186">
+					<pos x="9.25" y="5"/>
+					<n text="1" value="1"/>
+				</object>
+			</c>
+			<c type="17">
+				<object id="187">
+					<pos x="10.5" y="5"/>
+					<in1 component_id="207"/>
+					<in2 component_id="186"/>
+				</object>
+			</c>
+			<c type="15">
+				<object id="188">
+					<pos x="9.25" y="6.25"/>
+					<n text="2" value="2"/>
+				</object>
+			</c>
+			<c type="17">
+				<object id="189">
+					<pos x="10.5" y="6.25"/>
+					<in1 component_id="207"/>
+					<in2 component_id="188"/>
+				</object>
+			</c>
+			<c type="15">
+				<object id="190">
+					<pos x="9.25" y="7.5"/>
+					<n text="3" value="3"/>
+				</object>
+			</c>
+			<c type="17">
+				<object id="191">
+					<pos x="10.5" y="7.5"/>
+					<in1 component_id="207"/>
+					<in2 component_id="190"/>
+				</object>
+			</c>
+			<c type="19">
+				<object id="192" name="Transimission Gearboxes">
+					<pos x="-5.25" y="7.25"/>
+					<min text="0"/>
+					<max text="3" value="3"/>
+					<int text="1" value="1"/>
+					<v text="2" value="2"/>
+				</object>
+			</c>
+			<c type="29">
+				<object id="205" i="30">
+					<pos x="2.25" y="4.5"/>
+					<in1 component_id="156"/>
+				</object>
+			</c>
+			<c type="14">
+				<object id="207">
+					<pos x="7" y="6.5"/>
+					<in1 component_id="259"/>
+				</object>
+			</c>
+			<c type="42">
+				<object id="211">
+					<pos x="6" y="2.25"/>
+					<in1 component_id="259"/>
+					<in2 component_id="212"/>
+					<e text="0.0001" value="0.0001"/>
+				</object>
+			</c>
+			<c type="15">
+				<object id="212">
+					<pos x="4.5" y="2.25"/>
+					<n text="0"/>
+				</object>
+			</c>
+			<c type="17">
+				<object id="213">
+					<pos x="5.5" y="0.75"/>
+					<in1 component_id="160"/>
+					<in2 component_id="214"/>
+				</object>
+			</c>
+			<c type="19">
+				<object id="214" name="Min Throttling (EngiT)">
+					<pos x="4.5"/>
+					<min text="70" value="70"/>
+					<max text="110" value="110"/>
+					<int text="5" value="5"/>
+					<v text="110" value="110"/>
+				</object>
+			</c>
+			<c type="17">
+				<object id="217">
+					<pos x="-13.5" y="1.25"/>
+					<in1 component_id="225"/>
+					<in2 component_id="226"/>
+				</object>
+			</c>
+			<c type="18">
+				<object id="218">
+					<pos x="-13.5" y="-0.5"/>
+					<in1 component_id="225"/>
+					<in2 component_id="227"/>
+				</object>
+			</c>
+			<c type="2">
+				<object id="219">
+					<pos x="-11.25" y="0.5"/>
+					<in1 component_id="228"/>
+					<in2 component_id="232"/>
+				</object>
+			</c>
+			<c type="27">
+				<object id="220" on="0.1" off="0.2">
+					<pos x="-9.75" y="0.75"/>
+					<in1 component_id="219"/>
+				</object>
+			</c>
+			<c type="48">
+				<object id="221">
+					<pos x="-8.5" y="0.75"/>
+					<in1 component_id="220"/>
+				</object>
+			</c>
+			<c type="13">
+				<object id="222">
+					<pos x="-7.5" y="3.25"/>
+					<in1 component_id="221"/>
+					<in3 component_id="242"/>
+					<r text="0"/>
+				</object>
+			</c>
+			<c type="22">
+				<object id="223">
+					<pos x="-11.25" y="3.75"/>
+					<in1 component_id="314"/>
+					<in2 component_id="222"/>
+					<in3 component_id="228"/>
+				</object>
+			</c>
+			<c type="31">
+				<object id="225" i="3">
+					<pos x="-14.75" y="0.5"/>
+					<in1 component_id="156"/>
+				</object>
+			</c>
+			<c type="19">
+				<object id="226" name="Clutch Sensitivity">
+					<pos x="-13.5" y="0.75"/>
+					<min text="0.1" value="0.1"/>
+					<max text="1" value="1"/>
+					<int text="0.1" value="0.1"/>
+					<v text="0.2" value="0.2"/>
+				</object>
+			</c>
+			<c type="45">
+				<object id="227" e="-1*x">
+					<pos x="-13.5" y="0.25"/>
+					<in1 component_id="226"/>
+				</object>
+			</c>
+			<c type="1">
+				<object id="228">
+					<pos x="-12.25" y="1.5"/>
+					<in1 component_id="229"/>
+					<in2 component_id="217"/>
+				</object>
+			</c>
+			<c type="18">
+				<object id="229">
+					<pos x="-13.5" y="2"/>
+					<in1 component_id="222"/>
+					<in2 component_id="238"/>
+				</object>
+			</c>
+			<c type="17">
+				<object id="230">
+					<pos x="-13.5" y="-1.25"/>
+					<in1 component_id="222"/>
+					<in2 component_id="239"/>
+				</object>
+			</c>
+			<c type="1">
+				<object id="232">
+					<pos x="-12.25" y="-0.5"/>
+					<in1 component_id="218"/>
+					<in2 component_id="230"/>
+				</object>
+			</c>
+			<c type="22">
+				<object id="236">
+					<pos x="-10" y="4"/>
+					<in1 component_id="310"/>
+					<in2 component_id="223"/>
+					<in3 component_id="232"/>
+				</object>
+			</c>
+			<c type="15">
+				<object id="238">
+					<pos x="-14.75" y="2"/>
+					<n text="1" value="1"/>
+				</object>
+			</c>
+			<c type="15">
+				<object id="239">
+					<pos x="-14.75" y="-1.25"/>
+					<n text="0"/>
+				</object>
+			</c>
+			<c type="6">
+				<object id="240">
+					<pos x="-13.25" y="4.75"/>
+					<in1 component_id="222"/>
+					<in2 component_id="316"/>
+				</object>
+			</c>
+			<c type="7">
+				<object id="241">
+					<pos x="-11" y="5.25"/>
+					<in1 component_id="222"/>
+					<in2 component_id="316"/>
+				</object>
+			</c>
+			<c type="11">
+				<object id="242">
+					<pos x="-8.5" y="4.5"/>
+					<in1 component_id="236"/>
+					<min text="0"/>
+					<max text="1" value="1"/>
+				</object>
+			</c>
+			<c type="22">
+				<object id="245">
+					<pos x="10.25" y="1.25"/>
+					<in1 component_id="173"/>
+					<in2 component_id="267"/>
+					<in3 component_id="246"/>
+				</object>
+			</c>
+			<c type="2">
+				<object id="246">
+					<pos x="7" y="1"/>
+					<in1 component_id="211"/>
+					<in2 component_id="213"/>
+				</object>
+			</c>
+			<c type="22">
+				<object id="247">
+					<pos x="7" y="3.5"/>
+					<in1 component_id="248"/>
+					<in2 component_id="222"/>
+					<in3 component_id="211"/>
+				</object>
+			</c>
+			<c type="15">
+				<object id="248">
+					<pos x="6" y="4.5"/>
+					<n text="0"/>
+				</object>
+			</c>
+			<c type="31">
+				<object id="249" i="1">
+					<pos x="8" y="0.5"/>
+					<in1 component_id="156"/>
+				</object>
+			</c>
+			<c type="18">
+				<object id="251">
+					<pos x="-3.5" y="5.5"/>
+					<in1 component_id="158"/>
+					<in2 component_id="254"/>
+				</object>
+			</c>
+			<c type="17">
+				<object id="252">
+					<pos x="-3.5" y="6.25"/>
+					<in1 component_id="158"/>
+					<in2 component_id="253"/>
+				</object>
+			</c>
+			<c type="19">
+				<object id="253" name="Gearbox: maxRPS">
+					<pos x="-5.25" y="6.25"/>
+					<min text="1" value="1"/>
+					<max text="100" value="100"/>
+					<int text="1" value="1"/>
+					<v text="14" value="14"/>
+				</object>
+			</c>
+			<c type="19">
+				<object id="254" name="Gearbox: minRPS">
+					<pos x="-5.25" y="5.5"/>
+					<min text="1" value="1"/>
+					<max text="100" value="100"/>
+					<int text="1" value="1"/>
+					<v text="5" value="5"/>
+				</object>
+			</c>
+			<c type="1">
+				<object id="256">
+					<pos x="-1.75" y="5.5"/>
+					<in1 component_id="251"/>
+					<in2 component_id="260"/>
+				</object>
+			</c>
+			<c type="1">
+				<object id="257">
+					<pos x="-1.75" y="6.5"/>
+					<in1 component_id="258"/>
+					<in2 component_id="252"/>
+				</object>
+			</c>
+			<c type="18">
+				<object id="258">
+					<pos x="-2.75" y="7.25"/>
+					<in1 component_id="259"/>
+					<in2 component_id="263"/>
+				</object>
+			</c>
+			<c type="27">
+				<object id="77" on="0.1" off="0.1">
+					<pos x="1.25" y="5.75"/>
+					<in1 component_id="256"/>
+				</object>
+			</c>
+			<c type="48">
+				<object id="79">
+					<pos x="2.5" y="5.75"/>
+					<in1 component_id="77"/>
+				</object>
+			</c>
+			<c type="37">
+				<object id="259" m="1">
+					<pos x="5" y="6"/>
+					<in1 component_id="265"/>
+					<in2 component_id="79"/>
+					<in3 component_id="306"/>
+					<r text="0"/>
+					<i text="1" value="1"/>
+					<min text="0"/>
+					<max text="3" value="3"/>
+				</object>
+			</c>
+			<c type="17">
+				<object id="260">
+					<pos x="-2.75" y="4.75"/>
+					<in1 component_id="259"/>
+					<in2 component_id="261"/>
+				</object>
+			</c>
+			<c type="15">
+				<object id="261">
+					<pos x="-2.75" y="4.25"/>
+					<n text="1" value="1"/>
+				</object>
+			</c>
+			<c type="45">
+				<object id="263" e="x+1">
+					<pos x="-4" y="7.25"/>
+					<in1 component_id="192"/>
+				</object>
+			</c>
+			<c type="27">
+				<object id="264" on="0.1" off="0.1">
+					<pos x="1.25" y="6.75"/>
+					<in1 component_id="281"/>
+				</object>
+			</c>
+			<c type="48">
+				<object id="265">
+					<pos x="2.5" y="6.75"/>
+					<in1 component_id="264"/>
+				</object>
+			</c>
+			<c type="10">
+				<object id="267" e="max(x, abs(y))">
+					<pos x="9.25" y="0.25"/>
+					<in1 component_id="173"/>
+					<in2 component_id="249"/>
+				</object>
+			</c>
+			<c type="22">
+				<object id="269">
+					<pos x="11.25" y="-3.5"/>
+					<in1 component_id="245"/>
+					<in2 component_id="270"/>
+					<in3 component_id="161"/>
+				</object>
+			</c>
+			<c type="15">
+				<object id="270">
+					<pos x="7.75" y="-3.25"/>
+					<n text="0"/>
+				</object>
+			</c>
+			<c type="42">
+				<object id="276">
+					<pos x="-2" y="9"/>
+					<in1 component_id="259"/>
+					<in2 component_id="277"/>
+					<e text="0.0001" value="0.0001"/>
+				</object>
+			</c>
+			<c type="15">
+				<object id="277">
+					<pos x="-3" y="8"/>
+					<n text="0"/>
+				</object>
+			</c>
+			<c type="17">
+				<object id="278">
+					<pos x="-1.75" y="10"/>
+					<in1 component_id="279"/>
+					<in2 component_id="305"/>
+				</object>
+			</c>
+			<c type="14">
+				<object id="279">
+					<pos x="-2.75" y="10.75"/>
+					<in1 component_id="249"/>
+				</object>
+			</c>
+			<c type="1">
+				<object id="280">
+					<pos x="-0.75" y="9.25"/>
+					<in1 component_id="278"/>
+					<in2 component_id="276"/>
+				</object>
+			</c>
+			<c type="2">
+				<object id="281">
+					<pos x="0.25" y="8.5"/>
+					<in1 component_id="280"/>
+					<in2 component_id="282"/>
+				</object>
+			</c>
+			<c type="1">
+				<object id="282">
+					<pos x="-0.75" y="7.25"/>
+					<in1 component_id="283"/>
+					<in2 component_id="257"/>
+				</object>
+			</c>
+			<c type="17">
+				<object id="283">
+					<pos x="-1.75" y="8"/>
+					<in1 component_id="259"/>
+					<in2 component_id="277"/>
+				</object>
+			</c>
+			<c type="19">
+				<object id="305" name="WS Brake Epsilon">
+					<pos x="-3" y="10"/>
+					<min text="0.1" value="0.1"/>
+					<max text="1" value="1"/>
+					<int text="0.1" value="0.1"/>
+					<v text="0.1" value="0.1"/>
+				</object>
+			</c>
+			<c type="24">
+				<object id="306">
+					<pos x="4" y="4.25"/>
+					<in1 component_id="205"/>
+					<in2 component_id="278"/>
+				</object>
+			</c>
+			<c type="18">
+				<object id="309">
+					<pos x="-10" y="6.25"/>
+					<in1 component_id="241"/>
+					<in2 component_id="317"/>
+				</object>
+			</c>
+			<c type="22">
+				<object id="310">
+					<pos x="-8.75" y="6.5"/>
+					<in1 component_id="311"/>
+					<in2 component_id="241"/>
+					<in3 component_id="309"/>
+				</object>
+			</c>
+			<c type="15">
+				<object id="311">
+					<pos x="-10.25" y="7"/>
+					<n text="0"/>
+				</object>
+			</c>
+			<c type="18">
+				<object id="313">
+					<pos x="-13.75" y="3.25"/>
+					<in1 component_id="240"/>
+					<in2 component_id="317"/>
+				</object>
+			</c>
+			<c type="22">
+				<object id="314">
+					<pos x="-12.5" y="3.5"/>
+					<in1 component_id="317"/>
+					<in2 component_id="240"/>
+					<in3 component_id="313"/>
+				</object>
+			</c>
+			<c type="34">
+				<object id="316" n="Clutch Step">
+					<pos x="-12" y="4.75"/>
+					<v text="0.05" value="0.05"/>
+				</object>
+			</c>
+			<c type="34">
+				<object id="317" n="minClutch">
+					<pos x="-15.25" y="4"/>
+					<v text="0.35" value="0.35"/>
+				</object>
+			</c>
+		</components>
+		<components_bridge>
+			<c type="4">
+				<object id="156">
+					<pos x="-4.75" y="0.5"/>
+				</object>
+			</c>
+			<c type="2">
+				<object id="158">
+					<pos x="-4.75" y="-1.5"/>
+				</object>
+			</c>
+			<c type="2">
+				<object id="160">
+					<pos x="-4.75" y="1"/>
+				</object>
+			</c>
+			<c>
+				<object id="161">
+					<pos x="-4.75" y="-1.75"/>
+				</object>
+			</c>
+			<c type="1">
+				<object id="164">
+					<pos x="12.5" y="-1.5"/>
+					<in1 component_id="40"/>
+				</object>
+			</c>
+			<c type="1">
+				<object id="166">
+					<pos x="12.5" y="-0.5"/>
+					<in1 component_id="43"/>
+				</object>
+			</c>
+			<c type="1">
+				<object id="170">
+					<pos x="12.5" y="6.5"/>
+					<in1 component_id="189"/>
+				</object>
+			</c>
+			<c type="1">
+				<object id="171">
+					<pos x="12.5" y="5.25"/>
+					<in1 component_id="187"/>
+				</object>
+			</c>
+			<c type="1">
+				<object id="172">
+					<pos x="12.5" y="7.75"/>
+					<in1 component_id="191"/>
+				</object>
+			</c>
+			<c type="3">
+				<object id="176">
+					<pos x="12.5" y="-3"/>
+					<in1 component_id="269"/>
+				</object>
+			</c>
+			<c type="3">
+				<object id="179">
+					<pos x="12.5" y="4"/>
+					<in1 component_id="247"/>
+				</object>
+			</c>
+			<c type="3">
+				<object id="182">
+					<pos x="12.5" y="4.75"/>
+					<in1 component_id="207"/>
+				</object>
+			</c>
+		</components_bridge>
+		<groups/>
+		<component_states>
+			<c0 id="39">
+				<pos x="-3.25" y="-1.75"/>
+				<in1 component_id="158"/>
+				<in2 component_id="162"/>
+			</c0>
+			<c1 id="40">
+				<pos x="1" y="-1.75"/>
+				<in1 component_id="39"/>
+				<in2 component_id="161"/>
+			</c1>
+			<c2 id="43">
+				<pos x="9" y="-0.75"/>
+				<in1 component_id="249"/>
+				<in2 component_id="58"/>
+			</c2>
+			<c3 id="58">
+				<pos x="8" y="-1.25"/>
+				<n text="0"/>
+			</c3>
+			<c4 id="162" name="RPS limit for Starter">
+				<pos x="-4.25" y="-1"/>
+				<min text="1" value="1"/>
+				<max text="10" value="10"/>
+				<int text="1" value="1"/>
+				<v text="3" value="3"/>
+			</c4>
+			<c5 id="173" name="Minimum Throttle">
+				<pos x="8.25" y="1.75"/>
+				<min text="0"/>
+				<max text="1" value="1"/>
+				<int text="0.01" value="0.01"/>
+				<v text="0.41" value="0.41"/>
+			</c5>
+			<c6 id="186">
+				<pos x="9.25" y="5"/>
+				<n text="1" value="1"/>
+			</c6>
+			<c7 id="187">
+				<pos x="10.5" y="5"/>
+				<in1 component_id="207"/>
+				<in2 component_id="186"/>
+			</c7>
+			<c8 id="188">
+				<pos x="9.25" y="6.25"/>
+				<n text="2" value="2"/>
+			</c8>
+			<c9 id="189">
+				<pos x="10.5" y="6.25"/>
+				<in1 component_id="207"/>
+				<in2 component_id="188"/>
+			</c9>
+			<c10 id="190">
+				<pos x="9.25" y="7.5"/>
+				<n text="3" value="3"/>
+			</c10>
+			<c11 id="191">
+				<pos x="10.5" y="7.5"/>
+				<in1 component_id="207"/>
+				<in2 component_id="190"/>
+			</c11>
+			<c12 id="192" name="Transimission Gearboxes">
+				<pos x="-5.25" y="7.25"/>
+				<min text="0"/>
+				<max text="3" value="3"/>
+				<int text="1" value="1"/>
+				<v text="2" value="2"/>
+			</c12>
+			<c13 id="205" i="30">
+				<pos x="2.25" y="4.5"/>
+				<in1 component_id="156"/>
+			</c13>
+			<c14 id="207">
+				<pos x="7" y="6.5"/>
+				<in1 component_id="259"/>
+			</c14>
+			<c15 id="211">
+				<pos x="6" y="2.25"/>
+				<in1 component_id="259"/>
+				<in2 component_id="212"/>
+				<e text="0.0001" value="0.0001"/>
+			</c15>
+			<c16 id="212">
+				<pos x="4.5" y="2.25"/>
+				<n text="0"/>
+			</c16>
+			<c17 id="213">
+				<pos x="5.5" y="0.75"/>
+				<in1 component_id="160"/>
+				<in2 component_id="214"/>
+			</c17>
+			<c18 id="214" name="Min Throttling (EngiT)">
+				<pos x="4.5"/>
+				<min text="70" value="70"/>
+				<max text="110" value="110"/>
+				<int text="5" value="5"/>
+				<v text="110" value="110"/>
+			</c18>
+			<c19 id="217">
+				<pos x="-13.5" y="1.25"/>
+				<in1 component_id="225"/>
+				<in2 component_id="226"/>
+			</c19>
+			<c20 id="218">
+				<pos x="-13.5" y="-0.5"/>
+				<in1 component_id="225"/>
+				<in2 component_id="227"/>
+			</c20>
+			<c21 id="219">
+				<pos x="-11.25" y="0.5"/>
+				<in1 component_id="228"/>
+				<in2 component_id="232"/>
+			</c21>
+			<c22 id="220" on="0.1" off="0.2">
+				<pos x="-9.75" y="0.75"/>
+				<in1 component_id="219"/>
+			</c22>
+			<c23 id="221">
+				<pos x="-8.5" y="0.75"/>
+				<in1 component_id="220"/>
+			</c23>
+			<c24 id="222">
+				<pos x="-7.5" y="3.25"/>
+				<in1 component_id="221"/>
+				<in3 component_id="242"/>
+				<r text="0"/>
+			</c24>
+			<c25 id="223">
+				<pos x="-11.25" y="3.75"/>
+				<in1 component_id="314"/>
+				<in2 component_id="222"/>
+				<in3 component_id="228"/>
+			</c25>
+			<c26 id="225" i="3">
+				<pos x="-14.75" y="0.5"/>
+				<in1 component_id="156"/>
+			</c26>
+			<c27 id="226" name="Clutch Sensitivity">
+				<pos x="-13.5" y="0.75"/>
+				<min text="0.1" value="0.1"/>
+				<max text="1" value="1"/>
+				<int text="0.1" value="0.1"/>
+				<v text="0.2" value="0.2"/>
+			</c27>
+			<c28 id="227" e="-1*x">
+				<pos x="-13.5" y="0.25"/>
+				<in1 component_id="226"/>
+			</c28>
+			<c29 id="228">
+				<pos x="-12.25" y="1.5"/>
+				<in1 component_id="229"/>
+				<in2 component_id="217"/>
+			</c29>
+			<c30 id="229">
+				<pos x="-13.5" y="2"/>
+				<in1 component_id="222"/>
+				<in2 component_id="238"/>
+			</c30>
+			<c31 id="230">
+				<pos x="-13.5" y="-1.25"/>
+				<in1 component_id="222"/>
+				<in2 component_id="239"/>
+			</c31>
+			<c32 id="232">
+				<pos x="-12.25" y="-0.5"/>
+				<in1 component_id="218"/>
+				<in2 component_id="230"/>
+			</c32>
+			<c33 id="236">
+				<pos x="-10" y="4"/>
+				<in1 component_id="310"/>
+				<in2 component_id="223"/>
+				<in3 component_id="232"/>
+			</c33>
+			<c34 id="238">
+				<pos x="-14.75" y="2"/>
+				<n text="1" value="1"/>
+			</c34>
+			<c35 id="239">
+				<pos x="-14.75" y="-1.25"/>
+				<n text="0"/>
+			</c35>
+			<c36 id="240">
+				<pos x="-13.25" y="4.75"/>
+				<in1 component_id="222"/>
+				<in2 component_id="316"/>
+			</c36>
+			<c37 id="241">
+				<pos x="-11" y="5.25"/>
+				<in1 component_id="222"/>
+				<in2 component_id="316"/>
+			</c37>
+			<c38 id="242">
+				<pos x="-8.5" y="4.5"/>
+				<in1 component_id="236"/>
+				<min text="0"/>
+				<max text="1" value="1"/>
+			</c38>
+			<c39 id="245">
+				<pos x="10.25" y="1.25"/>
+				<in1 component_id="173"/>
+				<in2 component_id="267"/>
+				<in3 component_id="246"/>
+			</c39>
+			<c40 id="246">
+				<pos x="7" y="1"/>
+				<in1 component_id="211"/>
+				<in2 component_id="213"/>
+			</c40>
+			<c41 id="247">
+				<pos x="7" y="3.5"/>
+				<in1 component_id="248"/>
+				<in2 component_id="222"/>
+				<in3 component_id="211"/>
+			</c41>
+			<c42 id="248">
+				<pos x="6" y="4.5"/>
+				<n text="0"/>
+			</c42>
+			<c43 id="249" i="1">
+				<pos x="8" y="0.5"/>
+				<in1 component_id="156"/>
+			</c43>
+			<c44 id="251">
+				<pos x="-3.5" y="5.5"/>
+				<in1 component_id="158"/>
+				<in2 component_id="254"/>
+			</c44>
+			<c45 id="252">
+				<pos x="-3.5" y="6.25"/>
+				<in1 component_id="158"/>
+				<in2 component_id="253"/>
+			</c45>
+			<c46 id="253" name="Gearbox: maxRPS">
+				<pos x="-5.25" y="6.25"/>
+				<min text="1" value="1"/>
+				<max text="100" value="100"/>
+				<int text="1" value="1"/>
+				<v text="14" value="14"/>
+			</c46>
+			<c47 id="254" name="Gearbox: minRPS">
+				<pos x="-5.25" y="5.5"/>
+				<min text="1" value="1"/>
+				<max text="100" value="100"/>
+				<int text="1" value="1"/>
+				<v text="5" value="5"/>
+			</c47>
+			<c48 id="256">
+				<pos x="-1.75" y="5.5"/>
+				<in1 component_id="251"/>
+				<in2 component_id="260"/>
+			</c48>
+			<c49 id="257">
+				<pos x="-1.75" y="6.5"/>
+				<in1 component_id="258"/>
+				<in2 component_id="252"/>
+			</c49>
+			<c50 id="258">
+				<pos x="-2.75" y="7.25"/>
+				<in1 component_id="259"/>
+				<in2 component_id="263"/>
+			</c50>
+			<c51 id="77" on="0.1" off="0.1">
+				<pos x="1.25" y="5.75"/>
+				<in1 component_id="256"/>
+			</c51>
+			<c52 id="79">
+				<pos x="2.5" y="5.75"/>
+				<in1 component_id="77"/>
+			</c52>
+			<c53 id="259" m="1">
+				<pos x="5" y="6"/>
+				<in1 component_id="265"/>
+				<in2 component_id="79"/>
+				<in3 component_id="306"/>
+				<r text="0"/>
+				<i text="1" value="1"/>
+				<min text="0"/>
+				<max text="3" value="3"/>
+			</c53>
+			<c54 id="260">
+				<pos x="-2.75" y="4.75"/>
+				<in1 component_id="259"/>
+				<in2 component_id="261"/>
+			</c54>
+			<c55 id="261">
+				<pos x="-2.75" y="4.25"/>
+				<n text="1" value="1"/>
+			</c55>
+			<c56 id="263" e="x+1">
+				<pos x="-4" y="7.25"/>
+				<in1 component_id="192"/>
+			</c56>
+			<c57 id="264" on="0.1" off="0.1">
+				<pos x="1.25" y="6.75"/>
+				<in1 component_id="281"/>
+			</c57>
+			<c58 id="265">
+				<pos x="2.5" y="6.75"/>
+				<in1 component_id="264"/>
+			</c58>
+			<c59 id="267" e="max(x, abs(y))">
+				<pos x="9.25" y="0.25"/>
+				<in1 component_id="173"/>
+				<in2 component_id="249"/>
+			</c59>
+			<c60 id="269">
+				<pos x="11.25" y="-3.5"/>
+				<in1 component_id="245"/>
+				<in2 component_id="270"/>
+				<in3 component_id="161"/>
+			</c60>
+			<c61 id="270">
+				<pos x="7.75" y="-3.25"/>
+				<n text="0"/>
+			</c61>
+			<c62 id="276">
+				<pos x="-2" y="9"/>
+				<in1 component_id="259"/>
+				<in2 component_id="277"/>
+				<e text="0.0001" value="0.0001"/>
+			</c62>
+			<c63 id="277">
+				<pos x="-3" y="8"/>
+				<n text="0"/>
+			</c63>
+			<c64 id="278">
+				<pos x="-1.75" y="10"/>
+				<in1 component_id="279"/>
+				<in2 component_id="305"/>
+			</c64>
+			<c65 id="279">
+				<pos x="-2.75" y="10.75"/>
+				<in1 component_id="249"/>
+			</c65>
+			<c66 id="280">
+				<pos x="-0.75" y="9.25"/>
+				<in1 component_id="278"/>
+				<in2 component_id="276"/>
+			</c66>
+			<c67 id="281">
+				<pos x="0.25" y="8.5"/>
+				<in1 component_id="280"/>
+				<in2 component_id="282"/>
+			</c67>
+			<c68 id="282">
+				<pos x="-0.75" y="7.25"/>
+				<in1 component_id="283"/>
+				<in2 component_id="257"/>
+			</c68>
+			<c69 id="283">
+				<pos x="-1.75" y="8"/>
+				<in1 component_id="259"/>
+				<in2 component_id="277"/>
+			</c69>
+			<c70 id="305" name="WS Brake Epsilon">
+				<pos x="-3" y="10"/>
+				<min text="0.1" value="0.1"/>
+				<max text="1" value="1"/>
+				<int text="0.1" value="0.1"/>
+				<v text="0.1" value="0.1"/>
+			</c70>
+			<c71 id="306">
+				<pos x="4" y="4.25"/>
+				<in1 component_id="205"/>
+				<in2 component_id="278"/>
+			</c71>
+			<c72 id="309">
+				<pos x="-10" y="6.25"/>
+				<in1 component_id="241"/>
+				<in2 component_id="317"/>
+			</c72>
+			<c73 id="310">
+				<pos x="-8.75" y="6.5"/>
+				<in1 component_id="311"/>
+				<in2 component_id="241"/>
+				<in3 component_id="309"/>
+			</c73>
+			<c74 id="311">
+				<pos x="-10.25" y="7"/>
+				<n text="0"/>
+			</c74>
+			<c75 id="313">
+				<pos x="-13.75" y="3.25"/>
+				<in1 component_id="240"/>
+				<in2 component_id="317"/>
+			</c75>
+			<c76 id="314">
+				<pos x="-12.5" y="3.5"/>
+				<in1 component_id="317"/>
+				<in2 component_id="240"/>
+				<in3 component_id="313"/>
+			</c76>
+			<c77 id="316" n="Clutch Step">
+				<pos x="-12" y="4.75"/>
+				<v text="0.05" value="0.05"/>
+			</c77>
+			<c78 id="317" n="minClutch">
+				<pos x="-15.25" y="4"/>
+				<v text="0.35" value="0.35"/>
+			</c78>
+		</component_states>
+		<component_bridge_states>
+			<c0 id="156">
+				<pos x="-4.75" y="0.5"/>
+			</c0>
+			<c1 id="158">
+				<pos x="-4.75" y="-1.5"/>
+			</c1>
+			<c2 id="160">
+				<pos x="-4.75" y="1"/>
+			</c2>
+			<c3 id="161">
+				<pos x="-4.75" y="-1.75"/>
+			</c3>
+			<c4 id="164">
+				<pos x="12.5" y="-1.5"/>
+				<in1 component_id="40"/>
+			</c4>
+			<c5 id="166">
+				<pos x="12.5" y="-0.5"/>
+				<in1 component_id="43"/>
+			</c5>
+			<c6 id="170">
+				<pos x="12.5" y="6.5"/>
+				<in1 component_id="189"/>
+			</c6>
+			<c7 id="171">
+				<pos x="12.5" y="5.25"/>
+				<in1 component_id="187"/>
+			</c7>
+			<c8 id="172">
+				<pos x="12.5" y="7.75"/>
+				<in1 component_id="191"/>
+			</c8>
+			<c9 id="176">
+				<pos x="12.5" y="-3"/>
+				<in1 component_id="269"/>
+			</c9>
+			<c10 id="179">
+				<pos x="12.5" y="4"/>
+				<in1 component_id="247"/>
+			</c10>
+			<c11 id="182">
+				<pos x="12.5" y="4.75"/>
+				<in1 component_id="207"/>
+			</c11>
+		</component_bridge_states>
+		<group_states/>
+	</group>
+</microprocessor>
+

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<microprocessor name="Display (Fuel in KM)" width="1" length="3" id_counter="8" id_counter_node="3" sym0="61455" sym1="32769" sym2="32769" sym3="32769" sym5="6276" sym6="10500" sym7="11244" sym8="10500" sym9="6284" sym12="32769" sym13="32769" sym14="32769" sym15="61455">
+	<nodes>
+		<n id="1" component_id="4">
+			<node label="In (Fuel in Minutes)" mode="1" type="1"/>
+		</n>
+		<n id="2" component_id="6">
+			<node label="In (Speed in m/s)" mode="1" type="1">
+				<position z="2"/>
+			</node>
+		</n>
+		<n id="3" component_id="7">
+			<node label="Out (Fuel in km)" type="1">
+				<position z="1"/>
+			</node>
+		</n>
+	</nodes>
+	<group>
+		<data>
+			<inputs/>
+			<outputs/>
+		</data>
+		<components>
+			<c type="10">
+				<object id="8" e="x*(z*60/1000)" p1="340282346638528859811704183484516925440" p2="340282346638528859811704183484516925440" p3="340282346638528859811704183484516925440">
+					<pos x="-1.25" y="-0.5"/>
+					<in1 component_id="4"/>
+					<in3 component_id="6"/>
+				</object>
+			</c>
+		</components>
+		<components_bridge>
+			<c type="2">
+				<object id="4">
+					<pos x="-2.5"/>
+				</object>
+			</c>
+			<c type="2">
+				<object id="6">
+					<pos x="-2.5" y="-0.5"/>
+				</object>
+			</c>
+			<c type="3">
+				<object id="7">
+					<pos x="0.25"/>
+					<in1 component_id="8"/>
+				</object>
+			</c>
+		</components_bridge>
+		<groups/>
+		<component_states>
+			<c0 id="8" e="x*(z*60/1000)" p1="340282346638528859811704183484516925440" p2="340282346638528859811704183484516925440" p3="340282346638528859811704183484516925440">
+				<pos x="-1.25" y="-0.5"/>
+				<in1 component_id="4"/>
+				<in3 component_id="6"/>
+			</c0>
+		</component_states>
+		<component_bridge_states>
+			<c0 id="4">
+				<pos x="-2.5"/>
+			</c0>
+			<c1 id="6">
+				<pos x="-2.5" y="-0.5"/>
+			</c1>
+			<c2 id="7">
+				<pos x="0.25"/>
+				<in1 component_id="8"/>
+			</c2>
+		</component_bridge_states>
+		<group_states/>
+	</group>
+</microprocessor>
+

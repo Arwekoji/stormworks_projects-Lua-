@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<microprocessor name="Control (SignalIfTrueAND)" width="1" length="3" id_counter="28" id_counter_node="8" sym2="8206" sym3="16388" sym4="65508" sym5="16390" sym6="8192" sym7="14" sym8="32768" sym9="17038" sym10="8458" sym11="37514" sym12="18446" sym13="9216" sym14="37376" sym15="18688">
+	<nodes>
+		<n id="6" component_id="14">
+			<node label="In (Number)" mode="1" type="1"/>
+		</n>
+		<n id="7" component_id="15">
+			<node label="Out (Signal if True)">
+				<position z="2"/>
+			</node>
+		</n>
+		<n id="8" component_id="27">
+			<node label="In (signal for AND)" mode="1">
+				<position z="1"/>
+			</node>
+		</n>
+	</nodes>
+	<group>
+		<data type="1049481524">
+			<inputs/>
+			<outputs/>
+		</data>
+		<components>
+			<c type="20">
+				<object id="16" name="Type of Reaction" i="1">
+					<pos x="-2" y="-1"/>
+					<items>
+						<i l="X equal N">
+							<v text="0"/>
+						</i>
+						<i l="X less N">
+							<v text="-1" value="-1"/>
+						</i>
+						<i l="X more N">
+							<v text="1" value="1"/>
+						</i>
+					</items>
+				</object>
+			</c>
+			<c type="56">
+				<object id="17" script="function onTick()
+	BaseNumber = input.getNumber(1)
+	ToR = input.getNumber(2)
+	N = input.getNumber(3)
+	answer = false
+	
+	if ToR==0 and BaseNumber==N then		answer = true		end
+	if ToR==1  and BaseNumber&gt;N then		answer = true		end
+	if ToR==-1 and BaseNumber&lt;N then		answer = true		end
+	
+	output.setBool(1, answer)		
+end
+">
+					<pos x="0.75" y="-0.5"/>
+					<in1 component_id="20"/>
+				</object>
+			</c>
+			<c type="29">
+				<object id="18">
+					<pos x="2" y="-0.25"/>
+					<in1 component_id="17"/>
+				</object>
+			</c>
+			<c type="34">
+				<object id="19" n="N">
+					<pos x="-2" y="-1.5"/>
+					<v text="50" value="50"/>
+				</object>
+			</c>
+			<c type="40">
+				<object id="20" count="3">
+					<pos x="-0.5" y="-1"/>
+					<in1 component_id="14"/>
+					<in2 component_id="16"/>
+					<in3 component_id="19"/>
+				</object>
+			</c>
+			<c type="1">
+				<object id="28">
+					<pos x="3.5" y="-0.5"/>
+					<in1 component_id="18"/>
+					<in2 component_id="27"/>
+				</object>
+			</c>
+		</components>
+		<components_bridge>
+			<c type="2">
+				<object id="14">
+					<pos x="-2" y="-0.5"/>
+				</object>
+			</c>
+			<c type="1">
+				<object id="15">
+					<pos x="4.75" y="-0.5"/>
+					<in1 component_id="28"/>
+				</object>
+			</c>
+			<c>
+				<object id="27">
+					<pos x="2.5" y="-1.25"/>
+				</object>
+			</c>
+		</components_bridge>
+		<groups/>
+		<component_states>
+			<c0 id="16" name="Type of Reaction" i="1">
+				<pos x="-2" y="-1"/>
+				<items>
+					<i l="X equal N">
+						<v text="0"/>
+					</i>
+					<i l="X less N">
+						<v text="-1" value="-1"/>
+					</i>
+					<i l="X more N">
+						<v text="1" value="1"/>
+					</i>
+				</items>
+			</c0>
+			<c1 id="17" script="function onTick()
+	BaseNumber = input.getNumber(1)
+	ToR = input.getNumber(2)
+	N = input.getNumber(3)
+	answer = false
+	
+	if ToR==0 and BaseNumber==N then		answer = true		end
+	if ToR==1  and BaseNumber&gt;N then		answer = true		end
+	if ToR==-1 and BaseNumber&lt;N then		answer = true		end
+	
+	output.setBool(1, answer)		
+end
+">
+				<pos x="0.75" y="-0.5"/>
+				<in1 component_id="20"/>
+			</c1>
+			<c2 id="18">
+				<pos x="2" y="-0.25"/>
+				<in1 component_id="17"/>
+			</c2>
+			<c3 id="19" n="N">
+				<pos x="-2" y="-1.5"/>
+				<v text="50" value="50"/>
+			</c3>
+			<c4 id="20" count="3">
+				<pos x="-0.5" y="-1"/>
+				<in1 component_id="14"/>
+				<in2 component_id="16"/>
+				<in3 component_id="19"/>
+			</c4>
+			<c5 id="28">
+				<pos x="3.5" y="-0.5"/>
+				<in1 component_id="18"/>
+				<in2 component_id="27"/>
+			</c5>
+		</component_states>
+		<component_bridge_states>
+			<c0 id="14">
+				<pos x="-2" y="-0.5"/>
+			</c0>
+			<c1 id="15">
+				<pos x="4.75" y="-0.5"/>
+				<in1 component_id="28"/>
+			</c1>
+			<c2 id="27">
+				<pos x="2.5" y="-1.25"/>
+			</c2>
+		</component_bridge_states>
+		<group_states/>
+	</group>
+</microprocessor>
+

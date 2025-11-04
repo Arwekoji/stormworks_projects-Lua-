@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<microprocessor name="CTRL (Transponder)" description="Read comments, 13 ch = distress" width="1" length="4" id_counter="12" id_counter_node="4" sym0="49155" sym1="32769" sym3="32767" sym4="16385" sym5="8322" sym6="4100" sym7="2184" sym8="1168" sym9="544" sym10="320" sym11="128" sym13="448" sym14="33313" sym15="49283">
+	<nodes>
+		<n id="1" component_id="4">
+			<node label="In (Radio)" mode="1" type="5" description="Only RX 100!!!"/>
+		</n>
+		<n id="2" component_id="2">
+			<node label="In (Push button)" mode="1" description="Only push!!!">
+				<position z="1"/>
+			</node>
+		</n>
+		<n id="3" component_id="5">
+			<node label="Out (Transponder)" description="Max economy">
+				<position z="2"/>
+			</node>
+		</n>
+		<n id="4" component_id="11">
+			<node label="Out (Radio Channel)" type="1" description="Always 13 - distress ch">
+				<position z="3"/>
+			</node>
+		</n>
+	</nodes>
+	<group>
+		<data>
+			<inputs/>
+			<outputs/>
+		</data>
+		<components>
+			<c type="28">
+				<object id="6">
+					<pos x="0.25"/>
+					<in1 component_id="7"/>
+				</object>
+			</c>
+			<c type="2">
+				<object id="7">
+					<pos x="-1" y="-0.25"/>
+					<in1 component_id="8"/>
+					<in2 component_id="2"/>
+				</object>
+			</c>
+			<c type="29">
+				<object id="8" i="12">
+					<pos x="-2" y="0.5"/>
+					<in1 component_id="4"/>
+				</object>
+			</c>
+			<c type="15">
+				<object id="12">
+					<pos x="-2" y="-1"/>
+					<n text="13" value="13"/>
+				</object>
+			</c>
+		</components>
+		<components_bridge>
+			<c>
+				<object id="2">
+					<pos x="-3.5" y="-0.25"/>
+				</object>
+			</c>
+			<c type="4">
+				<object id="4">
+					<pos x="-3.5" y="0.5"/>
+				</object>
+			</c>
+			<c type="1">
+				<object id="5">
+					<pos x="1.5"/>
+					<in1 component_id="6"/>
+				</object>
+			</c>
+			<c type="3">
+				<object id="11">
+					<pos x="1.5" y="-1"/>
+					<in1 component_id="12"/>
+				</object>
+			</c>
+		</components_bridge>
+		<groups/>
+		<component_states>
+			<c0 id="6">
+				<pos x="0.25"/>
+				<in1 component_id="7"/>
+			</c0>
+			<c1 id="7">
+				<pos x="-1" y="-0.25"/>
+				<in1 component_id="8"/>
+				<in2 component_id="2"/>
+			</c1>
+			<c2 id="8" i="12">
+				<pos x="-2" y="0.5"/>
+				<in1 component_id="4"/>
+			</c2>
+			<c3 id="12">
+				<pos x="-2" y="-1"/>
+				<n text="13" value="13"/>
+			</c3>
+		</component_states>
+		<component_bridge_states>
+			<c0 id="2">
+				<pos x="-3.5" y="-0.25"/>
+			</c0>
+			<c1 id="4">
+				<pos x="-3.5" y="0.5"/>
+			</c1>
+			<c2 id="5">
+				<pos x="1.5"/>
+				<in1 component_id="6"/>
+			</c2>
+			<c3 id="11">
+				<pos x="1.5" y="-1"/>
+				<in1 component_id="12"/>
+			</c3>
+		</component_bridge_states>
+		<group_states/>
+	</group>
+</microprocessor>
+

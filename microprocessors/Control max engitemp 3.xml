@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<microprocessor name="Control (Max Number x3)" width="2" length="2" id_counter="10" id_counter_node="4" sym3="448" sym4="256" sym5="448" sym6="256" sym7="448" sym10="35490" sym11="21154" sym12="9130" sym13="21174" sym14="35106">
+	<nodes>
+		<n id="1" component_id="8">
+			<node label="In (Num 1)" mode="1" type="1"/>
+		</n>
+		<n id="2" component_id="7">
+			<node label="In (Num 2)" mode="1" type="1">
+				<position x="1"/>
+			</node>
+		</n>
+		<n id="3" component_id="6">
+			<node label="In (Num  3)" mode="1" type="1">
+				<position x="1" z="1"/>
+			</node>
+		</n>
+		<n id="4" component_id="9">
+			<node label="Out (Max Number)" type="1">
+				<position z="1"/>
+			</node>
+		</n>
+	</nodes>
+	<group>
+		<data type="1049481524">
+			<inputs/>
+			<outputs/>
+		</data>
+		<components>
+			<c type="10">
+				<object id="10" e="max(max(x,y),z)" p1="340282346638528859811704183484516925440" p2="340282346638528859811704183484516925440" p3="340282346638528859811704183484516925440">
+					<pos x="0.5" y="-0.75"/>
+					<in1 component_id="7"/>
+					<in2 component_id="8"/>
+					<in3 component_id="6"/>
+				</object>
+			</c>
+		</components>
+		<components_bridge>
+			<c type="2">
+				<object id="6">
+					<pos x="-0.75" y="-1"/>
+				</object>
+			</c>
+			<c type="2">
+				<object id="7">
+					<pos x="-0.75"/>
+				</object>
+			</c>
+			<c type="2">
+				<object id="8">
+					<pos x="-0.75" y="-0.5"/>
+				</object>
+			</c>
+			<c type="3">
+				<object id="9">
+					<pos x="1.75" y="-0.25"/>
+					<in1 component_id="10"/>
+				</object>
+			</c>
+		</components_bridge>
+		<groups/>
+		<component_states>
+			<c0 id="10" e="max(max(x,y),z)" p1="340282346638528859811704183484516925440" p2="340282346638528859811704183484516925440" p3="340282346638528859811704183484516925440">
+				<pos x="0.5" y="-0.75"/>
+				<in1 component_id="7"/>
+				<in2 component_id="8"/>
+				<in3 component_id="6"/>
+			</c0>
+		</component_states>
+		<component_bridge_states>
+			<c0 id="6">
+				<pos x="-0.75" y="-1"/>
+			</c0>
+			<c1 id="7">
+				<pos x="-0.75"/>
+			</c1>
+			<c2 id="8">
+				<pos x="-0.75" y="-0.5"/>
+			</c2>
+			<c3 id="9">
+				<pos x="1.75" y="-0.25"/>
+				<in1 component_id="10"/>
+			</c3>
+		</component_bridge_states>
+		<group_states/>
+	</group>
+</microprocessor>
+

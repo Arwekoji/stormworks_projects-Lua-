@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<microprocessor name="CONV num2comp (4x, multiply)" description="Number of slot equal channel" width="1" length="5" id_counter="20" id_counter_node="5" sym2="12302" sym3="18564" sym4="2308" sym5="3044" sym6="18694" sym7="12420" sym11="4384" sym12="2592" sym13="1080" sym14="2600" sym15="4392">
+	<nodes>
+		<n id="1" component_id="8">
+			<node label="In (Ch 1)" mode="1" type="1"/>
+		</n>
+		<n id="2" component_id="9">
+			<node label="In (Ch 2)" mode="1" type="1">
+				<position z="1"/>
+			</node>
+		</n>
+		<n id="3" component_id="10">
+			<node label="In (Ch 3)" mode="1" type="1">
+				<position z="2"/>
+			</node>
+		</n>
+		<n id="4" component_id="11">
+			<node label="In (Ch 4)" mode="1" type="1">
+				<position z="3"/>
+			</node>
+		</n>
+		<n id="5" component_id="7">
+			<node label="Out (Composite 4x)" type="5">
+				<position z="4"/>
+			</node>
+		</n>
+	</nodes>
+	<group>
+		<data>
+			<inputs/>
+			<outputs/>
+		</data>
+		<components>
+			<c type="40">
+				<object id="12" count="4">
+					<pos y="2.75"/>
+					<in1 component_id="17"/>
+					<in2 component_id="18"/>
+					<in3 component_id="19"/>
+					<in4 component_id="20"/>
+				</object>
+			</c>
+			<c type="34">
+				<object id="13" n="CH1 x N">
+					<pos x="-3" y="4.5"/>
+					<v text="1" value="1"/>
+				</object>
+			</c>
+			<c type="34">
+				<object id="14" n="CH2 x N">
+					<pos x="-3" y="3.25"/>
+					<v text="1" value="1"/>
+				</object>
+			</c>
+			<c type="34">
+				<object id="15" n="CH3 x N">
+					<pos x="-3" y="2"/>
+					<v text="1" value="1"/>
+				</object>
+			</c>
+			<c type="34">
+				<object id="16" n="CH4 x N">
+					<pos x="-3" y="0.75"/>
+					<v text="1" value="1"/>
+				</object>
+			</c>
+			<c type="8">
+				<object id="17">
+					<pos x="-2" y="4.75"/>
+					<in1 component_id="8"/>
+					<in2 component_id="13"/>
+				</object>
+			</c>
+			<c type="8">
+				<object id="18">
+					<pos x="-2" y="3.5"/>
+					<in1 component_id="9"/>
+					<in2 component_id="14"/>
+				</object>
+			</c>
+			<c type="8">
+				<object id="19">
+					<pos x="-2" y="2.25"/>
+					<in1 component_id="10"/>
+					<in2 component_id="15"/>
+				</object>
+			</c>
+			<c type="8">
+				<object id="20">
+					<pos x="-2" y="1"/>
+					<in1 component_id="11"/>
+					<in2 component_id="16"/>
+				</object>
+			</c>
+		</components>
+		<components_bridge>
+			<c type="5">
+				<object id="7">
+					<pos x="1.5" y="3.75"/>
+					<in1 component_id="12"/>
+				</object>
+			</c>
+			<c type="2">
+				<object id="8">
+					<pos x="-4" y="5"/>
+				</object>
+			</c>
+			<c type="2">
+				<object id="9">
+					<pos x="-4" y="3.75"/>
+				</object>
+			</c>
+			<c type="2">
+				<object id="10">
+					<pos x="-4" y="2.5"/>
+				</object>
+			</c>
+			<c type="2">
+				<object id="11">
+					<pos x="-4" y="1.25"/>
+				</object>
+			</c>
+		</components_bridge>
+		<groups/>
+		<component_states>
+			<c0 id="12" count="4">
+				<pos y="2.75"/>
+				<in1 component_id="17"/>
+				<in2 component_id="18"/>
+				<in3 component_id="19"/>
+				<in4 component_id="20"/>
+			</c0>
+			<c1 id="13" n="CH1 x N">
+				<pos x="-3" y="4.5"/>
+				<v text="1" value="1"/>
+			</c1>
+			<c2 id="14" n="CH2 x N">
+				<pos x="-3" y="3.25"/>
+				<v text="1" value="1"/>
+			</c2>
+			<c3 id="15" n="CH3 x N">
+				<pos x="-3" y="2"/>
+				<v text="1" value="1"/>
+			</c3>
+			<c4 id="16" n="CH4 x N">
+				<pos x="-3" y="0.75"/>
+				<v text="1" value="1"/>
+			</c4>
+			<c5 id="17">
+				<pos x="-2" y="4.75"/>
+				<in1 component_id="8"/>
+				<in2 component_id="13"/>
+			</c5>
+			<c6 id="18">
+				<pos x="-2" y="3.5"/>
+				<in1 component_id="9"/>
+				<in2 component_id="14"/>
+			</c6>
+			<c7 id="19">
+				<pos x="-2" y="2.25"/>
+				<in1 component_id="10"/>
+				<in2 component_id="15"/>
+			</c7>
+			<c8 id="20">
+				<pos x="-2" y="1"/>
+				<in1 component_id="11"/>
+				<in2 component_id="16"/>
+			</c8>
+		</component_states>
+		<component_bridge_states>
+			<c0 id="7">
+				<pos x="1.5" y="3.75"/>
+				<in1 component_id="12"/>
+			</c0>
+			<c1 id="8">
+				<pos x="-4" y="5"/>
+			</c1>
+			<c2 id="9">
+				<pos x="-4" y="3.75"/>
+			</c2>
+			<c3 id="10">
+				<pos x="-4" y="2.5"/>
+			</c3>
+			<c4 id="11">
+				<pos x="-4" y="1.25"/>
+			</c4>
+		</component_bridge_states>
+		<group_states/>
+	</group>
+</microprocessor>
+

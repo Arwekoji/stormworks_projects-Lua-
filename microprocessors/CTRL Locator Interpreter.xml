@@ -1,0 +1,492 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<microprocessor name="CTRL (Locator Interpreter)" description="Show XYZ coords of transponder" width="2" length="4" id_counter="61" id_counter_node="10" sym0="49155" sym1="32769" sym2="1040" sym3="2056" sym4="8060" sym5="2056" sym6="1040" sym8="10922" sym9="10794" sym10="10698" sym11="9234" sym12="5092" sym13="2056" sym14="34801" sym15="49155">
+	<nodes>
+		<n id="1" component_id="14">
+			<node label="In (XYZ)" mode="1" type="5" description="from Physic module"/>
+		</n>
+		<n id="2" component_id="15">
+			<node label="In (RX)" mode="1" type="5">
+				<position z="1"/>
+			</node>
+		</n>
+		<n id="3" component_id="20">
+			<node label="In (Locator)" mode="1" description="Second">
+				<position z="2"/>
+			</node>
+		</n>
+		<n id="5" component_id="48">
+			<node label="Out (No Signal)" description="In short distance (180 km)">
+				<position z="3"/>
+			</node>
+		</n>
+		<n id="6" component_id="27">
+			<node label="Out (target X)" type="1">
+				<position x="1"/>
+			</node>
+		</n>
+		<n id="7" component_id="31">
+			<node label="Out (target Y)" type="1">
+				<position x="1" z="1"/>
+			</node>
+		</n>
+		<n id="9" component_id="44">
+			<node label="Out (target Z)" type="1">
+				<position x="1" z="2"/>
+			</node>
+		</n>
+		<n id="10" component_id="47">
+			<node label="Out (Distance)" type="1">
+				<position x="1" z="3"/>
+			</node>
+		</n>
+	</nodes>
+	<group>
+		<data>
+			<inputs/>
+			<outputs/>
+		</data>
+		<components>
+			<c type="37">
+				<object id="1">
+					<pos x="5" y="3.5"/>
+					<in1 component_id="2"/>
+					<in3 component_id="4"/>
+					<r text="0"/>
+					<i text="1" value="1"/>
+					<min text="0"/>
+					<max text="2205" value="2205"/>
+				</object>
+			</c>
+			<c>
+				<object id="2">
+					<pos x="2.25" y="4"/>
+					<in1 component_id="20"/>
+				</object>
+			</c>
+			<c type="48">
+				<object id="3" m="0">
+					<pos x="2.25" y="3.5"/>
+					<in1 component_id="20"/>
+				</object>
+			</c>
+			<c type="27">
+				<object id="4" on="0.1" off="0.1">
+					<pos x="3.5" y="3.5"/>
+					<in1 component_id="3"/>
+				</object>
+			</c>
+			<c type="17">
+				<object id="5">
+					<pos x="8.75" y="3.75"/>
+					<in1 component_id="1"/>
+					<in2 component_id="6"/>
+				</object>
+			</c>
+			<c type="15">
+				<object id="6">
+					<pos x="7.75" y="3.25"/>
+					<n text="3600" value="3600"/>
+				</object>
+			</c>
+			<c type="13">
+				<object id="7">
+					<pos x="6.5" y="3.25"/>
+					<in1 component_id="20"/>
+					<in3 component_id="1"/>
+					<r text="0"/>
+				</object>
+			</c>
+			<c type="45">
+				<object id="8" e="max(0, ((x-1)/0.02)/1000)">
+					<pos x="7.5" y="2.25"/>
+					<in1 component_id="7"/>
+				</object>
+			</c>
+			<c type="31">
+				<object id="34">
+					<pos x="2" y="-0.25"/>
+					<in1 component_id="14"/>
+				</object>
+			</c>
+			<c type="31">
+				<object id="35" i="2">
+					<pos x="2" y="-0.5"/>
+					<in1 component_id="14"/>
+				</object>
+			</c>
+			<c type="31">
+				<object id="37">
+					<pos x="2" y="-1.5"/>
+					<in1 component_id="15"/>
+				</object>
+			</c>
+			<c type="31">
+				<object id="38" i="1">
+					<pos x="2" y="-1.75"/>
+					<in1 component_id="15"/>
+				</object>
+			</c>
+			<c type="31">
+				<object id="40" i="3">
+					<pos x="2" y="-2.5"/>
+					<in1 component_id="15"/>
+				</object>
+			</c>
+			<c type="56">
+				<object id="49" script="function onTick()
+	tx1 = 0
+	ty1 = 0
+	tx2 = 0
+	ty2 = 0
+	error = false
+	
+	x0, y0, d0 = input.getNumber(1), input.getNumber(2), input.getNumber(3)*1000 
+	x1, y1, d1 = input.getNumber(4), input.getNumber(5), input.getNumber(6)*1000 
+
+	dx = x1 - x0
+	dy = y1 - y0
+	dist = math.sqrt(dx * dx + dy * dy)
+	
+	if dist &gt; d0 + d1 or dist &lt; math.abs(d0 - d1) then
+		error = true
+	else
+		a = (d0^2 - d1^2 + dist^2) / (2 * dist)  
+		px = x0 + a * dx / dist
+		py = y0 + a * dy / dist
+
+		h = math.sqrt(math.abs(d0^2 - a^2))  -- abs      
+
+		rx = -dy / dist
+		ry = dx / dist
+
+		tx1 = px + h * rx
+		ty1 = py + h * ry
+
+		tx2 = px - h * rx
+		ty2 = py - h * ry
+	end	
+	
+	output.setBool(1, error) 
+	output.setNumber(1, tx1)
+	output.setNumber(2, ty1)
+	output.setNumber(3, tx2)
+	output.setNumber(4, ty2)
+	
+end">
+					<pos x="6" y="-0.25"/>
+					<in1 component_id="50"/>
+				</object>
+			</c>
+			<c type="40">
+				<object id="50" count="6">
+					<pos x="4.25" y="-1.5"/>
+					<in1 component_id="34"/>
+					<in2 component_id="35"/>
+					<in3 component_id="8"/>
+					<in4 component_id="37"/>
+					<in5 component_id="38"/>
+					<in6 component_id="40"/>
+				</object>
+			</c>
+			<c type="29">
+				<object id="51">
+					<pos x="7.5"/>
+					<in1 component_id="49"/>
+				</object>
+			</c>
+			<c type="31">
+				<object id="52">
+					<pos x="7.5" y="-0.25"/>
+					<in1 component_id="49"/>
+				</object>
+			</c>
+			<c type="31">
+				<object id="53" i="1">
+					<pos x="7.5" y="-0.5"/>
+					<in1 component_id="49"/>
+				</object>
+			</c>
+			<c type="31">
+				<object id="54" i="2">
+					<pos x="7.5" y="-0.75"/>
+					<in1 component_id="49"/>
+				</object>
+			</c>
+			<c type="31">
+				<object id="55" i="3">
+					<pos x="7.5" y="-1"/>
+					<in1 component_id="49"/>
+				</object>
+			</c>
+			<c type="44">
+				<object id="56" l="Triangulation Fail" on="True" off="False">
+					<pos x="9.25"/>
+					<in1 component_id="51"/>
+				</object>
+			</c>
+			<c type="43">
+				<object id="57" l="Possible tX1">
+					<pos x="9.25" y="-0.5"/>
+					<in1 component_id="52"/>
+				</object>
+			</c>
+			<c type="43">
+				<object id="58" l="Possible tY1">
+					<pos x="9.25" y="-0.75"/>
+					<in1 component_id="53"/>
+				</object>
+			</c>
+			<c type="43">
+				<object id="59" l="Possible tX2">
+					<pos x="9.25" y="-1"/>
+					<in1 component_id="54"/>
+				</object>
+			</c>
+			<c type="43">
+				<object id="60" l="Possible tY2">
+					<pos x="9.25" y="-1.25"/>
+					<in1 component_id="55"/>
+				</object>
+			</c>
+			<c type="43">
+				<object id="61" l="Distance">
+					<pos x="9.25" y="-1.5"/>
+					<in1 component_id="8"/>
+				</object>
+			</c>
+		</components>
+		<components_bridge>
+			<c type="4">
+				<object id="14">
+					<pos x="0.5" y="-0.5"/>
+				</object>
+			</c>
+			<c type="4">
+				<object id="15">
+					<pos x="0.5" y="-1.75"/>
+				</object>
+			</c>
+			<c>
+				<object id="20">
+					<pos x="0.5" y="3.75"/>
+				</object>
+			</c>
+			<c type="3">
+				<object id="27">
+					<pos x="11.75"/>
+				</object>
+			</c>
+			<c type="3">
+				<object id="31">
+					<pos x="11.75" y="-0.25"/>
+				</object>
+			</c>
+			<c type="3">
+				<object id="44">
+					<pos x="11.75" y="-0.5"/>
+				</object>
+			</c>
+			<c type="3">
+				<object id="47">
+					<pos x="10.5" y="2.25"/>
+					<in1 component_id="8"/>
+				</object>
+			</c>
+			<c type="1">
+				<object id="48">
+					<pos x="10.5" y="4"/>
+					<in1 component_id="5"/>
+				</object>
+			</c>
+		</components_bridge>
+		<groups/>
+		<component_states>
+			<c0 id="1">
+				<pos x="5" y="3.5"/>
+				<in1 component_id="2"/>
+				<in3 component_id="4"/>
+				<r text="0"/>
+				<i text="1" value="1"/>
+				<min text="0"/>
+				<max text="2205" value="2205"/>
+			</c0>
+			<c1 id="2">
+				<pos x="2.25" y="4"/>
+				<in1 component_id="20"/>
+			</c1>
+			<c2 id="3" m="0">
+				<pos x="2.25" y="3.5"/>
+				<in1 component_id="20"/>
+			</c2>
+			<c3 id="4" on="0.1" off="0.1">
+				<pos x="3.5" y="3.5"/>
+				<in1 component_id="3"/>
+			</c3>
+			<c4 id="5">
+				<pos x="8.75" y="3.75"/>
+				<in1 component_id="1"/>
+				<in2 component_id="6"/>
+			</c4>
+			<c5 id="6">
+				<pos x="7.75" y="3.25"/>
+				<n text="3600" value="3600"/>
+			</c5>
+			<c6 id="7">
+				<pos x="6.5" y="3.25"/>
+				<in1 component_id="20"/>
+				<in3 component_id="1"/>
+				<r text="0"/>
+			</c6>
+			<c7 id="8" e="max(0, ((x-1)/0.02)/1000)">
+				<pos x="7.5" y="2.25"/>
+				<in1 component_id="7"/>
+			</c7>
+			<c8 id="34">
+				<pos x="2" y="-0.25"/>
+				<in1 component_id="14"/>
+			</c8>
+			<c9 id="35" i="2">
+				<pos x="2" y="-0.5"/>
+				<in1 component_id="14"/>
+			</c9>
+			<c10 id="37">
+				<pos x="2" y="-1.5"/>
+				<in1 component_id="15"/>
+			</c10>
+			<c11 id="38" i="1">
+				<pos x="2" y="-1.75"/>
+				<in1 component_id="15"/>
+			</c11>
+			<c12 id="40" i="3">
+				<pos x="2" y="-2.5"/>
+				<in1 component_id="15"/>
+			</c12>
+			<c13 id="49" script="function onTick()
+	tx1 = 0
+	ty1 = 0
+	tx2 = 0
+	ty2 = 0
+	error = false
+	
+	x0, y0, d0 = input.getNumber(1), input.getNumber(2), input.getNumber(3)*1000 
+	x1, y1, d1 = input.getNumber(4), input.getNumber(5), input.getNumber(6)*1000 
+
+	dx = x1 - x0
+	dy = y1 - y0
+	dist = math.sqrt(dx * dx + dy * dy)
+	
+	if dist &gt; d0 + d1 or dist &lt; math.abs(d0 - d1) then
+		error = true
+	else
+		a = (d0^2 - d1^2 + dist^2) / (2 * dist)  
+		px = x0 + a * dx / dist
+		py = y0 + a * dy / dist
+
+		h = math.sqrt(math.abs(d0^2 - a^2))  -- abs      
+
+		rx = -dy / dist
+		ry = dx / dist
+
+		tx1 = px + h * rx
+		ty1 = py + h * ry
+
+		tx2 = px - h * rx
+		ty2 = py - h * ry
+	end	
+	
+	output.setBool(1, error) 
+	output.setNumber(1, tx1)
+	output.setNumber(2, ty1)
+	output.setNumber(3, tx2)
+	output.setNumber(4, ty2)
+	
+end">
+				<pos x="6" y="-0.25"/>
+				<in1 component_id="50"/>
+			</c13>
+			<c14 id="50" count="6">
+				<pos x="4.25" y="-1.5"/>
+				<in1 component_id="34"/>
+				<in2 component_id="35"/>
+				<in3 component_id="8"/>
+				<in4 component_id="37"/>
+				<in5 component_id="38"/>
+				<in6 component_id="40"/>
+			</c14>
+			<c15 id="51">
+				<pos x="7.5"/>
+				<in1 component_id="49"/>
+			</c15>
+			<c16 id="52">
+				<pos x="7.5" y="-0.25"/>
+				<in1 component_id="49"/>
+			</c16>
+			<c17 id="53" i="1">
+				<pos x="7.5" y="-0.5"/>
+				<in1 component_id="49"/>
+			</c17>
+			<c18 id="54" i="2">
+				<pos x="7.5" y="-0.75"/>
+				<in1 component_id="49"/>
+			</c18>
+			<c19 id="55" i="3">
+				<pos x="7.5" y="-1"/>
+				<in1 component_id="49"/>
+			</c19>
+			<c20 id="56" l="Triangulation Fail" on="True" off="False">
+				<pos x="9.25"/>
+				<in1 component_id="51"/>
+			</c20>
+			<c21 id="57" l="Possible tX1">
+				<pos x="9.25" y="-0.5"/>
+				<in1 component_id="52"/>
+			</c21>
+			<c22 id="58" l="Possible tY1">
+				<pos x="9.25" y="-0.75"/>
+				<in1 component_id="53"/>
+			</c22>
+			<c23 id="59" l="Possible tX2">
+				<pos x="9.25" y="-1"/>
+				<in1 component_id="54"/>
+			</c23>
+			<c24 id="60" l="Possible tY2">
+				<pos x="9.25" y="-1.25"/>
+				<in1 component_id="55"/>
+			</c24>
+			<c25 id="61" l="Distance">
+				<pos x="9.25" y="-1.5"/>
+				<in1 component_id="8"/>
+			</c25>
+		</component_states>
+		<component_bridge_states>
+			<c0 id="14">
+				<pos x="0.5" y="-0.5"/>
+			</c0>
+			<c1 id="15">
+				<pos x="0.5" y="-1.75"/>
+			</c1>
+			<c2 id="20">
+				<pos x="0.5" y="3.75"/>
+			</c2>
+			<c3 id="27">
+				<pos x="11.75"/>
+			</c3>
+			<c4 id="31">
+				<pos x="11.75" y="-0.25"/>
+			</c4>
+			<c5 id="44">
+				<pos x="11.75" y="-0.5"/>
+			</c5>
+			<c6 id="47">
+				<pos x="10.5" y="2.25"/>
+				<in1 component_id="8"/>
+			</c6>
+			<c7 id="48">
+				<pos x="10.5" y="4"/>
+				<in1 component_id="5"/>
+			</c7>
+		</component_bridge_states>
+		<group_states/>
+	</group>
+</microprocessor>
+

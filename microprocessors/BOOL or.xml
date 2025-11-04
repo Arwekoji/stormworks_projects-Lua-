@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<microprocessor name="BOOL or" description="A or B = C" width="3" length="1" id_counter="5" id_counter_node="3" sym1="28" sym2="248" sym3="1008" sym4="4064" sym5="8160" sym6="16352" sym7="16352" sym8="16352" sym9="8160" sym10="4064" sym11="1008" sym12="248" sym13="28">
+	<nodes>
+		<n id="1" component_id="1">
+			<node label="In (X)" mode="1"/>
+		</n>
+		<n id="2" component_id="2">
+			<node label="In (Y)" mode="1">
+				<position x="2"/>
+			</node>
+		</n>
+		<n id="3" component_id="4">
+			<node label="Out (X or Y)">
+				<position x="1"/>
+			</node>
+		</n>
+	</nodes>
+	<group>
+		<data type="1049481524">
+			<inputs/>
+			<outputs/>
+		</data>
+		<components>
+			<c type="2">
+				<object id="5">
+					<pos x="-0.5"/>
+					<in1 component_id="2"/>
+					<in2 component_id="1"/>
+				</object>
+			</c>
+		</components>
+		<components_bridge>
+			<c>
+				<object id="1">
+					<pos x="-1.75" y="-0.25"/>
+				</object>
+			</c>
+			<c>
+				<object id="2">
+					<pos x="-1.75" y="0.25"/>
+				</object>
+			</c>
+			<c type="1">
+				<object id="4">
+					<pos x="1" y="0.25"/>
+					<in1 component_id="5"/>
+				</object>
+			</c>
+		</components_bridge>
+		<groups/>
+		<component_states>
+			<c0 id="5">
+				<pos x="-0.5"/>
+				<in1 component_id="2"/>
+				<in2 component_id="1"/>
+			</c0>
+		</component_states>
+		<component_bridge_states>
+			<c0 id="1">
+				<pos x="-1.75" y="-0.25"/>
+			</c0>
+			<c1 id="2">
+				<pos x="-1.75" y="0.25"/>
+			</c1>
+			<c2 id="4">
+				<pos x="1" y="0.25"/>
+				<in1 component_id="5"/>
+			</c2>
+		</component_bridge_states>
+		<group_states/>
+	</group>
+</microprocessor>
+

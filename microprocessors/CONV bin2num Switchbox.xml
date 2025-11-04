@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<microprocessor name="CONV bin2num (Switchbox)" description="off / on = 1nd num / 2nd num" width="2" length="1" id_counter="7" id_counter_node="2" sym2="28" sym3="8" sym7="28672" sym8="8192" sym9="1536" sym10="768" sym11="384" sym12="28" sym13="8">
+	<nodes>
+		<n id="1" component_id="1">
+			<node label="Input (Button)" mode="1" description="On/Off Signal"/>
+		</n>
+		<n id="2" component_id="4">
+			<node label="Output (Number Processor)" type="1" description="When off, return 1nd number otherwise 2nd num">
+				<position x="1"/>
+			</node>
+		</n>
+	</nodes>
+	<group>
+		<data>
+			<inputs/>
+			<outputs/>
+		</data>
+		<components>
+			<c type="34">
+				<object id="5" n="On Number">
+					<pos x="-2.5" y="0.5"/>
+					<v text="1" value="1"/>
+				</object>
+			</c>
+			<c type="34">
+				<object id="6" n="Off Number">
+					<pos x="-2.5"/>
+					<v text="0"/>
+				</object>
+			</c>
+			<c type="22">
+				<object id="7">
+					<pos x="-1.25" y="-0.25"/>
+					<in1 component_id="5"/>
+					<in2 component_id="6"/>
+					<in3 component_id="1"/>
+				</object>
+			</c>
+		</components>
+		<components_bridge>
+			<c>
+				<object id="1">
+					<pos x="-3.75" y="-0.25"/>
+				</object>
+			</c>
+			<c type="3">
+				<object id="4">
+					<pos y="0.25"/>
+					<in1 component_id="7"/>
+				</object>
+			</c>
+		</components_bridge>
+		<groups/>
+		<component_states>
+			<c0 id="5" n="On Number">
+				<pos x="-2.5" y="0.5"/>
+				<v text="1" value="1"/>
+			</c0>
+			<c1 id="6" n="Off Number">
+				<pos x="-2.5"/>
+				<v text="0"/>
+			</c1>
+			<c2 id="7">
+				<pos x="-1.25" y="-0.25"/>
+				<in1 component_id="5"/>
+				<in2 component_id="6"/>
+				<in3 component_id="1"/>
+			</c2>
+		</component_states>
+		<component_bridge_states>
+			<c0 id="1">
+				<pos x="-3.75" y="-0.25"/>
+			</c0>
+			<c1 id="4">
+				<pos y="0.25"/>
+				<in1 component_id="7"/>
+			</c1>
+		</component_bridge_states>
+		<group_states/>
+	</group>
+</microprocessor>
+

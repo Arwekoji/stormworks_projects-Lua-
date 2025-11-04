@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<microprocessor name="Control (Chair Turn)" width="1" length="2" id_counter="37" id_counter_node="7" sym1="14350" sym2="12294" sym3="10250" sym4="1904" sym5="10250" sym6="12614" sym7="14670" sym8="448" sym9="64" sym10="64" sym11="64">
+	<nodes>
+		<n id="6" component_id="14">
+			<node label="In (X View)" mode="1" type="1"/>
+		</n>
+		<n id="7" component_id="27">
+			<node label="Out (Chair Turn Speed)" type="1">
+				<position z="1"/>
+			</node>
+		</n>
+	</nodes>
+	<group>
+		<data type="1049481524">
+			<inputs/>
+			<outputs/>
+		</data>
+		<components>
+			<c type="34">
+				<object id="30" n="Turn Speed">
+					<pos x="1.75" y="-2"/>
+					<v text="0.1" value="0.1"/>
+				</object>
+			</c>
+			<c type="8">
+				<object id="31">
+					<pos x="2.75"/>
+					<in1 component_id="35"/>
+					<in2 component_id="30"/>
+				</object>
+			</c>
+			<c type="14">
+				<object id="32">
+					<pos x="-2.75" y="-0.25"/>
+					<in1 component_id="14"/>
+				</object>
+			</c>
+			<c type="42">
+				<object id="33">
+					<pos x="-1.25" y="-0.5"/>
+					<in1 component_id="32"/>
+					<in2 component_id="34"/>
+					<e text="0.0001" value="0.0001"/>
+				</object>
+			</c>
+			<c type="15">
+				<object id="34">
+					<pos x="-2.25" y="-2"/>
+					<n text="0.35" value="0.35"/>
+				</object>
+			</c>
+			<c type="22">
+				<object id="35">
+					<pos x="0.25" y="-0.25"/>
+					<in1 component_id="37"/>
+					<in2 component_id="36"/>
+					<in3 component_id="33"/>
+				</object>
+			</c>
+			<c type="15">
+				<object id="36">
+					<pos x="-0.75" y="-2"/>
+					<n text="0"/>
+				</object>
+			</c>
+			<c type="9">
+				<object id="37">
+					<pos x="-0.75" y="1"/>
+					<in1 component_id="14"/>
+					<in2 component_id="32"/>
+				</object>
+			</c>
+		</components>
+		<components_bridge>
+			<c type="2">
+				<object id="14">
+					<pos x="-4.25" y="-0.25"/>
+				</object>
+			</c>
+			<c type="3">
+				<object id="27">
+					<pos x="4.25" y="0.25"/>
+					<in1 component_id="31"/>
+				</object>
+			</c>
+		</components_bridge>
+		<groups/>
+		<component_states>
+			<c0 id="30" n="Turn Speed">
+				<pos x="1.75" y="-2"/>
+				<v text="0.1" value="0.1"/>
+			</c0>
+			<c1 id="31">
+				<pos x="2.75"/>
+				<in1 component_id="35"/>
+				<in2 component_id="30"/>
+			</c1>
+			<c2 id="32">
+				<pos x="-2.75" y="-0.25"/>
+				<in1 component_id="14"/>
+			</c2>
+			<c3 id="33">
+				<pos x="-1.25" y="-0.5"/>
+				<in1 component_id="32"/>
+				<in2 component_id="34"/>
+				<e text="0.0001" value="0.0001"/>
+			</c3>
+			<c4 id="34">
+				<pos x="-2.25" y="-2"/>
+				<n text="0.35" value="0.35"/>
+			</c4>
+			<c5 id="35">
+				<pos x="0.25" y="-0.25"/>
+				<in1 component_id="37"/>
+				<in2 component_id="36"/>
+				<in3 component_id="33"/>
+			</c5>
+			<c6 id="36">
+				<pos x="-0.75" y="-2"/>
+				<n text="0"/>
+			</c6>
+			<c7 id="37">
+				<pos x="-0.75" y="1"/>
+				<in1 component_id="14"/>
+				<in2 component_id="32"/>
+			</c7>
+		</component_states>
+		<component_bridge_states>
+			<c0 id="14">
+				<pos x="-4.25" y="-0.25"/>
+			</c0>
+			<c1 id="27">
+				<pos x="4.25" y="0.25"/>
+				<in1 component_id="31"/>
+			</c1>
+		</component_bridge_states>
+		<group_states/>
+	</group>
+</microprocessor>
+

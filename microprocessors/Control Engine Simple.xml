@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<microprocessor name="Control (Engine Simple)" width="1" length="5" id_counter="156" id_counter_node="28" sym1="8196" sym2="16386" sym3="65535" sym4="16386" sym5="8516" sym6="448" sym7="320" sym8="3200" sym9="4608" sym10="4624" sym11="8188" sym12="3112" sym14="9362" sym15="18724">
+	<nodes>
+		<n id="2" component_id="4">
+			<node label="In (RPS)" mode="1" type="1"/>
+		</n>
+		<n id="15" component_id="30">
+			<node label="Out (Throttle)" type="1" description="The input signal to be processed.">
+				<position z="2"/>
+			</node>
+		</n>
+		<n id="18" component_id="36">
+			<node label="In (Starter)" mode="1" description="Works only if anyRPS less than 3">
+				<position z="4"/>
+			</node>
+		</n>
+		<n id="19" component_id="38">
+			<node label="Out (Engine Start)">
+				<position z="3"/>
+			</node>
+		</n>
+		<n id="28" component_id="156">
+			<node label="In (Up Down)" mode="1" type="1" description="Control Throttle">
+				<position z="1"/>
+			</node>
+		</n>
+	</nodes>
+	<group>
+		<data type="1049481524">
+			<inputs/>
+			<outputs/>
+		</data>
+		<components>
+			<c type="18">
+				<object id="39">
+					<pos x="-1" y="3.25"/>
+					<in1 component_id="4"/>
+					<in2 component_id="42"/>
+				</object>
+			</c>
+			<c type="1">
+				<object id="40">
+					<pos y="2.5"/>
+					<in1 component_id="36"/>
+					<in2 component_id="39"/>
+				</object>
+			</c>
+			<c type="34">
+				<object id="42" n="Max RPS for starter">
+					<pos x="-2" y="1.25"/>
+					<v text="3" value="3"/>
+				</object>
+			</c>
+			<c type="13">
+				<object id="50" memory="1">
+					<pos x="2.5" y="-0.5"/>
+					<in1 component_id="80"/>
+					<in3 component_id="70"/>
+					<r text="1" value="1"/>
+				</object>
+			</c>
+			<c type="14">
+				<object id="56">
+					<pos x="-2.5"/>
+					<in1 component_id="156"/>
+				</object>
+			</c>
+			<c type="15">
+				<object id="59">
+					<pos x="-2.5" y="-0.5"/>
+					<n text="0.5" value="0.5"/>
+				</object>
+			</c>
+			<c type="17">
+				<object id="66">
+					<pos x="-1.25" y="-0.25"/>
+					<in1 component_id="56"/>
+					<in2 component_id="59"/>
+				</object>
+			</c>
+			<c type="56">
+				<object id="67" script="function onTick()
+	Drossel = input.getNumber(1)			 
+	UD = input.getNumber(2)
+	
+	
+	if math.abs(UD) &gt; 0.5 then
+		if UD &lt; 0 then	Drossel = math.max(Drossel-0.01, 0)	end
+		if UD &gt; 0 then	Drossel = math.min(Drossel+0.01, 1)	end
+	end
+	
+	output.setNumber(1, Drossel)		
+end
+
+">
+					<pos x="-1.5" y="-2"/>
+					<in1 component_id="69"/>
+				</object>
+			</c>
+			<c type="40">
+				<object id="69" count="2">
+					<pos x="-2.75" y="-2.25"/>
+					<in1 component_id="50"/>
+					<in2 component_id="156"/>
+				</object>
+			</c>
+			<c type="31">
+				<object id="70">
+					<pos x="1.5" y="-1.75"/>
+					<in1 component_id="67"/>
+				</object>
+			</c>
+			<c type="27">
+				<object id="78" on="0.1" off="0.1">
+					<in1 component_id="66"/>
+				</object>
+			</c>
+			<c type="48">
+				<object id="80">
+					<pos x="1.25"/>
+					<in1 component_id="78"/>
+				</object>
+			</c>
+			<c type="22">
+				<object id="153">
+					<pos x="4" y="-0.5"/>
+					<in1 component_id="50"/>
+					<in2 component_id="154"/>
+					<in3 component_id="36"/>
+				</object>
+			</c>
+			<c type="15">
+				<object id="154">
+					<pos x="3" y="-1.5"/>
+					<n text="0"/>
+				</object>
+			</c>
+		</components>
+		<components_bridge>
+			<c type="2">
+				<object id="4">
+					<pos x="-4.75" y="3.5"/>
+				</object>
+			</c>
+			<c type="3">
+				<object id="30">
+					<pos x="5.75"/>
+					<in1 component_id="153"/>
+				</object>
+			</c>
+			<c>
+				<object id="36">
+					<pos x="-4.75" y="2.75"/>
+				</object>
+			</c>
+			<c type="1">
+				<object id="38">
+					<pos x="5.75" y="2.75"/>
+					<in1 component_id="40"/>
+				</object>
+			</c>
+			<c type="2">
+				<object id="156">
+					<pos x="-4.75"/>
+				</object>
+			</c>
+		</components_bridge>
+		<groups/>
+		<component_states>
+			<c0 id="39">
+				<pos x="-1" y="3.25"/>
+				<in1 component_id="4"/>
+				<in2 component_id="42"/>
+			</c0>
+			<c1 id="40">
+				<pos y="2.5"/>
+				<in1 component_id="36"/>
+				<in2 component_id="39"/>
+			</c1>
+			<c2 id="42" n="Max RPS for starter">
+				<pos x="-2" y="1.25"/>
+				<v text="3" value="3"/>
+			</c2>
+			<c3 id="50" memory="1">
+				<pos x="2.5" y="-0.5"/>
+				<in1 component_id="80"/>
+				<in3 component_id="70"/>
+				<r text="1" value="1"/>
+			</c3>
+			<c4 id="56">
+				<pos x="-2.5"/>
+				<in1 component_id="156"/>
+			</c4>
+			<c5 id="59">
+				<pos x="-2.5" y="-0.5"/>
+				<n text="0.5" value="0.5"/>
+			</c5>
+			<c6 id="66">
+				<pos x="-1.25" y="-0.25"/>
+				<in1 component_id="56"/>
+				<in2 component_id="59"/>
+			</c6>
+			<c7 id="67" script="function onTick()
+	Drossel = input.getNumber(1)			 
+	UD = input.getNumber(2)
+	
+	
+	if math.abs(UD) &gt; 0.5 then
+		if UD &lt; 0 then	Drossel = math.max(Drossel-0.01, 0)	end
+		if UD &gt; 0 then	Drossel = math.min(Drossel+0.01, 1)	end
+	end
+	
+	output.setNumber(1, Drossel)		
+end
+
+">
+				<pos x="-1.5" y="-2"/>
+				<in1 component_id="69"/>
+			</c7>
+			<c8 id="69" count="2">
+				<pos x="-2.75" y="-2.25"/>
+				<in1 component_id="50"/>
+				<in2 component_id="156"/>
+			</c8>
+			<c9 id="70">
+				<pos x="1.5" y="-1.75"/>
+				<in1 component_id="67"/>
+			</c9>
+			<c10 id="78" on="0.1" off="0.1">
+				<in1 component_id="66"/>
+			</c10>
+			<c11 id="80">
+				<pos x="1.25"/>
+				<in1 component_id="78"/>
+			</c11>
+			<c12 id="153">
+				<pos x="4" y="-0.5"/>
+				<in1 component_id="50"/>
+				<in2 component_id="154"/>
+				<in3 component_id="36"/>
+			</c12>
+			<c13 id="154">
+				<pos x="3" y="-1.5"/>
+				<n text="0"/>
+			</c13>
+		</component_states>
+		<component_bridge_states>
+			<c0 id="4">
+				<pos x="-4.75" y="3.5"/>
+			</c0>
+			<c1 id="30">
+				<pos x="5.75"/>
+				<in1 component_id="153"/>
+			</c1>
+			<c2 id="36">
+				<pos x="-4.75" y="2.75"/>
+			</c2>
+			<c3 id="38">
+				<pos x="5.75" y="2.75"/>
+				<in1 component_id="40"/>
+			</c3>
+			<c4 id="156">
+				<pos x="-4.75"/>
+			</c4>
+		</component_bridge_states>
+		<group_states/>
+	</group>
+</microprocessor>
+

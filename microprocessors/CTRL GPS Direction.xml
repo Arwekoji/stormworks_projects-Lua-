@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<microprocessor name="CTRL GPS Direction" description="Works in any interface" width="2" length="3" id_counter="70" id_counter_node="25" sym0="49283" sym1="33217" sym2="128" sym3="128" sym4="2056" sym5="7740" sym6="2056" sym7="128" sym8="128" sym9="448" sym10="128" sym12="2192" sym13="4520" sym14="35465" sym15="53651">
+	<nodes>
+		<n id="20" component_id="53">
+			<node label="In (GPS X)" mode="1" type="1"/>
+		</n>
+		<n id="21" component_id="54">
+			<node label="In (GPS Y)" mode="1" type="1">
+				<position x="1"/>
+			</node>
+		</n>
+		<n id="22" component_id="57">
+			<node label="In (Target X)" mode="1" type="1">
+				<position z="1"/>
+			</node>
+		</n>
+		<n id="23" component_id="58">
+			<node label="In (Target Y)" mode="1" type="1">
+				<position x="1" z="1"/>
+			</node>
+		</n>
+		<n id="24" component_id="60">
+			<node label="In (Compass)" mode="1" type="1">
+				<position z="2"/>
+			</node>
+		</n>
+		<n id="25" component_id="63">
+			<node label="Out (Dir/Angle)" type="5" description="1 - Distance, 2 - Angle2Target, ...to7">
+				<position x="1" z="2"/>
+			</node>
+		</n>
+	</nodes>
+	<group>
+		<data type="1049481524">
+			<inputs/>
+			<outputs/>
+		</data>
+		<components>
+			<c type="56">
+				<object id="19" script="function angle2arrow_angle(angle)
+	return (angle + 180) % 360 - 180
+end
+
+function onTick()
+	--our gps
+	x0, y0 = input.getNumber(1), input.getNumber(2)
+	--target gps
+	x1, y1 = input.getNumber(3), input.getNumber(4)
+	--compass
+	heading = input.getNumber(5) * math.pi * 2 -- -Pi to +Pi
+	distance_converter = input.getNumber(6)
+		
+	dx, dy = x1 - x0, y1 - y0 --cathetus
+	distance = math.sqrt(dx^2 + dy^2)
+	
+	--world_coord-compass
+	relative_angle = angle2arrow_angle(math.deg(math.atan(dx, dy)-heading))
+	
+	if distance &lt; 1 then
+   	 relative_angle = 0
+	end
+	
+	output.setNumber(1, distance/distance_converter)
+	output.setNumber(2, relative_angle)
+	output.setNumber(3, x0)
+	output.setNumber(4, y0)
+	output.setNumber(5, x1)
+	output.setNumber(6, y1)
+	output.setNumber(7, 360-(math.floor(math.deg(heading)) % 360))
+end">
+					<pos x="0.75" y="1.75"/>
+					<in1 component_id="20"/>
+				</object>
+			</c>
+			<c type="40">
+				<object id="20" count="6">
+					<pos x="-0.5" y="0.5"/>
+					<in1 component_id="53"/>
+					<in2 component_id="54"/>
+					<in3 component_id="57"/>
+					<in4 component_id="58"/>
+					<in5 component_id="60"/>
+					<in6 component_id="64"/>
+				</object>
+			</c>
+			<c type="20">
+				<object id="64" name="Distance converter" i="1">
+					<pos x="-2.75" y="0.5"/>
+					<items>
+						<i l="Meters">
+							<v text="1" value="1"/>
+						</i>
+						<i l="Kilometers">
+							<v text="1000" value="1000"/>
+						</i>
+						<i l="Megameters">
+							<v text="100000" value="100000"/>
+						</i>
+					</items>
+				</object>
+			</c>
+		</components>
+		<components_bridge>
+			<c type="2">
+				<object id="53">
+					<pos x="-1.75" y="1.75"/>
+				</object>
+			</c>
+			<c type="2">
+				<object id="54">
+					<pos x="-1.75" y="1.5"/>
+				</object>
+			</c>
+			<c type="2">
+				<object id="57">
+					<pos x="-1.75" y="1.25"/>
+				</object>
+			</c>
+			<c type="2">
+				<object id="58">
+					<pos x="-1.75" y="1"/>
+				</object>
+			</c>
+			<c type="2">
+				<object id="60">
+					<pos x="-1.75" y="0.75"/>
+				</object>
+			</c>
+			<c type="5">
+				<object id="63">
+					<pos x="2.25" y="2"/>
+					<in1 component_id="19"/>
+				</object>
+			</c>
+		</components_bridge>
+		<groups/>
+		<component_states>
+			<c0 id="19" script="function angle2arrow_angle(angle)
+	return (angle + 180) % 360 - 180
+end
+
+function onTick()
+	--our gps
+	x0, y0 = input.getNumber(1), input.getNumber(2)
+	--target gps
+	x1, y1 = input.getNumber(3), input.getNumber(4)
+	--compass
+	heading = input.getNumber(5) * math.pi * 2 -- -Pi to +Pi
+	distance_converter = input.getNumber(6)
+		
+	dx, dy = x1 - x0, y1 - y0 --cathetus
+	distance = math.sqrt(dx^2 + dy^2)
+	
+	--world_coord-compass
+	relative_angle = angle2arrow_angle(math.deg(math.atan(dx, dy)-heading))
+	
+	if distance &lt; 1 then
+   	 relative_angle = 0
+	end
+	
+	output.setNumber(1, distance/distance_converter)
+	output.setNumber(2, relative_angle)
+	output.setNumber(3, x0)
+	output.setNumber(4, y0)
+	output.setNumber(5, x1)
+	output.setNumber(6, y1)
+	output.setNumber(7, 360-(math.floor(math.deg(heading)) % 360))
+end">
+				<pos x="0.75" y="1.75"/>
+				<in1 component_id="20"/>
+			</c0>
+			<c1 id="20" count="6">
+				<pos x="-0.5" y="0.5"/>
+				<in1 component_id="53"/>
+				<in2 component_id="54"/>
+				<in3 component_id="57"/>
+				<in4 component_id="58"/>
+				<in5 component_id="60"/>
+				<in6 component_id="64"/>
+			</c1>
+			<c2 id="64" name="Distance converter" i="1">
+				<pos x="-2.75" y="0.5"/>
+				<items>
+					<i l="Meters">
+						<v text="1" value="1"/>
+					</i>
+					<i l="Kilometers">
+						<v text="1000" value="1000"/>
+					</i>
+					<i l="Megameters">
+						<v text="100000" value="100000"/>
+					</i>
+				</items>
+			</c2>
+		</component_states>
+		<component_bridge_states>
+			<c0 id="53">
+				<pos x="-1.75" y="1.75"/>
+			</c0>
+			<c1 id="54">
+				<pos x="-1.75" y="1.5"/>
+			</c1>
+			<c2 id="57">
+				<pos x="-1.75" y="1.25"/>
+			</c2>
+			<c3 id="58">
+				<pos x="-1.75" y="1"/>
+			</c3>
+			<c4 id="60">
+				<pos x="-1.75" y="0.75"/>
+			</c4>
+			<c5 id="63">
+				<pos x="2.25" y="2"/>
+				<in1 component_id="19"/>
+			</c5>
+		</component_bridge_states>
+		<group_states/>
+	</group>
+</microprocessor>
+

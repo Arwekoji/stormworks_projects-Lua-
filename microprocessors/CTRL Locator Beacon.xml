@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<microprocessor name="CTRL (Locator Beacon)" width="3" length="3" id_counter="56" id_counter_node="17" sym0="49155" sym1="32769" sym2="672" sym4="672" sym5="672" sym8="10922" sym9="10794" sym10="10698" sym11="9234" sym12="5092" sym13="2056" sym14="34801" sym15="49155">
+	<nodes>
+		<n id="1" component_id="3">
+			<node label="In (Comp Data)" mode="1" type="5" description="and other comps"/>
+		</n>
+		<n id="2" component_id="5">
+			<node label="Out (RX)" type="5">
+				<position z="1"/>
+			</node>
+		</n>
+		<n id="3" component_id="34">
+			<node label="Out (Channel)" type="1" description="Always 13 - Distress Channel">
+				<position x="2" z="2"/>
+			</node>
+		</n>
+		<n id="4" component_id="10">
+			<node label="Out (Locator)" description="Always True">
+				<position x="1" z="2"/>
+			</node>
+		</n>
+		<n id="7" component_id="33">
+			<node label="Out (Transmit Mod)">
+				<position z="2"/>
+			</node>
+		</n>
+		<n id="14" component_id="29">
+			<node label="In (Locator Ping)" mode="1">
+				<position x="1"/>
+			</node>
+		</n>
+		<n id="15" component_id="53">
+			<node label="In (Radiation Meter)" mode="1" type="1">
+				<position x="1" z="1"/>
+			</node>
+		</n>
+		<n id="16" component_id="37">
+			<node label="In (Liquid Meter)" mode="1" type="1">
+				<position x="2" z="1"/>
+			</node>
+		</n>
+		<n id="17" component_id="38">
+			<node label="In (Clock)" mode="1" type="1">
+				<position x="2"/>
+			</node>
+		</n>
+	</nodes>
+	<group>
+		<data>
+			<inputs/>
+			<outputs/>
+		</data>
+		<components>
+			<c type="16">
+				<object id="31">
+					<pos x="6.25" y="-3.25"/>
+				</object>
+			</c>
+			<c type="58">
+				<object id="39" n="Channels" v="1 - X">
+					<pos x="4.75" y="0.25"/>
+				</object>
+			</c>
+			<c type="58">
+				<object id="40" n="2 - Y" v="3 - Z">
+					<pos x="4.75"/>
+				</object>
+			</c>
+			<c type="58">
+				<object id="41" n="4 - Locator Distance" v="5 - Radiation">
+					<pos x="4.75" y="-0.25"/>
+				</object>
+			</c>
+			<c type="58">
+				<object id="42" n="6 - Tsunami Alert">
+					<pos x="4.75" y="-0.5"/>
+				</object>
+			</c>
+			<c type="58">
+				<object id="43" n="">
+					<pos x="4.75" y="-0.75"/>
+				</object>
+			</c>
+			<c type="58">
+				<object id="44" n="32 - Ping (Send Coords)">
+					<pos x="4.75" y="-1"/>
+				</object>
+			</c>
+			<c type="58">
+				<object id="45" n="Label">
+					<pos x="4.75" y="-1.75"/>
+				</object>
+			</c>
+			<c type="58">
+				<object id="46" n="Label">
+					<pos x="4.75" y="-2"/>
+				</object>
+			</c>
+			<c type="58">
+				<object id="47" n="Label">
+					<pos x="4.75" y="-2.25"/>
+				</object>
+			</c>
+			<c type="58">
+				<object id="48" n="Label">
+					<pos x="4.75" y="-2.5"/>
+				</object>
+			</c>
+			<c type="58">
+				<object id="49" n="Label">
+					<pos x="4.75" y="-2.75"/>
+				</object>
+			</c>
+			<c type="58">
+				<object id="50" n="Label">
+					<pos x="4.75" y="-3"/>
+				</object>
+			</c>
+			<c type="58">
+				<object id="51" n="Label">
+					<pos x="4.75" y="-3.25"/>
+				</object>
+			</c>
+			<c type="15">
+				<object id="52">
+					<pos x="6.25" y="-2.75"/>
+					<n text="13" value="13"/>
+				</object>
+			</c>
+			<c type="17">
+				<object id="54">
+					<in1 component_id="37"/>
+					<in2 component_id="55"/>
+				</object>
+			</c>
+			<c type="15">
+				<object id="55">
+					<pos x="-1.25" y="-0.25"/>
+					<n text="0"/>
+				</object>
+			</c>
+			<c type="56">
+				<object id="56" script="last_ping_tick = 0
+current_tick = 0
+distance = 0
+
+function onTick()
+	locator = input.getBool(1)
+	current_tick = current_tick + 1
+
+	if locator then
+		local dt = current_tick - last_ping_tick
+		last_ping_tick = current_tick
+		if dt &gt; 5 then
+			local raw_distance = (dt - 5) / 0.02
+			if raw_distance &lt;= 110000 then
+				distance = raw_distance
+			end
+		end
+	end
+
+	--        
+	if current_tick - last_ping_tick &gt; 2205 then
+		distance = 0
+	end
+
+	output.setNumber(1, distance / 1000) --  
+end">
+					<pos x="0.75" y="-1.25"/>
+				</object>
+			</c>
+		</components>
+		<components_bridge>
+			<c type="4">
+				<object id="3">
+					<pos x="-1.25" y="1.25"/>
+				</object>
+			</c>
+			<c type="5">
+				<object id="5">
+					<pos x="2.25" y="1.25"/>
+				</object>
+			</c>
+			<c type="1">
+				<object id="10">
+					<pos x="7.5" y="-3.25"/>
+					<in1 component_id="31"/>
+				</object>
+			</c>
+			<c>
+				<object id="29">
+					<pos x="-0.5" y="-1.25"/>
+				</object>
+			</c>
+			<c type="1">
+				<object id="33">
+					<pos x="2.5" y="-1.5"/>
+				</object>
+			</c>
+			<c type="3">
+				<object id="34">
+					<pos x="7.5" y="-2.75"/>
+					<in1 component_id="52"/>
+				</object>
+			</c>
+			<c type="2">
+				<object id="37">
+					<pos x="-1.25" y="0.25"/>
+				</object>
+			</c>
+			<c type="2">
+				<object id="38">
+					<pos x="-1.75" y="-1"/>
+				</object>
+			</c>
+			<c type="2">
+				<object id="53">
+					<pos x="-1.5" y="-2.5"/>
+				</object>
+			</c>
+		</components_bridge>
+		<groups/>
+		<component_states>
+			<c0 id="31">
+				<pos x="6.25" y="-3.25"/>
+			</c0>
+			<c1 id="39" n="Channels" v="1 - X">
+				<pos x="4.75" y="0.25"/>
+			</c1>
+			<c2 id="40" n="2 - Y" v="3 - Z">
+				<pos x="4.75"/>
+			</c2>
+			<c3 id="41" n="4 - Locator Distance" v="5 - Radiation">
+				<pos x="4.75" y="-0.25"/>
+			</c3>
+			<c4 id="42" n="6 - Tsunami Alert">
+				<pos x="4.75" y="-0.5"/>
+			</c4>
+			<c5 id="43" n="">
+				<pos x="4.75" y="-0.75"/>
+			</c5>
+			<c6 id="44" n="32 - Ping (Send Coords)">
+				<pos x="4.75" y="-1"/>
+			</c6>
+			<c7 id="45" n="Label">
+				<pos x="4.75" y="-1.75"/>
+			</c7>
+			<c8 id="46" n="Label">
+				<pos x="4.75" y="-2"/>
+			</c8>
+			<c9 id="47" n="Label">
+				<pos x="4.75" y="-2.25"/>
+			</c9>
+			<c10 id="48" n="Label">
+				<pos x="4.75" y="-2.5"/>
+			</c10>
+			<c11 id="49" n="Label">
+				<pos x="4.75" y="-2.75"/>
+			</c11>
+			<c12 id="50" n="Label">
+				<pos x="4.75" y="-3"/>
+			</c12>
+			<c13 id="51" n="Label">
+				<pos x="4.75" y="-3.25"/>
+			</c13>
+			<c14 id="52">
+				<pos x="6.25" y="-2.75"/>
+				<n text="13" value="13"/>
+			</c14>
+			<c15 id="54">
+				<in1 component_id="37"/>
+				<in2 component_id="55"/>
+			</c15>
+			<c16 id="55">
+				<pos x="-1.25" y="-0.25"/>
+				<n text="0"/>
+			</c16>
+			<c17 id="56" script="last_ping_tick = 0
+current_tick = 0
+distance = 0
+
+function onTick()
+	locator = input.getBool(1)
+	current_tick = current_tick + 1
+
+	if locator then
+		local dt = current_tick - last_ping_tick
+		last_ping_tick = current_tick
+		if dt &gt; 5 then
+			local raw_distance = (dt - 5) / 0.02
+			if raw_distance &lt;= 110000 then
+				distance = raw_distance
+			end
+		end
+	end
+
+	--        
+	if current_tick - last_ping_tick &gt; 2205 then
+		distance = 0
+	end
+
+	output.setNumber(1, distance / 1000) --  
+end">
+				<pos x="0.75" y="-1.25"/>
+			</c17>
+		</component_states>
+		<component_bridge_states>
+			<c0 id="3">
+				<pos x="-1.25" y="1.25"/>
+			</c0>
+			<c1 id="5">
+				<pos x="2.25" y="1.25"/>
+			</c1>
+			<c2 id="10">
+				<pos x="7.5" y="-3.25"/>
+				<in1 component_id="31"/>
+			</c2>
+			<c3 id="29">
+				<pos x="-0.5" y="-1.25"/>
+			</c3>
+			<c4 id="33">
+				<pos x="2.5" y="-1.5"/>
+			</c4>
+			<c5 id="34">
+				<pos x="7.5" y="-2.75"/>
+				<in1 component_id="52"/>
+			</c5>
+			<c6 id="37">
+				<pos x="-1.25" y="0.25"/>
+			</c6>
+			<c7 id="38">
+				<pos x="-1.75" y="-1"/>
+			</c7>
+			<c8 id="53">
+				<pos x="-1.5" y="-2.5"/>
+			</c8>
+		</component_bridge_states>
+		<group_states/>
+	</group>
+</microprocessor>
+

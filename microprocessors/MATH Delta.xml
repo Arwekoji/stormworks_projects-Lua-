@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<microprocessor name="MATH (Delta)" width="2" length="1" id_counter="26" id_counter_node="2" sym4="16376" sym5="4112" sym6="2080" sym7="1088" sym8="640" sym9="256">
+	<nodes>
+		<n id="1" component_id="3">
+			<node label="In (Changing Number)" mode="1" type="1"/>
+		</n>
+		<n id="2" component_id="5">
+			<node label="Out (Delta)" type="1" description="per tick/second/min">
+				<position x="1"/>
+			</node>
+		</n>
+	</nodes>
+	<group>
+		<data>
+			<inputs/>
+			<outputs/>
+		</data>
+		<components>
+			<c type="35">
+				<object id="6">
+					<pos x="1" y="-4"/>
+					<in1 component_id="3"/>
+				</object>
+			</c>
+			<c type="49">
+				<object id="7" u="1">
+					<pos y="-1.75"/>
+					<in1 component_id="23"/>
+					<in2 component_id="11"/>
+				</object>
+			</c>
+			<c type="20">
+				<object id="9" name="Count as" i="1">
+					<pos x="-2.25" y="-2.25"/>
+					<items>
+						<i l="Ticks">
+							<v text="2" value="2"/>
+						</i>
+						<i l="Second">
+							<v text="120" value="120"/>
+						</i>
+						<i l="Minutes">
+							<v text="7200" value="7200"/>
+						</i>
+					</items>
+				</object>
+			</c>
+			<c type="19">
+				<object id="10" name="Iterations">
+					<pos x="-2.25" y="-2.5"/>
+					<min text="1" value="1"/>
+					<max text="60" value="60"/>
+					<int text="1" value="1"/>
+					<v text="1" value="1"/>
+				</object>
+			</c>
+			<c type="8">
+				<object id="11">
+					<pos x="-1" y="-2.5"/>
+					<in1 component_id="9"/>
+					<in2 component_id="10"/>
+				</object>
+			</c>
+			<c type="13">
+				<object id="12">
+					<pos x="4.5" y="-2"/>
+					<in1 component_id="7"/>
+					<in3 component_id="13"/>
+					<r text="0"/>
+				</object>
+			</c>
+			<c type="13">
+				<object id="13">
+					<pos x="2.75" y="-3"/>
+					<in1 component_id="14"/>
+					<in2 component_id="24"/>
+					<in3 component_id="15"/>
+					<r text="0"/>
+				</object>
+			</c>
+			<c>
+				<object id="14">
+					<pos x="1" y="-2.5"/>
+					<in1 component_id="7"/>
+				</object>
+			</c>
+			<c type="6">
+				<object id="15">
+					<pos x="3.75" y="-4"/>
+					<in1 component_id="13"/>
+					<in2 component_id="6"/>
+				</object>
+			</c>
+			<c type="34">
+				<object id="16" n="Multiply answer">
+					<pos x="5" y="-0.75"/>
+					<v text="1" value="1"/>
+				</object>
+			</c>
+			<c type="8">
+				<object id="17">
+					<pos x="6" y="-1.5"/>
+					<in1 component_id="16"/>
+					<in2 component_id="12"/>
+				</object>
+			</c>
+			<c>
+				<object id="23">
+					<pos y="-1"/>
+					<in1 component_id="7"/>
+				</object>
+			</c>
+			<c type="48">
+				<object id="24" m="2">
+					<pos x="1.75" y="-2"/>
+					<in1 component_id="7"/>
+				</object>
+			</c>
+		</components>
+		<components_bridge>
+			<c type="2">
+				<object id="3">
+					<pos x="-2.25" y="-4"/>
+				</object>
+			</c>
+			<c type="3">
+				<object id="5">
+					<pos x="7.25" y="-1.25"/>
+					<in1 component_id="17"/>
+				</object>
+			</c>
+		</components_bridge>
+		<groups/>
+		<component_states>
+			<c0 id="6">
+				<pos x="1" y="-4"/>
+				<in1 component_id="3"/>
+			</c0>
+			<c1 id="7" u="1">
+				<pos y="-1.75"/>
+				<in1 component_id="23"/>
+				<in2 component_id="11"/>
+			</c1>
+			<c2 id="9" name="Count as" i="1">
+				<pos x="-2.25" y="-2.25"/>
+				<items>
+					<i l="Ticks">
+						<v text="2" value="2"/>
+					</i>
+					<i l="Second">
+						<v text="120" value="120"/>
+					</i>
+					<i l="Minutes">
+						<v text="7200" value="7200"/>
+					</i>
+				</items>
+			</c2>
+			<c3 id="10" name="Iterations">
+				<pos x="-2.25" y="-2.5"/>
+				<min text="1" value="1"/>
+				<max text="60" value="60"/>
+				<int text="1" value="1"/>
+				<v text="1" value="1"/>
+			</c3>
+			<c4 id="11">
+				<pos x="-1" y="-2.5"/>
+				<in1 component_id="9"/>
+				<in2 component_id="10"/>
+			</c4>
+			<c5 id="12">
+				<pos x="4.5" y="-2"/>
+				<in1 component_id="7"/>
+				<in3 component_id="13"/>
+				<r text="0"/>
+			</c5>
+			<c6 id="13">
+				<pos x="2.75" y="-3"/>
+				<in1 component_id="14"/>
+				<in2 component_id="24"/>
+				<in3 component_id="15"/>
+				<r text="0"/>
+			</c6>
+			<c7 id="14">
+				<pos x="1" y="-2.5"/>
+				<in1 component_id="7"/>
+			</c7>
+			<c8 id="15">
+				<pos x="3.75" y="-4"/>
+				<in1 component_id="13"/>
+				<in2 component_id="6"/>
+			</c8>
+			<c9 id="16" n="Multiply answer">
+				<pos x="5" y="-0.75"/>
+				<v text="1" value="1"/>
+			</c9>
+			<c10 id="17">
+				<pos x="6" y="-1.5"/>
+				<in1 component_id="16"/>
+				<in2 component_id="12"/>
+			</c10>
+			<c11 id="23">
+				<pos y="-1"/>
+				<in1 component_id="7"/>
+			</c11>
+			<c12 id="24" m="2">
+				<pos x="1.75" y="-2"/>
+				<in1 component_id="7"/>
+			</c12>
+		</component_states>
+		<component_bridge_states>
+			<c0 id="3">
+				<pos x="-2.25" y="-4"/>
+			</c0>
+			<c1 id="5">
+				<pos x="7.25" y="-1.25"/>
+				<in1 component_id="17"/>
+			</c1>
+		</component_bridge_states>
+		<group_states/>
+	</group>
+</microprocessor>
+

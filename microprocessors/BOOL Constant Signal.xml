@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<microprocessor name="BOOL constant signal" description="Always true" width="1" length="1" id_counter="3" id_counter_node="1" sym6="2016" sym7="2016" sym8="2016" sym9="2016" sym10="2016">
+	<nodes>
+		<n id="1" component_id="2">
+			<node label="Out (Constant Signal)"/>
+		</n>
+	</nodes>
+	<group>
+		<data type="1049481524">
+			<inputs/>
+			<outputs/>
+		</data>
+		<components>
+			<c type="16">
+				<object id="3">
+					<pos x="-1.5"/>
+				</object>
+			</c>
+		</components>
+		<components_bridge>
+			<c type="1">
+				<object id="2">
+					<in1 component_id="3"/>
+				</object>
+			</c>
+		</components_bridge>
+		<groups/>
+		<component_states>
+			<c0 id="3">
+				<pos x="-1.5"/>
+			</c0>
+		</component_states>
+		<component_bridge_states>
+			<c0 id="2">
+				<in1 component_id="3"/>
+			</c0>
+		</component_bridge_states>
+		<group_states/>
+	</group>
+</microprocessor>
+

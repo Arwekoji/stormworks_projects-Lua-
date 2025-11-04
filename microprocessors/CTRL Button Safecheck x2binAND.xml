@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<microprocessor name="CTRL (Button Safecheck x2binAND)" width="4" length="1" id_counter="56" id_counter_node="6" sym0="448" sym1="960" sym2="960" sym3="448" sym5="14350" sym6="10692" sym7="10564" sym8="14790" sym11="2232" sym12="1288" sym13="568" sym14="1312" sym15="2232">
+	<nodes>
+		<n id="1" component_id="1">
+			<node label="In (Button)" mode="1"/>
+		</n>
+		<n id="4" component_id="29">
+			<node label="In (1st Control)" mode="1">
+				<position x="1"/>
+			</node>
+		</n>
+		<n id="5" component_id="30">
+			<node label="In (2st Control)" mode="1">
+				<position x="2"/>
+			</node>
+		</n>
+		<n id="6" component_id="32">
+			<node label="Out (Checked Button)">
+				<position x="3"/>
+			</node>
+		</n>
+	</nodes>
+	<group>
+		<data>
+			<inputs/>
+			<outputs/>
+		</data>
+		<components>
+			<c type="20">
+				<object id="13" name="When not safe">
+					<pos x="-2" y="-1.25"/>
+					<items>
+						<i l="True">
+							<v text="1" value="1"/>
+						</i>
+						<i l="False">
+							<v text="0"/>
+						</i>
+					</items>
+				</object>
+			</c>
+			<c type="22">
+				<object id="17">
+					<pos x="6.25" y="-1.75"/>
+					<in1 component_id="13"/>
+					<in2 component_id="24"/>
+					<in3 component_id="56"/>
+				</object>
+			</c>
+			<c type="22">
+				<object id="24">
+					<pos x="1.75" y="-5.5"/>
+					<in1 component_id="25"/>
+					<in2 component_id="26"/>
+					<in3 component_id="1"/>
+				</object>
+			</c>
+			<c type="15">
+				<object id="25">
+					<pos x="-2" y="-5"/>
+					<n text="1" value="1"/>
+				</object>
+			</c>
+			<c type="15">
+				<object id="26">
+					<pos x="-2" y="-5.25"/>
+					<n text="0"/>
+				</object>
+			</c>
+			<c type="42">
+				<object id="27">
+					<pos x="7.75" y="-1.5"/>
+					<in1 component_id="17"/>
+					<in2 component_id="28"/>
+					<e text="0.0001" value="0.0001"/>
+				</object>
+			</c>
+			<c type="15">
+				<object id="28">
+					<pos x="6.75" y="-2.5"/>
+					<n text="1" value="1"/>
+				</object>
+			</c>
+			<c type="20">
+				<object id="42" name="1st control should be for AND">
+					<pos x="0.5" y="-2.5"/>
+					<items>
+						<i l="True">
+							<v text="1" value="1"/>
+						</i>
+						<i l="False">
+							<v text="0"/>
+						</i>
+					</items>
+				</object>
+			</c>
+			<c type="20">
+				<object id="43" name="2st control should be for AND">
+					<pos x="0.5" y="-3.75"/>
+					<items>
+						<i l="True">
+							<v text="1" value="1"/>
+						</i>
+						<i l="False">
+							<v text="0"/>
+						</i>
+					</items>
+				</object>
+			</c>
+			<c type="22">
+				<object id="44">
+					<pos x="-0.75" y="-2.5"/>
+					<in1 component_id="47"/>
+					<in2 component_id="48"/>
+					<in3 component_id="29"/>
+				</object>
+			</c>
+			<c type="22">
+				<object id="46">
+					<pos x="-0.75" y="-3.75"/>
+					<in1 component_id="49"/>
+					<in2 component_id="50"/>
+					<in3 component_id="30"/>
+				</object>
+			</c>
+			<c type="15">
+				<object id="47">
+					<pos x="-2" y="-2"/>
+					<n text="1" value="1"/>
+				</object>
+			</c>
+			<c type="15">
+				<object id="48">
+					<pos x="-2" y="-2.25"/>
+					<n text="0"/>
+				</object>
+			</c>
+			<c type="15">
+				<object id="49">
+					<pos x="-2" y="-3.25"/>
+					<n text="1" value="1"/>
+				</object>
+			</c>
+			<c type="15">
+				<object id="50">
+					<pos x="-2" y="-3.5"/>
+					<n text="0"/>
+				</object>
+			</c>
+			<c type="42">
+				<object id="51">
+					<pos x="1.75" y="-2.25"/>
+					<in1 component_id="44"/>
+					<in2 component_id="42"/>
+					<e text="0.0001" value="0.0001"/>
+				</object>
+			</c>
+			<c type="42">
+				<object id="52">
+					<pos x="1.75" y="-3.5"/>
+					<in1 component_id="46"/>
+					<in2 component_id="43"/>
+					<e text="0.0001" value="0.0001"/>
+				</object>
+			</c>
+			<c type="1">
+				<object id="56">
+					<pos x="3.75" y="-2.75"/>
+					<in1 component_id="51"/>
+					<in2 component_id="52"/>
+				</object>
+			</c>
+		</components>
+		<components_bridge>
+			<c>
+				<object id="1">
+					<pos x="-2" y="-5.5"/>
+				</object>
+			</c>
+			<c>
+				<object id="29">
+					<pos x="-2" y="-2.5"/>
+				</object>
+			</c>
+			<c>
+				<object id="30">
+					<pos x="-2" y="-3.75"/>
+				</object>
+			</c>
+			<c type="1">
+				<object id="32">
+					<pos x="9.25" y="-1.25"/>
+					<in1 component_id="27"/>
+				</object>
+			</c>
+		</components_bridge>
+		<groups/>
+		<component_states>
+			<c0 id="13" name="When not safe">
+				<pos x="-2" y="-1.25"/>
+				<items>
+					<i l="True">
+						<v text="1" value="1"/>
+					</i>
+					<i l="False">
+						<v text="0"/>
+					</i>
+				</items>
+			</c0>
+			<c1 id="17">
+				<pos x="6.25" y="-1.75"/>
+				<in1 component_id="13"/>
+				<in2 component_id="24"/>
+				<in3 component_id="56"/>
+			</c1>
+			<c2 id="24">
+				<pos x="1.75" y="-5.5"/>
+				<in1 component_id="25"/>
+				<in2 component_id="26"/>
+				<in3 component_id="1"/>
+			</c2>
+			<c3 id="25">
+				<pos x="-2" y="-5"/>
+				<n text="1" value="1"/>
+			</c3>
+			<c4 id="26">
+				<pos x="-2" y="-5.25"/>
+				<n text="0"/>
+			</c4>
+			<c5 id="27">
+				<pos x="7.75" y="-1.5"/>
+				<in1 component_id="17"/>
+				<in2 component_id="28"/>
+				<e text="0.0001" value="0.0001"/>
+			</c5>
+			<c6 id="28">
+				<pos x="6.75" y="-2.5"/>
+				<n text="1" value="1"/>
+			</c6>
+			<c7 id="42" name="1st control should be for AND">
+				<pos x="0.5" y="-2.5"/>
+				<items>
+					<i l="True">
+						<v text="1" value="1"/>
+					</i>
+					<i l="False">
+						<v text="0"/>
+					</i>
+				</items>
+			</c7>
+			<c8 id="43" name="2st control should be for AND">
+				<pos x="0.5" y="-3.75"/>
+				<items>
+					<i l="True">
+						<v text="1" value="1"/>
+					</i>
+					<i l="False">
+						<v text="0"/>
+					</i>
+				</items>
+			</c8>
+			<c9 id="44">
+				<pos x="-0.75" y="-2.5"/>
+				<in1 component_id="47"/>
+				<in2 component_id="48"/>
+				<in3 component_id="29"/>
+			</c9>
+			<c10 id="46">
+				<pos x="-0.75" y="-3.75"/>
+				<in1 component_id="49"/>
+				<in2 component_id="50"/>
+				<in3 component_id="30"/>
+			</c10>
+			<c11 id="47">
+				<pos x="-2" y="-2"/>
+				<n text="1" value="1"/>
+			</c11>
+			<c12 id="48">
+				<pos x="-2" y="-2.25"/>
+				<n text="0"/>
+			</c12>
+			<c13 id="49">
+				<pos x="-2" y="-3.25"/>
+				<n text="1" value="1"/>
+			</c13>
+			<c14 id="50">
+				<pos x="-2" y="-3.5"/>
+				<n text="0"/>
+			</c14>
+			<c15 id="51">
+				<pos x="1.75" y="-2.25"/>
+				<in1 component_id="44"/>
+				<in2 component_id="42"/>
+				<e text="0.0001" value="0.0001"/>
+			</c15>
+			<c16 id="52">
+				<pos x="1.75" y="-3.5"/>
+				<in1 component_id="46"/>
+				<in2 component_id="43"/>
+				<e text="0.0001" value="0.0001"/>
+			</c16>
+			<c17 id="56">
+				<pos x="3.75" y="-2.75"/>
+				<in1 component_id="51"/>
+				<in2 component_id="52"/>
+			</c17>
+		</component_states>
+		<component_bridge_states>
+			<c0 id="1">
+				<pos x="-2" y="-5.5"/>
+			</c0>
+			<c1 id="29">
+				<pos x="-2" y="-2.5"/>
+			</c1>
+			<c2 id="30">
+				<pos x="-2" y="-3.75"/>
+			</c2>
+			<c3 id="32">
+				<pos x="9.25" y="-1.25"/>
+				<in1 component_id="27"/>
+			</c3>
+		</component_bridge_states>
+		<group_states/>
+	</group>
+</microprocessor>
+

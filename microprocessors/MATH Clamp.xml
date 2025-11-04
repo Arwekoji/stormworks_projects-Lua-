@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<microprocessor name="MATH Clamp" description="Return same number if correct, or Min/Max" width="2" length="1" id_counter="12" id_counter_node="2" sym3="28700" sym4="16388" sym5="18468" sym6="17476" sym7="17028" sym8="16644" sym9="17028" sym10="17476" sym11="18468" sym12="16388" sym13="28700">
+	<nodes>
+		<n id="1" component_id="3">
+			<node label="In (Proccesing Number)" mode="1" type="1"/>
+		</n>
+		<n id="2" component_id="5">
+			<node label="Out (Clamp/MinMaxed)" type="1">
+				<position x="1"/>
+			</node>
+		</n>
+	</nodes>
+	<group>
+		<data type="1049481524">
+			<inputs/>
+			<outputs/>
+		</data>
+		<components>
+			<c type="18">
+				<object id="6">
+					<pos x="-1.75" y="0.75"/>
+					<in1 component_id="3"/>
+					<in2 component_id="8"/>
+				</object>
+			</c>
+			<c type="17">
+				<object id="7">
+					<pos x="-1.75"/>
+					<in1 component_id="3"/>
+					<in2 component_id="9"/>
+				</object>
+			</c>
+			<c type="34">
+				<object id="8" n="Min">
+					<pos x="-2.75" y="1.5"/>
+					<v text="0"/>
+				</object>
+			</c>
+			<c type="34">
+				<object id="9" n="Max">
+					<pos x="-2.75" y="-0.5"/>
+					<v text="0"/>
+				</object>
+			</c>
+			<c type="22">
+				<object id="10">
+					<pos x="-0.25" y="-0.25"/>
+					<in1 component_id="9"/>
+					<in2 component_id="3"/>
+					<in3 component_id="7"/>
+				</object>
+			</c>
+			<c type="22">
+				<object id="11">
+					<pos x="-0.25" y="0.75"/>
+					<in1 component_id="8"/>
+					<in2 component_id="3"/>
+					<in3 component_id="6"/>
+				</object>
+			</c>
+			<c type="22">
+				<object id="12">
+					<pos x="1.25" y="0.25"/>
+					<in1 component_id="10"/>
+					<in2 component_id="11"/>
+					<in3 component_id="7"/>
+				</object>
+			</c>
+		</components>
+		<components_bridge>
+			<c type="2">
+				<object id="3">
+					<pos x="-3.25" y="0.5"/>
+				</object>
+			</c>
+			<c type="3">
+				<object id="5">
+					<pos x="2.75" y="0.75"/>
+					<in1 component_id="12"/>
+				</object>
+			</c>
+		</components_bridge>
+		<groups/>
+		<component_states>
+			<c0 id="6">
+				<pos x="-1.75" y="0.75"/>
+				<in1 component_id="3"/>
+				<in2 component_id="8"/>
+			</c0>
+			<c1 id="7">
+				<pos x="-1.75"/>
+				<in1 component_id="3"/>
+				<in2 component_id="9"/>
+			</c1>
+			<c2 id="8" n="Min">
+				<pos x="-2.75" y="1.5"/>
+				<v text="0"/>
+			</c2>
+			<c3 id="9" n="Max">
+				<pos x="-2.75" y="-0.5"/>
+				<v text="0"/>
+			</c3>
+			<c4 id="10">
+				<pos x="-0.25" y="-0.25"/>
+				<in1 component_id="9"/>
+				<in2 component_id="3"/>
+				<in3 component_id="7"/>
+			</c4>
+			<c5 id="11">
+				<pos x="-0.25" y="0.75"/>
+				<in1 component_id="8"/>
+				<in2 component_id="3"/>
+				<in3 component_id="6"/>
+			</c5>
+			<c6 id="12">
+				<pos x="1.25" y="0.25"/>
+				<in1 component_id="10"/>
+				<in2 component_id="11"/>
+				<in3 component_id="7"/>
+			</c6>
+		</component_states>
+		<component_bridge_states>
+			<c0 id="3">
+				<pos x="-3.25" y="0.5"/>
+			</c0>
+			<c1 id="5">
+				<pos x="2.75" y="0.75"/>
+				<in1 component_id="12"/>
+			</c1>
+		</component_bridge_states>
+		<group_states/>
+	</group>
+</microprocessor>
+
