@@ -1,0 +1,19 @@
+function onTick()
+	x = input.getNumber(1)
+	y = input.getNumber(2)
+end
+
+function drawTarget(sX, sY)
+	screen.drawLine(sX, sY, sX+1, sY)
+	screen.drawLine(sX-3, sY, sX+1, sY-4)
+	screen.drawLine(sX-3, sY, sX+1, sY+4)
+	screen.drawLine(sX+3, sY, sX-1, sY+4)
+	screen.drawLine(sX+3, sY, sX-1, sY-4)
+end
+
+
+function onDraw()
+	screen.drawMap(x, y, 50)
+	screen.setColor(255, 0, 255)
+	drawTarget(143, 80)
+end

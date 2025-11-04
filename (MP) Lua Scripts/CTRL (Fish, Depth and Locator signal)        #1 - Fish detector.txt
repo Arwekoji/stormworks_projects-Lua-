@@ -1,0 +1,19 @@
+function onTick()
+	fishIsHere = input.getBool(1)
+	fishDistance = math.sqrt((input.getNumber(2)*input.getNumber(2))+(input.getNumber(3)*input.getNumber(3)))
+	
+	d1 = -1
+	d2 = -1
+	
+	if fishIsHere == true then
+		fishDistance = math.min(fishDistance, 99)
+		d1 = math.floor(fishDistance/10)
+		d2 = math.floor(fishDistance-(d1*10))
+	end
+	
+	output.setNumber(2, d1)
+	output.setNumber(3, d2)
+	output.setNumber(10, fishDistance)
+	output.setBool(11, fishIsHere)
+end
+	

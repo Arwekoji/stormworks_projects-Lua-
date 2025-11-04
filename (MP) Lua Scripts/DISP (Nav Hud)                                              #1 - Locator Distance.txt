@@ -1,0 +1,28 @@
+last_ping_tick = 0
+current_tick = 0
+distance = 0
+
+function onTick()
+	locator = input.getBool(1)
+	current_tick = current_tick + 1
+
+	if locator then
+		local dt = current_tick - last_ping_tick
+		last_ping_tick = current_tick
+
+		--  : d = (t - 5) / 0.02
+		if dt > 5 then
+			local raw_distance = (dt - 5) / 0.02
+			if raw_distance <= 110000 then
+				distance = raw_distance
+			end
+		end
+	end
+
+	--        
+	if current_tick - last_ping_tick > 2205 then
+		distance = 0
+	end
+
+	output.setNumber(1, distance / 1000) --  
+end

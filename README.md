@@ -11,13 +11,13 @@ A folder of microcontroller projects. They combine algorithmic programming with 
 
  BOOL - Working only with logical signals
  
- MATH - Working only with arithmetic signals
+ MATH - Working only with number signals
  
- CONV - Working with logical and arithmetic signals
+ CONV - Working in converted pairs with logical, number and composite signals
  
- CTRL - Working with composite signals, in addition can work with logical, arithmetic and sound signals
+ CTRL - Working with all signals (except video) for analogue displays and complex devices
  
- DISP - Working with video signal, in addition can work as CTRL
+ DISP - Working with video signal
 
  
 vehicles:

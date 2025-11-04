@@ -1,0 +1,9 @@
+function onTick()
+end
+
+function drawRadar()
+	
+end
+
+function onDraw()
+end

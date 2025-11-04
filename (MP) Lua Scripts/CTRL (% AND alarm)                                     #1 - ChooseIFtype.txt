@@ -1,0 +1,12 @@
+function onTick()
+	BaseNumber = input.getNumber(1)
+	ToR = input.getNumber(2)
+	N = input.getNumber(3)
+	answer = false
+	
+	if ToR==0 and BaseNumber==N then		answer = true		end
+	if ToR==1  and BaseNumber>N then		answer = true		end
+	if ToR==-1 and BaseNumber<N then		answer = true		end
+	
+	output.setBool(1, answer)		
+end

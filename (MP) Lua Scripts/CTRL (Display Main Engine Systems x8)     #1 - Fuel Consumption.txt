@@ -1,0 +1,14 @@
+function onTick()
+	currentDelta = input.getNumber(1)			
+	DeltaSum = input.getNumber(2)+currentDelta		
+	counter = input.getNumber(3)
+	
+	
+	updateDeltaSum = false
+	
+	
+	if counter==60 then		updateDeltaSum = true	end	
+	output.setNumber(1, DeltaSum)	
+	output.setBool(1, updateDeltaSum)
+end
+

@@ -1,47 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<microprocessor name="Math sum (x35)" width="6" length="6" id_counter="85" id_counter_node="42" sym2="8456" sym3="29596" sym4="8456" sym8="3696" sym9="2112" sym10="2112" sym11="3696" sym12="576" sym13="576" sym14="3696">
+<microprocessor name="MATH sum (x35 or less)" description="Just cut if need less" width="6" length="6" id_counter="85" id_counter_node="42" sym2="8456" sym3="29596" sym4="8456" sym8="3696" sym9="2112" sym10="2112" sym11="3696" sym12="576" sym13="576" sym14="3696">
 	<nodes>
 		<n id="7" component_id="43">
-			<node label="In (F1)" mode="1" type="1"/>
+			<node label="In (F1)" mode="1" type="1">
+				<position z="1"/>
+			</node>
 		</n>
 		<n id="8" component_id="44">
 			<node label="In (F2)" mode="1" type="1">
-				<position z="1"/>
+				<position x="1" z="1"/>
 			</node>
 		</n>
 		<n id="9" component_id="45">
 			<node label="In (F3)" mode="1" type="1">
-				<position z="2"/>
+				<position x="1"/>
 			</node>
 		</n>
 		<n id="10" component_id="46">
 			<node label="In (F4)" mode="1" type="1">
-				<position z="3"/>
+				<position x="2"/>
 			</node>
 		</n>
 		<n id="11" component_id="47">
 			<node label="In (F5)" mode="1" type="1">
-				<position z="4"/>
+				<position x="2" z="1"/>
 			</node>
 		</n>
 		<n id="12" component_id="48">
 			<node label="In (F6)" mode="1" type="1">
-				<position z="5"/>
+				<position x="2" z="2"/>
 			</node>
 		</n>
 		<n id="13" component_id="49">
 			<node label="In (F7)" mode="1" type="1">
-				<position x="1"/>
+				<position x="1" z="2"/>
 			</node>
 		</n>
 		<n id="14" component_id="50">
 			<node label="In (F8)" mode="1" type="1">
-				<position x="1" z="1"/>
+				<position z="2"/>
 			</node>
 		</n>
 		<n id="15" component_id="51">
 			<node label="In (F9)" mode="1" type="1">
-				<position x="1" z="2"/>
+				<position z="3"/>
 			</node>
 		</n>
 		<n id="16" component_id="52">
@@ -51,112 +53,112 @@
 		</n>
 		<n id="17" component_id="53">
 			<node label="In (F11)" mode="1" type="1">
-				<position x="1" z="4"/>
+				<position x="2" z="3"/>
 			</node>
 		</n>
 		<n id="18" component_id="54">
 			<node label="In (F12)" mode="1" type="1">
-				<position x="1" z="5"/>
+				<position x="3" z="3"/>
 			</node>
 		</n>
 		<n id="19" component_id="55">
 			<node label="In (F13)" mode="1" type="1">
-				<position x="2"/>
+				<position x="3" z="2"/>
 			</node>
 		</n>
 		<n id="20" component_id="56">
 			<node label="In (F14)" mode="1" type="1">
-				<position x="2" z="1"/>
+				<position x="3" z="1"/>
 			</node>
 		</n>
 		<n id="21" component_id="57">
 			<node label="In (F15)" mode="1" type="1">
-				<position x="2" z="2"/>
+				<position x="3"/>
 			</node>
 		</n>
 		<n id="22" component_id="58">
 			<node label="In (F16)" mode="1" type="1">
-				<position x="2" z="3"/>
+				<position x="4"/>
 			</node>
 		</n>
 		<n id="23" component_id="59">
 			<node label="In (F17)" mode="1" type="1">
-				<position x="2" z="4"/>
+				<position x="4" z="1"/>
 			</node>
 		</n>
 		<n id="24" component_id="60">
 			<node label="In (F18)" mode="1" type="1">
-				<position x="2" z="5"/>
+				<position x="4" z="2"/>
 			</node>
 		</n>
 		<n id="25" component_id="61">
 			<node label="In (F19)" mode="1" type="1">
-				<position x="3"/>
+				<position x="4" z="3"/>
 			</node>
 		</n>
 		<n id="26" component_id="63">
 			<node label="In (F20)" mode="1" type="1">
-				<position x="3" z="1"/>
+				<position x="4" z="4"/>
 			</node>
 		</n>
 		<n id="27" component_id="62">
 			<node label="In (F21)" mode="1" type="1">
-				<position x="3" z="2"/>
+				<position x="3" z="4"/>
 			</node>
 		</n>
 		<n id="28" component_id="64">
 			<node label="In (F22)" mode="1" type="1">
-				<position x="3" z="3"/>
+				<position x="2" z="4"/>
 			</node>
 		</n>
 		<n id="29" component_id="65">
 			<node label="In (F23)" mode="1" type="1">
-				<position x="3" z="4"/>
+				<position x="1" z="4"/>
 			</node>
 		</n>
 		<n id="30" component_id="66">
 			<node label="In (F24)" mode="1" type="1">
-				<position x="3" z="5"/>
+				<position z="4"/>
 			</node>
 		</n>
 		<n id="31" component_id="67">
 			<node label="In (F25)" mode="1" type="1">
-				<position x="4"/>
+				<position z="5"/>
 			</node>
 		</n>
 		<n id="32" component_id="68">
 			<node label="In (F26)" mode="1" type="1">
-				<position x="4" z="1"/>
+				<position x="1" z="5"/>
 			</node>
 		</n>
 		<n id="33" component_id="69">
 			<node label="In (F27)" mode="1" type="1">
-				<position x="4" z="2"/>
+				<position x="2" z="5"/>
 			</node>
 		</n>
 		<n id="34" component_id="70">
 			<node label="In (F28)" mode="1" type="1">
-				<position x="4" z="3"/>
+				<position x="3" z="5"/>
 			</node>
 		</n>
 		<n id="35" component_id="71">
 			<node label="In (F29)" mode="1" type="1">
-				<position x="4" z="4"/>
+				<position x="4" z="5"/>
 			</node>
 		</n>
 		<n id="36" component_id="72">
 			<node label="In (F30)" mode="1" type="1">
-				<position x="4" z="5"/>
+				<position x="5" z="5"/>
 			</node>
 		</n>
 		<n id="37" component_id="73">
 			<node label="In (F31)" mode="1" type="1">
-				<position x="5"/>
+				<position x="5" z="4"/>
 			</node>
 		</n>
 		<n id="38" component_id="74">
 			<node label="In (F32)" mode="1" type="1">
-				<position x="5" z="1"/>
+				<position x="5" z="3"/>
 			</node>
 		</n>
 		<n id="39" component_id="75">
@@ -166,18 +168,16 @@
 		</n>
 		<n id="40" component_id="76">
 			<node label="In (F34)" mode="1" type="1">
-				<position x="5" z="3"/>
+				<position x="5" z="1"/>
 			</node>
 		</n>
 		<n id="41" component_id="77">
 			<node label="In (F35)" mode="1" type="1">
-				<position x="5" z="4"/>
+				<position x="5"/>
 			</node>
 		</n>
 		<n id="42" component_id="79">
-			<node label="Out" type="1" description="Sum of all arguments">
-				<position x="5" z="5"/>
-			</node>
+			<node label="Out (Sum)" type="1" description="Sum of all arguments"/>
 		</n>
 	</nodes>
 	<group>

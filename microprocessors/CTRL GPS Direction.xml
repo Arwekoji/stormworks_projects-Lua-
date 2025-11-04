@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<microprocessor name="CTRL GPS Direction" description="Works in any interface" width="2" length="3" id_counter="70" id_counter_node="25" sym0="49283" sym1="33217" sym2="128" sym3="128" sym4="2056" sym5="7740" sym6="2056" sym7="128" sym8="128" sym9="448" sym10="128" sym12="2192" sym13="4520" sym14="35465" sym15="53651">
+<microprocessor name="CTRL (GPS Direction)" description="Works in any interface" width="2" length="3" id_counter="70" id_counter_node="25" sym0="49283" sym1="33217" sym2="128" sym3="128" sym4="2056" sym5="7740" sym6="2056" sym7="128" sym8="128" sym9="448" sym10="128" sym12="2192" sym13="4520" sym14="35465" sym15="53651">
 	<nodes>
 		<n id="20" component_id="53">
 			<node label="In (GPS X)" mode="1" type="1"/>

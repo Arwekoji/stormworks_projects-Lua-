@@ -1,0 +1,10 @@
+function onTick()
+	gps_x = input.getNumber(3)
+	gps_y = input.getNumber(4)
+	--also add other data about targets
+end
+
+
+function onDraw()	
+	screen.drawMap(gps_x, gps_y, 50)	-- 50 (big map)
+end

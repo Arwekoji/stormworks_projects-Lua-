@@ -1,0 +1,208 @@
+RXs = {}
+Missions = {}
+Timers = {}
+echo = 7200 --1-2 minutes
+current_page = 0
+array_view_i = 0
+
+
+function arrayInit(array, d_start, d_end, basic_value)
+	while #array == 0 do
+		for i = d_start, d_end do
+			array[i] = basic_value
+		end
+	end
+end
+
+function sortChannels()
+	--    
+	local ids = {}
+	local count = 0
+
+	for i = 1, #RXs do
+		if RXs[i] ~= 0 then
+			count = count + 1
+			ids[count] = i
+		end
+	end
+
+	for i = 2, count do
+		local key = RXs[ids[i]]
+		local temp = ids[i]
+		local j = i - 1
+		while j > 0 and RXs[ids[j]] > key do
+			ids[j + 1] = ids[j]
+			j = j - 1
+		end
+		ids[j + 1] = temp
+	end
+  
+	local r, m, t = {}, {}, {}
+	for i = 1, count do
+		r[i] = RXs[ids[i]]
+		m[i] = Missions[ids[i]]
+		t[i] = Timers[ids[i]]
+	end
+	for i = count + 1, #RXs do
+		r[i] = 0
+		m[i] = 0
+		t[i] = 0
+	end
+
+	RXs, Missions, Timers = r, m, t
+end
+
+
+function switchPage(plus, minus)
+	if plus == true then
+		current_page = current_page+1
+	end
+	if minus == true then
+		current_page = current_page-1
+	end
+
+	if current_page < 0 then
+		current_page = 0
+	end
+
+	if current_page < 1 and active_pages > 0 then
+		current_page = 1
+	end
+
+	if current_page > active_pages then
+		current_page = active_pages
+	end
+end
+
+
+function onTick()
+	local flag_new_lrm = true --radiochannel and mission number check for listening channel
+	local flag_new_brm = true --radiochannel and mission number check for basic channel
+	local flag_mission_found = false
+	active_pages = 0
+	
+	display_switch    = input.getBool(1)
+	local page_plus   = input.getBool(2)
+	local page_minus  = input.getBool(3)
+	local listen_mod  = input.getBool(4)
+	rx_listen_num 	= input.getNumber(1)
+	rx_basic_num  	= input.getNumber(2)
+	local set_mission = input.getNumber(3)
+	local rxl_mission = input.getNumber(4)
+	local rxb_mission = input.getNumber(5)	
+	blocked_channel   = input.getNumber(6)
+	
+	if listen_mod == true then
+		rx_basic_num = rx_listen_num
+		rxb_mission = rxl_mission
+	end
+	
+	
+	if rxl_mission == 0 then
+		flag_new_lrm = false
+	end
+	
+	if rxb_mission == 0 or rx_listen_num == rx_basic_num then
+		flag_new_brm = false
+	end
+	
+	arrayInit(RXs, 1, 999, 0)
+	arrayInit(Missions, 1, 999, 0)
+	arrayInit(Timers, 1, 999, 0)
+	
+	for i = 1, 999 do
+		if Timers[i]==0 then 
+			RXs[i] = 0
+			Missions[i] = 0
+			Timers[i] = 0
+		else
+			Timers[i] = Timers[i]-1
+			active_pages = active_pages+1
+		end
+			
+		if RXs[i] == rx_listen_num then
+			flag_new_lrm = false
+			if Timers[i]>0 and rxl_mission ~= 0 then
+				Timers[i] = echo
+				Missions[i] = rxl_mission
+			end
+		end
+		
+			
+		if RXs[i] == rx_basic_num then
+			flag_new_brm = false
+			if Timers[i]>0 and rxb_mission ~= 0 then
+				Timers[i] = echo
+				Missions[i] = rxb_mission
+			end
+		end
+			
+			
+		if Missions[i] == set_mission then
+			flag_mission_found = true
+		end
+	end
+
+	
+	local i = 0
+	while (flag_new_lrm == true or flag_new_brm == true) and i<1000 do
+		i = i+1
+		if Timers[i] == 0 then
+			active_pages = active_pages+1
+			Timers[i] = echo
+			if flag_new_lrm == true then
+				RXs[i] = rx_listen_num
+				Missions[i] = rxl_mission
+				flag_new_lrm = false
+			elseif flag_new_brm == true then
+				RXs[i] = rx_basic_num
+				Missions[i] = rxb_mission
+				flag_new_brm = false
+			end
+		end
+	end
+		
+	sortChannels()
+	
+	local search_i = 0
+	if current_page > 0 then
+		for i = 1, 999 do
+			if Timers[i] > 0 then
+				search_i = search_i+1
+				if search_i==current_page then
+					array_view_i = i
+				end
+			end
+		end
+	end
+	
+	
+	switchPage(page_plus, page_minus)
+	output.setBool(1, flag_mission_found)
+	output.setNumber(1, rx_listen_num)
+	output.setNumber(2, rx_basic_num)
+	output.setNumber(3, set_mission)
+	output.setNumber(4, rxl_mission)
+	output.setNumber(5, rxb_mission)
+	output.setNumber(6, blocked_channel)
+	
+end
+
+function onDraw()
+	if display_switch == true then
+		screen.setColor(0, 5, 0)
+		screen.drawClear()
+		screen.setColor(60, 200, 0)
+		--screen.drawText(1, 0, string.format("br-#%.0f", rx_basic_num))
+		screen.drawText(1, 0, string.format("br-#%.0f+"..tostring(string.format("%.0f", blocked_channel)), rx_basic_num))
+		screen.drawLine(0, 6, 96, 6)
+		
+		screen.drawText(1, 8, string.format("#%.0f/"..tostring(active_pages), current_page))
+		if current_page > 0 and array_view_i > 0 then
+			screen.drawText(1, 16, string.format("R%.0f.M"..tostring(string.format("%.0f", Missions[array_view_i])), RXs[array_view_i]))
+		end
+		
+		screen.drawLine(0, 23, 96, 23)
+		screen.drawText(1, 25, string.format("lr-#%.0f", rx_listen_num))
+	end
+end

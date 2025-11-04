@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<microprocessor name="CTRL (Turret Turn2N)" width="1" length="3" id_counter="19" id_counter_node="4" sym5="448" sym6="544" sym7="672" sym8="544" sym9="448" sym10="128" sym11="4228" sym12="8322" sym13="30863" sym14="8322" sym15="4100">
+	<nodes>
+		<n id="1" component_id="5">
+			<node label="In (Camera Angle)" mode="1" type="1" description="In one num system"/>
+		</n>
+		<n id="2" component_id="6">
+			<node label="In (Turret Angle)" mode="1" type="1" description="In one num system">
+				<position z="1"/>
+			</node>
+		</n>
+		<n id="3" component_id="10">
+			<node label="Out (Turret Speed)" type="1">
+				<position z="2"/>
+			</node>
+		</n>
+	</nodes>
+	<group>
+		<data>
+			<inputs/>
+			<outputs/>
+		</data>
+		<components>
+			<c type="34">
+				<object id="11" n="Turret Angle Modifier">
+					<pos x="-1.5" y="-0.25"/>
+					<v text="0.25" value="0.25"/>
+				</object>
+			</c>
+			<c type="56">
+				<object id="12" script="function onTick()
+	CameraAngle = input.getNumber(1)	
+	TurretAngle = input.getNumber(2)	
+	Fault = input.getNumber(3)	
+	MaxTurretSpeed = input.getNumber(4)
+	MinAngle = input.getNumber(5)
+	MaxAngle = input.getNumber(6)
+	TurretSpeed = 0
+	
+	if math.max(MinAngle, CameraAngle) &lt; TurretAngle-Fault then
+		TurretSpeed = -1*MaxTurretSpeed
+	end
+	if math.min(MaxAngle, CameraAngle) &gt; TurretAngle+Fault then
+		TurretSpeed = MaxTurretSpeed
+	end
+	
+	output.setNumber(1, TurretSpeed)	
+end
+">
+					<pos x="2.25" y="0.25"/>
+					<in1 component_id="14"/>
+				</object>
+			</c>
+			<c type="6">
+				<object id="13">
+					<pos x="-0.25"/>
+					<in1 component_id="5"/>
+					<in2 component_id="11"/>
+				</object>
+			</c>
+			<c type="40">
+				<object id="14" count="6">
+					<pos x="1" y="-1"/>
+					<in1 component_id="13"/>
+					<in2 component_id="6"/>
+					<in3 component_id="16"/>
+					<in4 component_id="17"/>
+					<in5 component_id="18"/>
+					<in6 component_id="19"/>
+				</object>
+			</c>
+			<c type="31">
+				<object id="15">
+					<pos x="3.5" y="0.5"/>
+					<in1 component_id="12"/>
+				</object>
+			</c>
+			<c type="34">
+				<object id="16" n="Fault">
+					<pos x="-1.5" y="-1.25"/>
+					<v text="0.01" value="0.01"/>
+				</object>
+			</c>
+			<c type="34">
+				<object id="17" n="Turret Speed">
+					<pos x="-1.5" y="-1.75"/>
+					<v text="1" value="1"/>
+				</object>
+			</c>
+			<c type="34">
+				<object id="18" n="Min Angle">
+					<pos x="-1.5" y="-2.25"/>
+					<v text="-0.125" value="-0.125"/>
+				</object>
+			</c>
+			<c type="34">
+				<object id="19" n="Max Angle">
+					<pos x="-1.5" y="-2.75"/>
+					<v text="0.625" value="0.625"/>
+				</object>
+			</c>
+		</components>
+		<components_bridge>
+			<c type="2">
+				<object id="5">
+					<pos x="-1.5" y="0.25"/>
+				</object>
+			</c>
+			<c type="2">
+				<object id="6">
+					<pos x="-1.5" y="-0.75"/>
+				</object>
+			</c>
+			<c type="3">
+				<object id="10">
+					<pos x="4.75" y="0.5"/>
+					<in1 component_id="15"/>
+				</object>
+			</c>
+		</components_bridge>
+		<groups/>
+		<component_states>
+			<c0 id="11" n="Turret Angle Modifier">
+				<pos x="-1.5" y="-0.25"/>
+				<v text="0.25" value="0.25"/>
+			</c0>
+			<c1 id="12" script="function onTick()
+	CameraAngle = input.getNumber(1)	
+	TurretAngle = input.getNumber(2)	
+	Fault = input.getNumber(3)	
+	MaxTurretSpeed = input.getNumber(4)
+	MinAngle = input.getNumber(5)
+	MaxAngle = input.getNumber(6)
+	TurretSpeed = 0
+	
+	if math.max(MinAngle, CameraAngle) &lt; TurretAngle-Fault then
+		TurretSpeed = -1*MaxTurretSpeed
+	end
+	if math.min(MaxAngle, CameraAngle) &gt; TurretAngle+Fault then
+		TurretSpeed = MaxTurretSpeed
+	end
+	
+	output.setNumber(1, TurretSpeed)	
+end
+">
+				<pos x="2.25" y="0.25"/>
+				<in1 component_id="14"/>
+			</c1>
+			<c2 id="13">
+				<pos x="-0.25"/>
+				<in1 component_id="5"/>
+				<in2 component_id="11"/>
+			</c2>
+			<c3 id="14" count="6">
+				<pos x="1" y="-1"/>
+				<in1 component_id="13"/>
+				<in2 component_id="6"/>
+				<in3 component_id="16"/>
+				<in4 component_id="17"/>
+				<in5 component_id="18"/>
+				<in6 component_id="19"/>
+			</c3>
+			<c4 id="15">
+				<pos x="3.5" y="0.5"/>
+				<in1 component_id="12"/>
+			</c4>
+			<c5 id="16" n="Fault">
+				<pos x="-1.5" y="-1.25"/>
+				<v text="0.01" value="0.01"/>
+			</c5>
+			<c6 id="17" n="Turret Speed">
+				<pos x="-1.5" y="-1.75"/>
+				<v text="1" value="1"/>
+			</c6>
+			<c7 id="18" n="Min Angle">
+				<pos x="-1.5" y="-2.25"/>
+				<v text="-0.125" value="-0.125"/>
+			</c7>
+			<c8 id="19" n="Max Angle">
+				<pos x="-1.5" y="-2.75"/>
+				<v text="0.625" value="0.625"/>
+			</c8>
+		</component_states>
+		<component_bridge_states>
+			<c0 id="5">
+				<pos x="-1.5" y="0.25"/>
+			</c0>
+			<c1 id="6">
+				<pos x="-1.5" y="-0.75"/>
+			</c1>
+			<c2 id="10">
+				<pos x="4.75" y="0.5"/>
+				<in1 component_id="15"/>
+			</c2>
+		</component_bridge_states>
+		<group_states/>
+	</group>
+</microprocessor>
+

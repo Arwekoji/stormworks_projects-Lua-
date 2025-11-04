@@ -1,0 +1,15 @@
+R = 255
+G = 255
+B = 255
+
+
+function onTick()
+	R = input.getNumber(1)
+	G = input.getNumber(2)
+	B = input.getNumber(3)
+end
+
+function onDraw()
+	screen.setColor(R, G, B)			 -- Set draw color to green
+	screen.drawClear()   -- Draw a 30px radius circle in the center of the screen
+end

@@ -1,0 +1,40 @@
+function onTick()
+	tx1 = 0
+	ty1 = 0
+	tx2 = 0
+	ty2 = 0
+	error = false
+	
+	x0, y0, d0 = input.getNumber(1), input.getNumber(2), input.getNumber(3)*1000 
+	x1, y1, d1 = input.getNumber(4), input.getNumber(5), input.getNumber(6)*1000 
+
+	dx = x1 - x0
+	dy = y1 - y0
+	dist = math.sqrt(dx * dx + dy * dy)
+	
+	if dist > d0 + d1 or dist < math.abs(d0 - d1) then
+		error = true
+	else
+		a = (d0^2 - d1^2 + dist^2) / (2 * dist)  
+		px = x0 + a * dx / dist
+		py = y0 + a * dy / dist
+
+		h = math.sqrt(math.abs(d0^2 - a^2))  -- abs      
+
+		rx = -dy / dist
+		ry = dx / dist
+
+		tx1 = px + h * rx
+		ty1 = py + h * ry
+
+		tx2 = px - h * rx
+		ty2 = py - h * ry
+	end	
+	
+	output.setBool(1, error) 
+	output.setNumber(1, tx1)
+	output.setNumber(2, ty1)
+	output.setNumber(3, tx2)
+	output.setNumber(4, ty2)
+	
+end

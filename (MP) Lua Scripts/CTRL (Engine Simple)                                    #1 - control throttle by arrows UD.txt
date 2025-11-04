@@ -1,0 +1,13 @@
+function onTick()
+	Drossel = input.getNumber(1)			 
+	UD = input.getNumber(2)
+	
+	
+	if math.abs(UD) > 0.5 then
+		if UD < 0 then	Drossel = math.max(Drossel-0.01, 0)	end
+		if UD > 0 then	Drossel = math.min(Drossel+0.01, 1)	end
+	end
+	
+	output.setNumber(1, Drossel)		
+end
+

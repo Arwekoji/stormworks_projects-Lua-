@@ -1,0 +1,151 @@
+function onTick()
+	TempMinComfort = 10
+	TempMaxComfort = 25
+
+	TempIn = math.floor(input.getNumber(1))
+	TempOut = math.floor(input.getNumber(2))
+	ColdText1 = 0
+	if TempOut<=-10 then
+		ColdText1 = 4
+	end
+	ColdText2 = 0
+	if TempIn<=-10 then
+		ColdText2 = 4
+	end
+	
+	
+	Rain = math.floor(input.getNumber(5)*100)
+	RainLabel = 0
+	if Rain>=10 then
+		RainLabel = 5
+	end
+	if Rain==100 then
+		RainLabel = 10
+	end
+	Humidity = math.floor(input.getNumber(4)*100)
+	HumLabel = 0
+	if Humidity>=10 then
+		HumLabel = 5
+	end
+	if Humidity==100 then
+		HumLabel = 10
+	end
+	
+	Radiation = math.floor(input.getNumber(3))
+	RadLabel = 0
+	if Radiation>=10 then
+		RadLabel = 3
+	end
+	if Radiation>=100 then
+		RadLabel = 6
+	end
+end
+
+
+function onDraw()
+	w = screen.getWidth()		
+	h = screen.getHeight()			
+			
+	screen.drawClear()
+	screen.setColor(28, 170, 214)			 -- Set background to sky blue
+	screen.drawRectF(0, 0, w, h)
+	
+	
+	screen.setColor(185, 48, 43)			 -- Orange labels
+	screen.drawText(10, 6, TempOut)
+	screen.drawCircle(21+ColdText1, 5, 1)
+	screen.drawText(24+ColdText1, 6, "C")
+	
+	screen.setColor(255, 255, 0)			-- Icons according Temperature
+	if TempOut<TempMinComfort then
+		screen.setColor(0, 0, 255)
+	end
+	if TempOut>TempMaxComfort then
+		screen.setColor(255, 125, 0)
+	end
+	
+	screen.drawRectF(4, 8, 3, 3)
+	screen.drawLine(3, 7, 4, 7)
+	screen.drawLine(7, 7, 8, 7)
+	screen.drawLine(3, 11, 4, 11)
+	screen.drawLine(7, 11, 8, 11)
+	screen.drawLine(2, 9, 3, 9)
+	screen.drawLine(8, 9, 9, 9)
+	screen.drawLine(5, 6, 6, 6)
+	screen.drawLine(5, 12, 6, 12)
+	
+	
+	
+	screen.setColor(185, 48, 43)
+	screen.drawText(10, 20, TempIn)
+	screen.drawCircle(21+ColdText2, 19, 1)
+	screen.drawText(24+ColdText2, 20, "C")
+	
+	
+	screen.setColor(255, 255, 0)			
+	if TempIn<TempMinComfort then
+		screen.setColor(0, 0, 255)
+	end
+	if TempIn>TempMaxComfort then
+		screen.setColor(255, 125, 0)
+	end
+	screen.drawRect(3, 19, 4, 7)
+	screen.drawRectF(3, 22, 4, 2)
+	screen.drawLine(5, 21, 5, 25)
+	
+	screen.setColor(0, 0, 155)
+	screen.drawLine(35, 0, 35, 32)
+	
+	
+-----------------------------------------------------------------
+
+	screen.setColor(19, 9, 114)			
+	screen.drawText(45, 6, Rain)
+	screen.drawText(51+RainLabel, 6, "%")
+	
+	screen.drawText(45, 20, Humidity)
+	screen.drawText(51+HumLabel, 20, "%")
+	
+	screen.setColor(255, 125, 38)	
+	if Rain>0 then
+		screen.setColor(0, 255, 255)
+	end
+	if Rain>50 then
+		screen.setColor(63, 128, 248)
+	end
+	if Rain>90 then
+		screen.setColor(0, 0, 170)
+	end
+	
+	screen.drawText(38, 6, "R")
+	--screen.drawRectF(39, 6, 3, 5)
+	--screen.drawRectF(38, 8, 5, 2)
+	--screen.drawLine(40, 5, 41, 5)
+	
+	screen.setColor(100-Humidity, 150+Humidity, 150+Humidity)
+	screen.drawText(38, 20, "H")
+	--screen.drawRectF(39, 20, 3, 4)
+	--screen.drawRectF(38, 21, 5, 2)
+	
+	screen.setColor(0, 0, 155)
+	screen.drawLine(67, 0, 67, 32)
+	
+	
+	
+-----------------------------------------------------------------
+	
+	screen.setColor(0, 200, 0)
+	if Radiation>0 then
+		screen.setColor(150, 0, 0)
+	end
+	screen.drawText(79-RadLabel, 20, Radiation)
+	
+	screen.setColor(225, 191, 0)
+	screen.drawCircleF(80, 10, 6)
+	screen.setColor(0, 1, 0)
+	screen.drawTriangleF(77,5,83,5,80,10)
+	screen.drawTriangleF(74,11,77,17,79,11)
+	screen.drawTriangleF(86,11,84,16,81,11)
+	screen.drawLine(80, 10, 81, 10)
+	
+end

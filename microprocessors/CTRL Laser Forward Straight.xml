@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<microprocessor name="CTRL (Laser Forward Straight)" description="Need improvement" width="1" length="2" id_counter="10" id_counter_node="2" sym4="34948" sym5="20554" sym6="9186" sym7="20546" sym8="34954" sym9="4">
+	<nodes>
+		<n id="1" component_id="7">
+			<node label="In (Composite)" type="5"/>
+		</n>
+		<n id="2" component_id="8">
+			<node label="Out (2 channel)" mode="1" type="1">
+				<position z="1"/>
+			</node>
+		</n>
+	</nodes>
+	<group>
+		<data type="1049481524">
+			<inputs/>
+			<outputs/>
+		</data>
+		<components>
+			<c type="40">
+				<object id="9" count="1" offset="1">
+					<pos x="-1" y="0.25"/>
+					<in1 component_id="10"/>
+				</object>
+			</c>
+			<c type="45">
+				<object id="10" e="10*x">
+					<pos x="-2.25" y="0.25"/>
+					<in1 component_id="8"/>
+				</object>
+			</c>
+		</components>
+		<components_bridge>
+			<c type="5">
+				<object id="7">
+					<pos x="0.25" y="0.5"/>
+					<in1 component_id="9"/>
+				</object>
+			</c>
+			<c type="2">
+				<object id="8">
+					<pos x="-3.5" y="0.25"/>
+				</object>
+			</c>
+		</components_bridge>
+		<groups/>
+		<component_states>
+			<c0 id="9" count="1" offset="1">
+				<pos x="-1" y="0.25"/>
+				<in1 component_id="10"/>
+			</c0>
+			<c1 id="10" e="10*x">
+				<pos x="-2.25" y="0.25"/>
+				<in1 component_id="8"/>
+			</c1>
+		</component_states>
+		<component_bridge_states>
+			<c0 id="7">
+				<pos x="0.25" y="0.5"/>
+				<in1 component_id="9"/>
+			</c0>
+			<c1 id="8">
+				<pos x="-3.5" y="0.25"/>
+			</c1>
+		</component_bridge_states>
+		<group_states/>
+	</group>
+</microprocessor>
+

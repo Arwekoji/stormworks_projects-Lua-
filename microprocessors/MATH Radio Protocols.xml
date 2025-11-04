@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<microprocessor name="MATH (Radio Protocols)" description="ex: 145 - Weather Alarm" width="1" length="1" id_counter="5" id_counter_node="1" sym2="544" sym3="800" sym4="672" sym5="608" sym6="544" sym8="1168" sym9="4644" sym10="2504" sym11="9234" sym12="5092" sym13="2056" sym14="1584" sym15="448">
+	<nodes>
+		<n id="1" component_id="3">
+			<node label="Out (Radio Channel)" type="1" description="145 - Weather Alarm"/>
+		</n>
+	</nodes>
+	<group>
+		<data type="1049481524">
+			<inputs/>
+			<outputs/>
+		</data>
+		<components>
+			<c type="20">
+				<object id="5">
+					<pos x="-2.5"/>
+					<items>
+						<i l="Distress InOut">
+							<v text="13" value="13"/>
+						</i>
+						<i l="Weather In">
+							<v text="0"/>
+						</i>
+						<i l="Weather Out">
+							<v text="0"/>
+						</i>
+						<i l="Weather UserIn">
+							<v text="145" value="145"/>
+						</i>
+						<i l="RailRoad CTRL">
+							<v text="440" value="440"/>
+						</i>
+						<i l="Shop Fuel Pump">
+							<v text="1202" value="1202"/>
+						</i>
+						<i l="Shop Oil Pump">
+							<v text="1267" value="1267"/>
+						</i>
+						<i l="Shop Jet Pump">
+							<v text="1863" value="1863"/>
+						</i>
+						<i l="Shop FishLoader">
+							<v text="3077" value="3077"/>
+						</i>
+					</items>
+				</object>
+			</c>
+		</components>
+		<components_bridge>
+			<c type="3">
+				<object id="3">
+					<pos x="-0.75"/>
+					<in1 component_id="5"/>
+				</object>
+			</c>
+		</components_bridge>
+		<groups/>
+		<component_states>
+			<c0 id="5">
+				<pos x="-2.5"/>
+				<items>
+					<i l="Distress InOut">
+						<v text="13" value="13"/>
+					</i>
+					<i l="Weather In">
+						<v text="0"/>
+					</i>
+					<i l="Weather Out">
+						<v text="0"/>
+					</i>
+					<i l="Weather UserIn">
+						<v text="145" value="145"/>
+					</i>
+					<i l="RailRoad CTRL">
+						<v text="440" value="440"/>
+					</i>
+					<i l="Shop Fuel Pump">
+						<v text="1202" value="1202"/>
+					</i>
+					<i l="Shop Oil Pump">
+						<v text="1267" value="1267"/>
+					</i>
+					<i l="Shop Jet Pump">
+						<v text="1863" value="1863"/>
+					</i>
+					<i l="Shop FishLoader">
+						<v text="3077" value="3077"/>
+					</i>
+				</items>
+			</c0>
+		</component_states>
+		<component_bridge_states>
+			<c0 id="3">
+				<pos x="-0.75"/>
+				<in1 component_id="5"/>
+			</c0>
+		</component_bridge_states>
+		<group_states/>
+	</group>
+</microprocessor>
+

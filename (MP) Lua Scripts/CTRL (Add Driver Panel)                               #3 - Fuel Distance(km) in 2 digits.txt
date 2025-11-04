@@ -1,0 +1,16 @@
+function onTick()
+	FuelKM = input.getNumber(1)
+	
+	d1 = -1
+	d2 = -1
+	
+	if FuelKM > 0 then
+		FuelKM = math.min(FuelKM, 99)
+		d1 = math.floor(FuelKM/10)
+		d2 = math.floor(FuelKM-(d1*10))
+	end
+	
+	output.setNumber(1, d1)
+	output.setNumber(2, d2)
+end
+	

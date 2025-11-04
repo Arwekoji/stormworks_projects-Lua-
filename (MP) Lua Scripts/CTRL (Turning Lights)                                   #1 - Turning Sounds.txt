@@ -1,0 +1,57 @@
+-- Tick function that will be executed every logic tick
+function onTick()
+	EmergencyMod = input.getBool(1)		
+	WS = input.getNumber(1)			
+	AD = input.getNumber(2)
+	
+	LF = false
+	LS = false
+	LR = false
+	RF = false
+	RS = false
+	RR = false
+	soundTurning = false
+	soundBack = false
+	
+	
+	if AD<-0.1 or EmergencyMod==true then
+		LF = true
+		soundTurning = true
+	end
+	if AD>0.1 or EmergencyMod==true then
+		RF = true
+		soundTurning = true
+	end
+	
+	if AD<-0.1 then
+		LS = true
+		LR = true
+		soundTurning = true
+	end
+	if AD>0.1 then
+		RS = true
+		RR = true
+		soundTurning = true
+	end
+	
+	if WS<-0.1 or EmergencyMod==true then
+		LR = true
+		RR = true
+		soundTurning = true
+	end
+
+	if WS<-0.1 then
+		soundTurning = false
+		soundBack = true
+	end
+	
+	output.setBool(1, LF)
+	output.setBool(5, LS)
+	output.setBool(3, LR)
+	output.setBool(2, RF)
+	output.setBool(6, RS)
+	output.setBool(4, RR)
+	output.setBool(7, soundTurning)
+	output.setBool(8, soundBack)
+end
+

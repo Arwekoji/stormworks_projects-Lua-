@@ -1,0 +1,15 @@
+function onTick()
+	Throttle = input.getNumber(1)*100
+	
+	d1 = -1
+	d2 = -1
+	
+	if Throttle < 100 then
+		d1 = math.floor(Throttle/10)
+		d2 = math.floor(Throttle-(d1*10))
+	end
+	
+	output.setNumber(1, d1)
+	output.setNumber(2, d2)
+end
+	

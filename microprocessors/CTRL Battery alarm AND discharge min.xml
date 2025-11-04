@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<microprocessor name="CTRL (Battery %, alarm AND discharge min)" width="1" length="5" id_counter="54" id_counter_node="5" sym0="8192" sym2="8192" sym3="8207" sym4="8201" sym5="137" sym6="37131" sym7="9197" sym8="16649" sym9="37001" sym10="15" sym11="24576" sym12="8192" sym13="8192" sym14="28672" sym15="8192">
+	<nodes>
+		<n id="1" component_id="7">
+			<node label="In (Battery)" mode="1" type="1"/>
+		</n>
+		<n id="2" component_id="6">
+			<node label="Out (Battery %)" type="1">
+				<position z="1"/>
+			</node>
+		</n>
+		<n id="3" component_id="4">
+			<node label="Out (Alarm)">
+				<position z="3"/>
+			</node>
+		</n>
+		<n id="4" component_id="18">
+			<node label="Out (Delta Min)" type="1">
+				<position z="2"/>
+			</node>
+		</n>
+		<n id="5" component_id="39">
+			<node label="Out (IsCharging)">
+				<position z="4"/>
+			</node>
+		</n>
+	</nodes>
+	<group>
+		<data>
+			<inputs/>
+			<outputs/>
+		</data>
+		<components>
+			<c type="10">
+				<object id="9" e="x*z">
+					<pos x="0.25" y="1.25"/>
+					<in1 component_id="7"/>
+					<in3 component_id="10"/>
+				</object>
+			</c>
+			<c type="34">
+				<object id="10" n="A for X*A">
+					<pos x="-1" y="1.25"/>
+					<v text="100" value="100"/>
+				</object>
+			</c>
+			<c type="34">
+				<object id="14" n="N">
+					<pos x="0.75" y="2.5"/>
+					<v text="50" value="50"/>
+				</object>
+			</c>
+			<c type="18">
+				<object id="33">
+					<pos x="1.75" y="3"/>
+					<in1 component_id="9"/>
+					<in2 component_id="14"/>
+				</object>
+			</c>
+			<c type="17">
+				<object id="41">
+					<pos x="-0.25" y="-5"/>
+					<in2 component_id="42"/>
+				</object>
+			</c>
+			<c type="15">
+				<object id="42">
+					<pos x="-1.5" y="-5"/>
+					<n text="0"/>
+				</object>
+			</c>
+			<c type="10">
+				<object id="43" e="(-1*y/x)/z">
+					<pos x="10.25" y="-1.25"/>
+					<in1 component_id="45"/>
+					<in2 component_id="9"/>
+					<in3 component_id="48"/>
+				</object>
+			</c>
+			<c type="35">
+				<object id="44">
+					<pos x="1"/>
+					<in1 component_id="9"/>
+				</object>
+			</c>
+			<c type="13">
+				<object id="45">
+					<pos x="8.5" y="-1.25"/>
+					<in1 component_id="47"/>
+					<in3 component_id="46"/>
+					<r text="0"/>
+				</object>
+			</c>
+			<c type="13">
+				<object id="46">
+					<pos x="5.5" y="-1"/>
+					<in1 component_id="54"/>
+					<in2 component_id="47"/>
+					<in3 component_id="53"/>
+					<r text="0"/>
+				</object>
+			</c>
+			<c type="42">
+				<object id="47">
+					<pos x="6.75" y="-1"/>
+					<in1 component_id="49"/>
+					<in2 component_id="50"/>
+					<e text="0.0001" value="0.0001"/>
+				</object>
+			</c>
+			<c type="20">
+				<object id="48" i="1">
+					<pos x="9.25" y="-2"/>
+					<items>
+						<i l="Seconds">
+							<v text="1" value="1"/>
+						</i>
+						<i l="Minutes">
+							<v text="60" value="60"/>
+						</i>
+						<i l="Hours">
+							<v text="3600" value="3600"/>
+						</i>
+					</items>
+				</object>
+			</c>
+			<c type="37">
+				<object id="49">
+					<pos x="4.25" y="-2.25"/>
+					<in1 component_id="54"/>
+					<in3 component_id="47"/>
+					<r text="0"/>
+					<i text="1" value="1"/>
+					<min text="0"/>
+					<max text="0"/>
+				</object>
+			</c>
+			<c type="45">
+				<object id="50" e="60*x">
+					<pos x="5.75" y="-2"/>
+					<in1 component_id="51"/>
+				</object>
+			</c>
+			<c type="34">
+				<object id="51" n="Delta Update (sec)">
+					<pos x="4.75" y="-2.75"/>
+					<v text="10" value="10"/>
+				</object>
+			</c>
+			<c type="10">
+				<object id="53" e="x+z">
+					<pos x="3.75" y="-0.5"/>
+					<in1 component_id="44"/>
+					<in3 component_id="46"/>
+				</object>
+			</c>
+			<c>
+				<object id="54">
+					<pos x="7.75" y="-1.75"/>
+					<in1 component_id="47"/>
+				</object>
+			</c>
+		</components>
+		<components_bridge>
+			<c type="1">
+				<object id="4">
+					<pos x="14" y="3.25"/>
+					<in1 component_id="33"/>
+				</object>
+			</c>
+			<c type="3">
+				<object id="6">
+					<pos x="14" y="1.75"/>
+					<in1 component_id="9"/>
+				</object>
+			</c>
+			<c type="2">
+				<object id="7">
+					<pos x="-2.25" y="1.75"/>
+				</object>
+			</c>
+			<c type="3">
+				<object id="18">
+					<pos x="14" y="-0.75"/>
+					<in1 component_id="43"/>
+				</object>
+			</c>
+			<c type="1">
+				<object id="39">
+					<pos x="14" y="-4.75"/>
+					<in1 component_id="41"/>
+				</object>
+			</c>
+		</components_bridge>
+		<groups/>
+		<component_states>
+			<c0 id="9" e="x*z">
+				<pos x="0.25" y="1.25"/>
+				<in1 component_id="7"/>
+				<in3 component_id="10"/>
+			</c0>
+			<c1 id="10" n="A for X*A">
+				<pos x="-1" y="1.25"/>
+				<v text="100" value="100"/>
+			</c1>
+			<c2 id="14" n="N">
+				<pos x="0.75" y="2.5"/>
+				<v text="50" value="50"/>
+			</c2>
+			<c3 id="33">
+				<pos x="1.75" y="3"/>
+				<in1 component_id="9"/>
+				<in2 component_id="14"/>
+			</c3>
+			<c4 id="41">
+				<pos x="-0.25" y="-5"/>
+				<in2 component_id="42"/>
+			</c4>
+			<c5 id="42">
+				<pos x="-1.5" y="-5"/>
+				<n text="0"/>
+			</c5>
+			<c6 id="43" e="(-1*y/x)/z">
+				<pos x="10.25" y="-1.25"/>
+				<in1 component_id="45"/>
+				<in2 component_id="9"/>
+				<in3 component_id="48"/>
+			</c6>
+			<c7 id="44">
+				<pos x="1"/>
+				<in1 component_id="9"/>
+			</c7>
+			<c8 id="45">
+				<pos x="8.5" y="-1.25"/>
+				<in1 component_id="47"/>
+				<in3 component_id="46"/>
+				<r text="0"/>
+			</c8>
+			<c9 id="46">
+				<pos x="5.5" y="-1"/>
+				<in1 component_id="54"/>
+				<in2 component_id="47"/>
+				<in3 component_id="53"/>
+				<r text="0"/>
+			</c9>
+			<c10 id="47">
+				<pos x="6.75" y="-1"/>
+				<in1 component_id="49"/>
+				<in2 component_id="50"/>
+				<e text="0.0001" value="0.0001"/>
+			</c10>
+			<c11 id="48" i="1">
+				<pos x="9.25" y="-2"/>
+				<items>
+					<i l="Seconds">
+						<v text="1" value="1"/>
+					</i>
+					<i l="Minutes">
+						<v text="60" value="60"/>
+					</i>
+					<i l="Hours">
+						<v text="3600" value="3600"/>
+					</i>
+				</items>
+			</c11>
+			<c12 id="49">
+				<pos x="4.25" y="-2.25"/>
+				<in1 component_id="54"/>
+				<in3 component_id="47"/>
+				<r text="0"/>
+				<i text="1" value="1"/>
+				<min text="0"/>
+				<max text="0"/>
+			</c12>
+			<c13 id="50" e="60*x">
+				<pos x="5.75" y="-2"/>
+				<in1 component_id="51"/>
+			</c13>
+			<c14 id="51" n="Delta Update (sec)">
+				<pos x="4.75" y="-2.75"/>
+				<v text="10" value="10"/>
+			</c14>
+			<c15 id="53" e="x+z">
+				<pos x="3.75" y="-0.5"/>
+				<in1 component_id="44"/>
+				<in3 component_id="46"/>
+			</c15>
+			<c16 id="54">
+				<pos x="7.75" y="-1.75"/>
+				<in1 component_id="47"/>
+			</c16>
+		</component_states>
+		<component_bridge_states>
+			<c0 id="4">
+				<pos x="14" y="3.25"/>
+				<in1 component_id="33"/>
+			</c0>
+			<c1 id="6">
+				<pos x="14" y="1.75"/>
+				<in1 component_id="9"/>
+			</c1>
+			<c2 id="7">
+				<pos x="-2.25" y="1.75"/>
+			</c2>
+			<c3 id="18">
+				<pos x="14" y="-0.75"/>
+				<in1 component_id="43"/>
+			</c3>
+			<c4 id="39">
+				<pos x="14" y="-4.75"/>
+				<in1 component_id="41"/>
+			</c4>
+		</component_bridge_states>
+		<group_states/>
+	</group>
+</microprocessor>
+

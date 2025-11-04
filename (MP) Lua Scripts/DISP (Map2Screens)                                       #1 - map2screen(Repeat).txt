@@ -1,0 +1,9 @@
+function onTick()
+	scale = input.getNumber(1)
+	centralX = input.getNumber(2)
+	centralY = input.getNumber(3)
+end
+
+function onDraw()
+	screen.drawMap(centralX, centralY, scale)
+end

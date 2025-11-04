@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<microprocessor name="CTRL Nuclear Reactor switcher" width="3" length="5" id_counter="193" id_counter_node="60" sym0="50195" sym1="34825" sym2="8060" sym3="2056" sym4="1040" sym6="992" sym7="448" sym8="128" sym10="128" sym12="3640" sym13="1584" sym14="33313" sym15="49155">
+<microprocessor name="CTRL (Nuclear Reactor switcher)" width="3" length="5" id_counter="193" id_counter_node="60" sym0="50195" sym1="34825" sym2="8060" sym3="2056" sym4="1040" sym6="992" sym7="448" sym8="128" sym10="128" sym12="3640" sym13="1584" sym14="33313" sym15="49155">
 	<nodes>
 		<n id="2" component_id="3">
 			<node label="In (Control Panel)" mode="1" type="5" description="1-2nd - connect control, 3nd - valve control">

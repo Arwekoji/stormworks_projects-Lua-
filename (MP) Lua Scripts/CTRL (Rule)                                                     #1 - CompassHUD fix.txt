@@ -1,0 +1,18 @@
+function onTick()
+	pi2 = math.pi*2
+	fixedCompass = 180+math.fmod((input.getNumber(1)+1.5)*pi2, pi2)*(180/math.pi)
+	currentCompass = 180+math.fmod((input.getNumber(2)+1.5)*pi2, pi2)*(180/math.pi)
+	
+	autodir = -1
+			 
+	
+	dif = currentCompass-fixedCompass
+	
+	if dif>0 and dif<180  then autodir = 1 end
+	if dif<0 and dif<-180 then autodir = 1 end
+	
+			
+	output.setNumber(1, autodir)		
+	output.setNumber(2, currentCompass)	
+end
+

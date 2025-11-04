@@ -1,0 +1,24 @@
+-- Tick function that will be executed every logic tick
+function onTick()
+	RPS1 = input.getNumber(1)
+	RPS2 = input.getNumber(2)
+	RPS3 = input.getNumber(3)
+	
+	endRPS = math.max(RPS1, RPS2, RPS3)
+	
+	if (RPS1+RPS2+RPS3)==0 then
+		output.setNumber(1, 0)
+	else
+		if RPS1>0 and endRPS>RPS1 then
+			endRPS = RPS1
+		end
+		if RPS2>0 and endRPS>RPS2 then
+			endRPS = RPS2
+		end
+		if RPS3>0 and endRPS>RPS3 then
+			endRPS = RPS3
+		end
+		output.setNumber(1, endRPS)
+	end
+end
+

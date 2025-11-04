@@ -1,0 +1,277 @@
+function onTick()
+	Lights = input.getBool(1)
+	TT = input.getNumber(1)
+	l1 = 0
+	l2 = 0
+	l3 = 0
+	l4 = 0
+	l5 = 0
+	l6 = 0
+	
+if Lights == true then
+	if TT==0  then
+		l5=255
+		l6=255
+	end
+	if TT==1  then
+		l5=255-1
+		l6=255
+		l1=1
+	end
+	if TT==2  then
+		l5=255-1-2
+		l6=255
+		l1=1+2
+	end
+	if TT==3  then
+		l5=255-1-2-4
+		l6=255
+		l1=1+2+4
+	end
+	if TT==4  then
+		l5=255-1-2-4-8
+		l6=255
+		l1=1+2+4+8
+	end
+	if TT==5  then
+		l5=255-1-2-4-8-16
+		l6=255
+		l1=1+2+4+8+16
+	end
+	if TT==6  then
+		l5=255-1-2-4-8-16-32
+		l6=255
+		l1=1+2+4+8+16+32
+	end
+	if TT==7  then
+		l5=255-1-2-4-8-16-32-64
+		l6=255
+		l1=1+2+4+8+16+32+64
+	end
+	
+---------------------------------------
+	
+	if TT==8  then
+		l6=255
+		l1=255
+	end
+	if TT==9  then
+		l6=255-1
+		l1=255
+		l2=1
+	end
+	if TT==10  then
+		l6=255-1-2
+		l1=255
+		l2=1+2
+	end
+	if TT==11  then
+		l6=255-1-2-4
+		l1=255
+		l2=1+2+4
+	end
+	if TT==12  then
+		l6=255-1-2-4-8
+		l1=255
+		l2=1+2+4+8
+	end
+	if TT==13  then
+		l6=255-1-2-4-8-16
+		l1=255
+		l2=1+2+4+8+16
+	end
+	if TT==14  then
+		l6=255-1-2-4-8-16-32
+		l1=255
+		l2=1+2+4+8+16+32
+	end
+	if TT==15  then
+		l6=255-1-2-4-8-16-32-64
+		l1=255
+		l2=1+2+4+8+16+32+6
+	end
+	
+---------------------------------------
+	
+	if TT==16  then
+		l1=255
+		l2=255
+	end
+	if TT==17  then
+		l1=255-1
+		l2=255
+		l3=1
+	end
+	if TT==18  then
+		l1=255-1-2
+		l2=255
+		l3=1+2
+	end
+	if TT==19  then
+		l1=255-1-2-4
+		l2=255
+		l3=1+2+4
+	end
+	if TT==20  then
+		l1=255-1-2-4-8
+		l2=255
+		l3=1+2+4+8
+	end
+	if TT==21  then
+		l1=255-1-2-4-8-16
+		l2=255
+		l3=1+2+4+8+16
+	end
+	if TT==22  then
+		l1=255-1-2-4-8-16-32
+		l2=255
+		l3=1+2+4+8+16+32
+	end
+	if TT==23  then
+		l1=255-1-2-4-8-16-32-64
+		l2=255
+		l3=1+2+4+8+16+32+6
+	end
+	
+---------------------------------------
+	
+	if TT==24  then
+		l2=255
+		l3=255
+	end
+	if TT==25  then
+		l2=255-1
+		l3=255
+		l4=1
+	end
+	if TT==26  then
+		l2=255-1-2
+		l3=255
+		l4=1+2
+	end
+	if TT==27  then
+		l2=255-1-2-4
+		l3=255
+		l4=1+2+4
+	end
+	if TT==28  then
+		l2=255-1-2-4-8
+		l3=255
+		l4=1+2+4+8
+	end
+	if TT==29  then
+		l2=255-1-2-4-8-16
+		l3=255
+		l4=1+2+4+8+16
+	end
+	if TT==30  then
+		l2=255-1-2-4-8-16-32
+		l3=255
+		l4=1+2+4+8+16+32
+	end
+	if TT==31  then
+		l2=255-1-2-4-8-16-32-64
+		l3=255
+		l4=1+2+4+8+16+32+6
+	end
+	
+---------------------------------------
+	
+	if TT==32  then
+		l3=255
+		l4=255
+	end
+	if TT==33  then
+		l3=255-1
+		l4=255
+		l5=1
+	end
+	if TT==34  then
+		l3=255-1-2
+		l4=255
+		l5=1+2
+	end
+	if TT==35  then
+		l3=255-1-2-4
+		l4=255
+		l5=1+2+4
+	end
+	if TT==36  then
+		l3=255-1-2-4-8
+		l4=255
+		l5=1+2+4+8
+	end
+	if TT==37  then
+		l3=255-1-2-4-8-16
+		l4=255
+		l5=1+2+4+8+16
+	end
+	if TT==38  then
+		l3=255-1-2-4-8-16-32
+		l4=255
+		l5=1+2+4+8+16+32
+	end
+	if TT==39  then
+		l3=255-1-2-4-8-16-32-64
+		l4=255
+		l5=1+2+4+8+16+32+6
+	end
+	
+---------------------------------------
+	
+	if TT==40  then
+		l4=255
+		l5=255
+	end
+	if TT==41  then
+		l4=255-1
+		l5=255
+		l6=1
+	end
+	if TT==42  then
+		l4=255-1-2
+		l5=255
+		l6=1+2
+	end
+	if TT==43  then
+		l4=255-1-2-4
+		l5=255
+		l6=1+2+4
+	end
+	if TT==44  then
+		l4=255-1-2-4-8
+		l5=255
+		l6=1+2+4+8
+	end
+	if TT==45  then
+		l4=255-1-2-4-8-16
+		l5=255
+		l6=1+2+4+8+16
+	end
+	if TT==46  then
+		l4=255-1-2-4-8-16-32
+		l5=255
+		l6=1+2+4+8+16+32
+	end
+	if TT==47  then
+		l4=255-1-2-4-8-16-32-64
+		l5=255
+		l6=1+2+4+8+16+32+6
+	end
+	
+
+--NADO SOKRATIT OBRATNIM SCHETOM ILI SSYLKAMY
+
+	
+	TT = TT+1
+	if TT>47 then TT = 0 end
+end
+	output.setNumber(1, l1)
+	output.setNumber(2, l2)
+	output.setNumber(3, l3)
+	output.setNumber(4, l4)
+	output.setNumber(5, l5)
+	output.setNumber(6, l6)
+	output.setNumber(7, TT)
+	
+end

@@ -1,0 +1,153 @@
+compass = 0
+lasX = 0
+lasY = 0
+lascammod = true
+distance = 0
+true_distance = 0
+initialized = 0	
+pixels = {}
+resolution = 33
+ladar_objects = {}
+last_angle = 0 --North, 0 in compass, 0.25 - west, -0.25 - east, -0.5 or 0.5 is south
+gps_x = 0
+gps_y = 0
+
+function deg2rad(deg)
+    return deg * math.pi / 180
+end
+
+function to_degrees(value)
+  return math.floor((value * -360) % 360)
+end
+
+function clear_ladobj_between(first_angle, current_angle)
+  if first_angle == current_angle then return end  
+  local angle = (first_angle + 1) % 360
+  while angle ~= current_angle do
+    ladar_objects[angle] = 0
+    angle = (angle + 1) % 360
+  end
+end
+
+--data is not saved, but there are a bit fewer lags
+
+function onTick()
+	
+	lascammod = input.getBool(1)
+	compass = input.getNumber(1)
+	distance = input.getNumber(2)	
+	resolution = input.getNumber(3)	
+	maxcoord = resolution//2 -- = math.floor(resolution/2)
+	resolution = 1+(maxcoord*2)
+	zoom = input.getNumber(4)
+	gps_x = input.getNumber(5)
+	gps_y = input.getNumber(6)
+	
+	if initialized<3 then 
+		for y = 1, resolution do
+			row = {}
+        	for x = 1, resolution do
+        	    row[x] = 4000
+        	end
+       	 pixels[y] = row
+   	 end
+		initialized = initialized+1
+	end
+	
+		
+	if lascammod == false then
+		output.setNumber(1, 0) --laser x
+		output.setNumber(2, 0) --laser y
+		true_distance = distance
+	else
+		if lasX==0 and lasY==0 then	true_distance = distance	end
+		distance_mod = (2000-math.max(true_distance))/(zoom*2000)
+		
+		output.setNumber(1, distance_mod*lasX/maxcoord) --laser x from -45 to 45 in -1 to +1
+		output.setNumber(2, distance_mod*lasY/maxcoord) --laser y
+	end
+	
+	if lascammod == true then
+		lasX = lasX+1
+		if lasX>maxcoord then
+			lasX = -1*maxcoord
+			lasY = lasY+1
+		end
+		if lasY>maxcoord then
+			lasY = -1*maxcoord
+		end
+		pixel_x = lasX+1+maxcoord
+		pixel_y = lasY+1+maxcoord
+		row = pixels[pixel_y]
+		row[pixel_x] = distance
+		pixels[pixel_y] = row
+	else
+		ladar_objects[to_degrees(compass)] = distance
+		clear_ladobj_between(last_angle, to_degrees(compass))
+		last_angle = to_degrees(compass)
+	end
+	
+end
+
+
+----------------------------------------
+
+function draw_ladar(current_angle)
+    --   
+    cx, cy = screen.getWidth() // 2, screen.getHeight() // 2
+    R = math.min(cx, cy) - 2 --circle radius   
+   
+	screen.setColor(5, 30, 5, 255)
+    screen.drawCircle(cx, cy, R)
+
+	
+	--draw current angle in line
+    local angle_rad = deg2rad(current_angle)
+    local x_end = cx + math.sin(angle_rad) * R
+    local y_end = cy - math.cos(angle_rad) * R
+	screen.setColor(10, 55, 10, 255)
+    screen.drawLine(cx, cy, x_end, y_end)
+
+    -- 3.   
+	screen.setColor(40, 10, 5, 255)
+    for angle = 0, 359 do
+        dist = ladar_objects[angle]
+        if dist then
+            if dist<2000 then
+				local scaled = math.min(dist, 2000) / 2000 * R
+            	local a_rad = deg2rad(angle)
+            	local x = cx + math.sin(a_rad) * scaled
+            	local y = cy - math.cos(a_rad) * scaled
+            	screen.drawLine(x, y, x + 1, y) 
+			end
+        end
+    end
+	screen.drawTextBox(1,1, 50,10, "Angle: "..tostring(current_angle), 0, 0)
+end
+----------------------------------------------------
+
+
+function onDraw()
+	screen.setColor(0, 3, 0, 255)
+	screen.drawClear()
+	
+	
+	
+	if lascammod == true then
+		for y=1, resolution do	for x=1, resolution do
+			R = 0
+			G = 3
+			B = 0
+			if pixels[x][y]<=2000 then
+				R = 200-math.max(math.floor(pixels[x][y]/10))
+				G = 200-math.max(math.floor(pixels[x][y]/10))
+				B = 200-math.max(math.floor(pixels[x][y]/10))
+			end
+			screen.setColor(R, G, B, 255)
+			screen.drawLine(x, y, x+1, y)
+		end end
+	else
+		screen.drawMap(gps_x, gps_y, 2000/screen.getWidth())
+		draw_ladar(to_degrees(compass))
+	end
+end

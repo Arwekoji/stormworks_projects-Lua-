@@ -1,0 +1,37 @@
+function onTick()
+	rocketCounter = input.getNumber(1)
+	cooldown = 	math.max(0, input.getNumber(2)-1)
+	
+	FireAt1 = false
+	FireAt2 = false
+	FireAt3 = false
+	
+	RLStatus1 = input.getBool(1)
+	RLStatus2 = input.getBool(2)
+	RLStatus3 = input.getBool(3)
+	FIRE      = input.getBool(4)
+	
+	if FIRE==true and cooldown==0 then
+		if      RLStatus1 == true then	
+			FireAt1 = true
+			cooldown = 5
+			rocketCounter = math.max(0, rocketCounter-1)
+		elseif RLStatus2 == true then	
+			FireAt2 = true
+			cooldown = 5
+			rocketCounter = math.max(0, rocketCounter-1)
+		elseif RLStatus3 == true then	
+			FireAt3 = true
+			cooldown = 5
+			rocketCounter = math.max(0, rocketCounter-1)
+		end
+	end
+	
+	
+	output.setBool(1, FireAt1)
+	output.setBool(2, FireAt2)
+	output.setBool(3, FireAt3)
+	
+	output.setNumber(1, rocketCounter)
+	output.setNumber(2, cooldown)
+end

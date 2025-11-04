@@ -1,0 +1,10 @@
+function onTick()
+	rule = input.getNumber(1)
+	tilt = input.getNumber(2)
+	
+	if	(rule<0 and tilt<-0.2) or (rule>0 and tilt>0.2)	then
+		rule = rule/2
+	end
+	
+	output.setNumber(1, rule)
+end

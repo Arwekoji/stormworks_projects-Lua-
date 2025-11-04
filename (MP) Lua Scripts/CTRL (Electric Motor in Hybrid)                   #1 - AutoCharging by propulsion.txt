@@ -1,0 +1,19 @@
+function onTick()
+	battery = input.getNumber(1)
+	isCharging = input.getNumber(2)
+
+	if isCharging==1 then	output.setNumber(2, 0)	
+	else					 output.setNumber(2, 1)
+	end
+
+	updIsC = false
+	if isCharging==1 and battery>0.99 then	updIsC = true	 end
+	if isCharging==0 and battery<0.5 then	 updIsC = true	end
+	output.setBool(1, updIsC)	
+
+
+	throttleMod = 0
+	if isCharging==0 then	throttleMod = 1	end
+	output.setNumber(1, throttleMod)
+		
+end

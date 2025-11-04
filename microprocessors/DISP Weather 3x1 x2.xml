@@ -1,0 +1,625 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<microprocessor name="DISP (Weather, 3x1 x2)" width="3" length="3" id_counter="25" id_counter_node="9" sym6="2176" sym7="5440" sym8="8736" sym9="8736" sym10="16912" sym11="16400">
+	<nodes>
+		<n id="1" component_id="8">
+			<node label="In (Temp In)" mode="1" type="1"/>
+		</n>
+		<n id="2" component_id="9">
+			<node label="In (Temp Out)" mode="1" type="1">
+				<position z="1"/>
+			</node>
+		</n>
+		<n id="3" component_id="10">
+			<node label="In (Radiation)" mode="1" type="1">
+				<position z="2"/>
+			</node>
+		</n>
+		<n id="4" component_id="11">
+			<node label="In (Humidity)" mode="1" type="1">
+				<position x="2"/>
+			</node>
+		</n>
+		<n id="5" component_id="12">
+			<node label="In (Rain)" mode="1" type="1">
+				<position x="2" z="1"/>
+			</node>
+		</n>
+		<n id="6" component_id="13">
+			<node label="In (Wind Speed)" mode="1" type="1">
+				<position x="1" z="1"/>
+			</node>
+		</n>
+		<n id="7" component_id="14">
+			<node label="In (Wind Direction)" mode="1" type="1">
+				<position x="1"/>
+			</node>
+		</n>
+		<n id="8" component_id="18">
+			<node label="Out (Weather Display)" type="6">
+				<position x="1" z="2"/>
+			</node>
+		</n>
+		<n id="9" component_id="23">
+			<node label="Out (Wind Display)" type="6">
+				<position x="2" z="2"/>
+			</node>
+		</n>
+	</nodes>
+	<group>
+		<data type="1049481524">
+			<inputs/>
+			<outputs/>
+		</data>
+		<components>
+			<c type="56">
+				<object id="19" script='function onTick()
+	TempMinComfort = 10
+	TempMaxComfort = 25
+
+	TempIn = math.floor(input.getNumber(1))
+	TempOut = math.floor(input.getNumber(2))
+	ColdText1 = 0
+	if TempOut&lt;=-10 then
+		ColdText1 = 4
+	end
+	ColdText2 = 0
+	if TempIn&lt;=-10 then
+		ColdText2 = 4
+	end
+	
+	
+	Rain = math.floor(input.getNumber(5)*100)
+	RainLabel = 0
+	if Rain&gt;=10 then
+		RainLabel = 5
+	end
+	if Rain==100 then
+		RainLabel = 10
+	end
+	Humidity = math.floor(input.getNumber(4)*100)
+	HumLabel = 0
+	if Humidity&gt;=10 then
+		HumLabel = 5
+	end
+	if Humidity==100 then
+		HumLabel = 10
+	end
+	
+	Radiation = math.floor(input.getNumber(3))
+	RadLabel = 0
+	if Radiation&gt;=10 then
+		RadLabel = 3
+	end
+	if Radiation&gt;=100 then
+		RadLabel = 6
+	end
+end
+
+
+function onDraw()
+	w = screen.getWidth()		
+	h = screen.getHeight()			
+			
+	screen.drawClear()
+	screen.setColor(28, 170, 214)			 -- Set background to sky blue
+	screen.drawRectF(0, 0, w, h)
+	
+	
+	screen.setColor(185, 48, 43)			 -- Orange labels
+	screen.drawText(10, 6, TempOut)
+	screen.drawCircle(21+ColdText1, 5, 1)
+	screen.drawText(24+ColdText1, 6, "C")
+	
+	screen.setColor(255, 255, 0)			-- Icons according Temperature
+	if TempOut&lt;TempMinComfort then
+		screen.setColor(0, 0, 255)
+	end
+	if TempOut&gt;TempMaxComfort then
+		screen.setColor(255, 125, 0)
+	end
+	
+	screen.drawRectF(4, 8, 3, 3)
+	screen.drawLine(3, 7, 4, 7)
+	screen.drawLine(7, 7, 8, 7)
+	screen.drawLine(3, 11, 4, 11)
+	screen.drawLine(7, 11, 8, 11)
+	screen.drawLine(2, 9, 3, 9)
+	screen.drawLine(8, 9, 9, 9)
+	screen.drawLine(5, 6, 6, 6)
+	screen.drawLine(5, 12, 6, 12)
+	
+	
+	
+	screen.setColor(185, 48, 43)
+	screen.drawText(10, 20, TempIn)
+	screen.drawCircle(21+ColdText2, 19, 1)
+	screen.drawText(24+ColdText2, 20, "C")
+	
+	
+	screen.setColor(255, 255, 0)			
+	if TempIn&lt;TempMinComfort then
+		screen.setColor(0, 0, 255)
+	end
+	if TempIn&gt;TempMaxComfort then
+		screen.setColor(255, 125, 0)
+	end
+	screen.drawRect(3, 19, 4, 7)
+	screen.drawRectF(3, 22, 4, 2)
+	screen.drawLine(5, 21, 5, 25)
+	
+	screen.setColor(0, 0, 155)
+	screen.drawLine(35, 0, 35, 32)
+	
+	
+-----------------------------------------------------------------
+
+	screen.setColor(19, 9, 114)			
+	screen.drawText(45, 6, Rain)
+	screen.drawText(51+RainLabel, 6, "%")
+	
+	screen.drawText(45, 20, Humidity)
+	screen.drawText(51+HumLabel, 20, "%")
+	
+	screen.setColor(255, 125, 38)	
+	if Rain&gt;0 then
+		screen.setColor(0, 255, 255)
+	end
+	if Rain&gt;50 then
+		screen.setColor(63, 128, 248)
+	end
+	if Rain&gt;90 then
+		screen.setColor(0, 0, 170)
+	end
+	
+	screen.drawText(38, 6, "R")
+	--screen.drawRectF(39, 6, 3, 5)
+	--screen.drawRectF(38, 8, 5, 2)
+	--screen.drawLine(40, 5, 41, 5)
+	
+	screen.setColor(100-Humidity, 150+Humidity, 150+Humidity)
+	screen.drawText(38, 20, "H")
+	--screen.drawRectF(39, 20, 3, 4)
+	--screen.drawRectF(38, 21, 5, 2)
+	
+	screen.setColor(0, 0, 155)
+	screen.drawLine(67, 0, 67, 32)
+	
+	
+	
+-----------------------------------------------------------------
+	
+	screen.setColor(0, 200, 0)
+	if Radiation&gt;0 then
+		screen.setColor(150, 0, 0)
+	end
+	screen.drawText(79-RadLabel, 20, Radiation)
+	
+	screen.setColor(225, 191, 0)
+	screen.drawCircleF(80, 10, 6)
+	screen.setColor(0, 1, 0)
+	screen.drawTriangleF(77,5,83,5,80,10)
+	screen.drawTriangleF(74,11,77,17,79,11)
+	screen.drawTriangleF(86,11,84,16,81,11)
+	screen.drawLine(80, 10, 81, 10)
+	
+end'>
+					<pos x="1.5" y="2.75"/>
+					<in1 component_id="20"/>
+				</object>
+			</c>
+			<c type="40">
+				<object id="20" count="5">
+					<pos y="1.75"/>
+					<in1 component_id="8"/>
+					<in2 component_id="9"/>
+					<in3 component_id="10"/>
+					<in4 component_id="11"/>
+					<in5 component_id="12"/>
+				</object>
+			</c>
+			<c type="56">
+				<object id="24" script='-- Tick function that will be executed every logic tick
+function onTick()
+	WindSpeed = math.floor(input.getNumber(1))		-- m/s
+	WindDir = input.getNumber(2)*360+180
+	WindLabel = 0
+	if WindSpeed&gt;=10 then
+		WindLabel = 5
+	end
+	if WindSpeed&gt;=100 then
+		WindLabel = 10
+	end
+end
+
+-- Draw function that will be executed when this script renders to a screen
+function onDraw()
+	w = screen.getWidth()				  -- Get the screen&apos;s width and height
+	h = screen.getHeight()					
+	
+	screen.drawClear()
+	screen.setColor(28, 170, 214)			 -- Set background to sky blue
+	screen.drawRectF(0, 0, w, h)
+	
+	screen.setColor(25, 25, 50)
+	
+	screen.drawText(37, 24, WindSpeed)
+	screen.drawText(44+WindLabel, 24, "m/s")
+	
+	
+	
+	screen.drawCircle(13, 12, 1)
+	
+	--Forward
+	if WindDir&lt;=60 or WindDir&gt;=300 then
+		screen.drawLine(13, 9, 13, 3)
+		screen.drawLine(12, 5, 15, 5)
+		screen.drawLine(11, 6, 12, 6)
+		screen.drawLine(15, 6, 16, 6)
+	end
+	
+	
+	--Backward
+	if WindDir&lt;=240 and WindDir&gt;=120 then
+		screen.drawLine(13, 15, 13, 21)
+		screen.drawLine(12, 19, 15, 19)
+		screen.drawLine(11, 18, 12, 18)
+		screen.drawLine(15, 18, 16, 18)
+	end
+	
+	--Left
+	if WindDir&lt;=330 and WindDir&gt;=210 then
+		screen.drawLine(10, 12, 4, 12)
+		screen.drawLine(6, 11, 6, 14)
+		screen.drawLine(7, 10, 8, 10)
+		screen.drawLine(7, 14, 8, 14)
+	end
+	
+	--Right
+	if WindDir&lt;=150 and WindDir&gt;=30 then
+		screen.drawLine(16, 12, 22, 12)
+		screen.drawLine(20, 11, 20, 14)
+		screen.drawLine(19, 10, 18, 10)
+		screen.drawLine(19, 14, 18, 14)
+	end
+	
+	
+	
+	
+end'>
+					<pos x="1.5" y="0.5"/>
+					<in1 component_id="25"/>
+				</object>
+			</c>
+			<c type="40">
+				<object id="25" count="2">
+					<pos y="0.25"/>
+					<in1 component_id="13"/>
+					<in2 component_id="14"/>
+				</object>
+			</c>
+		</components>
+		<components_bridge>
+			<c type="2">
+				<object id="8">
+					<pos x="-1.5" y="2.75"/>
+				</object>
+			</c>
+			<c type="2">
+				<object id="9">
+					<pos x="-1.5" y="2.5"/>
+				</object>
+			</c>
+			<c type="2">
+				<object id="10">
+					<pos x="-1.5" y="2.25"/>
+				</object>
+			</c>
+			<c type="2">
+				<object id="11">
+					<pos x="-1.5" y="2"/>
+				</object>
+			</c>
+			<c type="2">
+				<object id="12">
+					<pos x="-1.5" y="1.75"/>
+				</object>
+			</c>
+			<c type="2">
+				<object id="13">
+					<pos x="-1.5" y="0.5"/>
+				</object>
+			</c>
+			<c type="2">
+				<object id="14">
+					<pos x="-1.5" y="0.25"/>
+				</object>
+			</c>
+			<c type="7">
+				<object id="18">
+					<pos x="3" y="2.75"/>
+					<in1 component_id="19" node_index="1"/>
+				</object>
+			</c>
+			<c type="7">
+				<object id="23">
+					<pos x="3" y="0.5"/>
+					<in1 component_id="24" node_index="1"/>
+				</object>
+			</c>
+		</components_bridge>
+		<groups/>
+		<component_states>
+			<c0 id="19" script='function onTick()
+	TempMinComfort = 10
+	TempMaxComfort = 25
+
+	TempIn = math.floor(input.getNumber(1))
+	TempOut = math.floor(input.getNumber(2))
+	ColdText1 = 0
+	if TempOut&lt;=-10 then
+		ColdText1 = 4
+	end
+	ColdText2 = 0
+	if TempIn&lt;=-10 then
+		ColdText2 = 4
+	end
+	
+	
+	Rain = math.floor(input.getNumber(5)*100)
+	RainLabel = 0
+	if Rain&gt;=10 then
+		RainLabel = 5
+	end
+	if Rain==100 then
+		RainLabel = 10
+	end
+	Humidity = math.floor(input.getNumber(4)*100)
+	HumLabel = 0
+	if Humidity&gt;=10 then
+		HumLabel = 5
+	end
+	if Humidity==100 then
+		HumLabel = 10
+	end
+	
+	Radiation = math.floor(input.getNumber(3))
+	RadLabel = 0
+	if Radiation&gt;=10 then
+		RadLabel = 3
+	end
+	if Radiation&gt;=100 then
+		RadLabel = 6
+	end
+end
+
+
+function onDraw()
+	w = screen.getWidth()		
+	h = screen.getHeight()			
+			
+	screen.drawClear()
+	screen.setColor(28, 170, 214)			 -- Set background to sky blue
+	screen.drawRectF(0, 0, w, h)
+	
+	
+	screen.setColor(185, 48, 43)			 -- Orange labels
+	screen.drawText(10, 6, TempOut)
+	screen.drawCircle(21+ColdText1, 5, 1)
+	screen.drawText(24+ColdText1, 6, "C")
+	
+	screen.setColor(255, 255, 0)			-- Icons according Temperature
+	if TempOut&lt;TempMinComfort then
+		screen.setColor(0, 0, 255)
+	end
+	if TempOut&gt;TempMaxComfort then
+		screen.setColor(255, 125, 0)
+	end
+	
+	screen.drawRectF(4, 8, 3, 3)
+	screen.drawLine(3, 7, 4, 7)
+	screen.drawLine(7, 7, 8, 7)
+	screen.drawLine(3, 11, 4, 11)
+	screen.drawLine(7, 11, 8, 11)
+	screen.drawLine(2, 9, 3, 9)
+	screen.drawLine(8, 9, 9, 9)
+	screen.drawLine(5, 6, 6, 6)
+	screen.drawLine(5, 12, 6, 12)
+	
+	
+	
+	screen.setColor(185, 48, 43)
+	screen.drawText(10, 20, TempIn)
+	screen.drawCircle(21+ColdText2, 19, 1)
+	screen.drawText(24+ColdText2, 20, "C")
+	
+	
+	screen.setColor(255, 255, 0)			
+	if TempIn&lt;TempMinComfort then
+		screen.setColor(0, 0, 255)
+	end
+	if TempIn&gt;TempMaxComfort then
+		screen.setColor(255, 125, 0)
+	end
+	screen.drawRect(3, 19, 4, 7)
+	screen.drawRectF(3, 22, 4, 2)
+	screen.drawLine(5, 21, 5, 25)
+	
+	screen.setColor(0, 0, 155)
+	screen.drawLine(35, 0, 35, 32)
+	
+	
+-----------------------------------------------------------------
+
+	screen.setColor(19, 9, 114)			
+	screen.drawText(45, 6, Rain)
+	screen.drawText(51+RainLabel, 6, "%")
+	
+	screen.drawText(45, 20, Humidity)
+	screen.drawText(51+HumLabel, 20, "%")
+	
+	screen.setColor(255, 125, 38)	
+	if Rain&gt;0 then
+		screen.setColor(0, 255, 255)
+	end
+	if Rain&gt;50 then
+		screen.setColor(63, 128, 248)
+	end
+	if Rain&gt;90 then
+		screen.setColor(0, 0, 170)
+	end
+	
+	screen.drawText(38, 6, "R")
+	--screen.drawRectF(39, 6, 3, 5)
+	--screen.drawRectF(38, 8, 5, 2)
+	--screen.drawLine(40, 5, 41, 5)
+	
+	screen.setColor(100-Humidity, 150+Humidity, 150+Humidity)
+	screen.drawText(38, 20, "H")
+	--screen.drawRectF(39, 20, 3, 4)
+	--screen.drawRectF(38, 21, 5, 2)
+	
+	screen.setColor(0, 0, 155)
+	screen.drawLine(67, 0, 67, 32)
+	
+	
+	
+-----------------------------------------------------------------
+	
+	screen.setColor(0, 200, 0)
+	if Radiation&gt;0 then
+		screen.setColor(150, 0, 0)
+	end
+	screen.drawText(79-RadLabel, 20, Radiation)
+	
+	screen.setColor(225, 191, 0)
+	screen.drawCircleF(80, 10, 6)
+	screen.setColor(0, 1, 0)
+	screen.drawTriangleF(77,5,83,5,80,10)
+	screen.drawTriangleF(74,11,77,17,79,11)
+	screen.drawTriangleF(86,11,84,16,81,11)
+	screen.drawLine(80, 10, 81, 10)
+	
+end'>
+				<pos x="1.5" y="2.75"/>
+				<in1 component_id="20"/>
+			</c0>
+			<c1 id="20" count="5">
+				<pos y="1.75"/>
+				<in1 component_id="8"/>
+				<in2 component_id="9"/>
+				<in3 component_id="10"/>
+				<in4 component_id="11"/>
+				<in5 component_id="12"/>
+			</c1>
+			<c2 id="24" script='-- Tick function that will be executed every logic tick
+function onTick()
+	WindSpeed = math.floor(input.getNumber(1))		-- m/s
+	WindDir = input.getNumber(2)*360+180
+	WindLabel = 0
+	if WindSpeed&gt;=10 then
+		WindLabel = 5
+	end
+	if WindSpeed&gt;=100 then
+		WindLabel = 10
+	end
+end
+
+-- Draw function that will be executed when this script renders to a screen
+function onDraw()
+	w = screen.getWidth()				  -- Get the screen&apos;s width and height
+	h = screen.getHeight()					
+	
+	screen.drawClear()
+	screen.setColor(28, 170, 214)			 -- Set background to sky blue
+	screen.drawRectF(0, 0, w, h)
+	
+	screen.setColor(25, 25, 50)
+	
+	screen.drawText(37, 24, WindSpeed)
+	screen.drawText(44+WindLabel, 24, "m/s")
+	
+	
+	
+	screen.drawCircle(13, 12, 1)
+	
+	--Forward
+	if WindDir&lt;=60 or WindDir&gt;=300 then
+		screen.drawLine(13, 9, 13, 3)
+		screen.drawLine(12, 5, 15, 5)
+		screen.drawLine(11, 6, 12, 6)
+		screen.drawLine(15, 6, 16, 6)
+	end
+	
+	
+	--Backward
+	if WindDir&lt;=240 and WindDir&gt;=120 then
+		screen.drawLine(13, 15, 13, 21)
+		screen.drawLine(12, 19, 15, 19)
+		screen.drawLine(11, 18, 12, 18)
+		screen.drawLine(15, 18, 16, 18)
+	end
+	
+	--Left
+	if WindDir&lt;=330 and WindDir&gt;=210 then
+		screen.drawLine(10, 12, 4, 12)
+		screen.drawLine(6, 11, 6, 14)
+		screen.drawLine(7, 10, 8, 10)
+		screen.drawLine(7, 14, 8, 14)
+	end
+	
+	--Right
+	if WindDir&lt;=150 and WindDir&gt;=30 then
+		screen.drawLine(16, 12, 22, 12)
+		screen.drawLine(20, 11, 20, 14)
+		screen.drawLine(19, 10, 18, 10)
+		screen.drawLine(19, 14, 18, 14)
+	end
+	
+	
+	
+	
+end'>
+				<pos x="1.5" y="0.5"/>
+				<in1 component_id="25"/>
+			</c2>
+			<c3 id="25" count="2">
+				<pos y="0.25"/>
+				<in1 component_id="13"/>
+				<in2 component_id="14"/>
+			</c3>
+		</component_states>
+		<component_bridge_states>
+			<c0 id="8">
+				<pos x="-1.5" y="2.75"/>
+			</c0>
+			<c1 id="9">
+				<pos x="-1.5" y="2.5"/>
+			</c1>
+			<c2 id="10">
+				<pos x="-1.5" y="2.25"/>
+			</c2>
+			<c3 id="11">
+				<pos x="-1.5" y="2"/>
+			</c3>
+			<c4 id="12">
+				<pos x="-1.5" y="1.75"/>
+			</c4>
+			<c5 id="13">
+				<pos x="-1.5" y="0.5"/>
+			</c5>
+			<c6 id="14">
+				<pos x="-1.5" y="0.25"/>
+			</c6>
+			<c7 id="18">
+				<pos x="3" y="2.75"/>
+				<in1 component_id="19" node_index="1"/>
+			</c7>
+			<c8 id="23">
+				<pos x="3" y="0.5"/>
+				<in1 component_id="24" node_index="1"/>
+			</c8>
+		</component_bridge_states>
+		<group_states/>
+	</group>
+</microprocessor>
+

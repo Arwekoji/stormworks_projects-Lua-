@@ -1,0 +1,31 @@
+function angle2arrow_angle(angle)
+	return (angle + 180) % 360 - 180
+end
+
+function onTick()
+	--our gps
+	x0, y0 = input.getNumber(1), input.getNumber(2)
+	--target gps
+	x1, y1 = input.getNumber(3), input.getNumber(4)
+	--compass
+	heading = input.getNumber(5) * math.pi * 2 -- -Pi to +Pi
+	distance_converter = input.getNumber(6)
+		
+	dx, dy = x1 - x0, y1 - y0 --cathetus
+	distance = math.sqrt(dx^2 + dy^2)
+	
+	--world_coord-compass
+	relative_angle = angle2arrow_angle(math.deg(math.atan(dx, dy)-heading))
+	
+	if distance < 1 then
+   	 relative_angle = 0
+	end
+	
+	output.setNumber(1, distance/distance_converter)
+	output.setNumber(2, relative_angle)
+	output.setNumber(3, x0)
+	output.setNumber(4, y0)
+	output.setNumber(5, x1)
+	output.setNumber(6, y1)
+	output.setNumber(7, 360-(math.floor(math.deg(heading)) % 360))
+end

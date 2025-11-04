@@ -1,0 +1,17 @@
+function onTick()
+	curDist = input.getNumber(1)
+	fixDist = input.getNumber(2)
+	update = false
+	
+	if fixDist==4000   then					
+		fixDist = curDist
+		update = true
+	end
+	if fixDist<curDist and curDist<4000 then
+		fixDist = curDist
+		update = true
+	end
+	
+	output.setNumber(1, math.floor(fixDist))
+	output.setBool(1, update)
+end
